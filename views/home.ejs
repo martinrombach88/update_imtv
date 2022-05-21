@@ -1,0 +1,52 @@
+<%- include('includes/header.ejs') %>
+
+<div class="centerColumn">
+  <div class="jumbotron">
+    <h1 class="display-5">Update IMTV</h1>
+    <p class="lead">
+      IMTV 홈페이지 업데이트를 위한 웹사이트입니다. 계속하려면 로그인하십시오.
+    </p>
+    <p class="lead">
+      The website for updating the IMTV homepage. Please login to continue.
+    </p>
+    <hr class="my-4" />
+
+    <form class="form-signin">
+      <div class="form-label-group">
+        <input
+          type="username"
+          id="username"
+          class="form-control"
+          placeholder="사용자 이름"
+          required="true"
+          autofocus=""
+        />
+        <label for="inputEmail"></label>
+      </div>
+
+      <div class="form-label-group">
+        <input
+          type="password"
+          id="inputPassword"
+          class="form-control"
+          placeholder="비밀번호"
+          required=""
+        />
+        <label for="inputPassword"></label>
+      </div>
+
+      <div class="checkbox mb-3">
+        <label> <input type="checkbox" value="remember-me" /> 날 기억해 </label>
+      </div>
+      <button class="btn btn-lg btn-secondary btn-block" type="submit">
+        로그인
+      </button>
+      <p class="mt-5 mb-3 text-muted text-center">
+        © Copyright IMTV All Rights Reserved. Created in Node and Bootstrap by
+        Martin Rombach.
+      </p>
+    </form>
+    <a href="/hub">Shortcut to Hub</a>
+  </div>
+</div>
+<%- include('includes/end.ejs') %>

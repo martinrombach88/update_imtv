@@ -1,0 +1,40 @@
+Update IMTV App
+
+WORK
+A user can:
+- retrieve a list of work to be displayed on the work page.
+- create a new work using a form at the top of the page.
+    A new work consists of:
+    1. A wide image
+    2. A tall image
+    3. A full trailer video link
+    4. An optional ten second trailer link, with a 'video slider' toggle
+    5. Add Text Fields: a title, a description, available on, release date, starring, directed by and written by 
+
+- edit an existing work, changing the above fields and updating them
+- move a work up or down in the list
+- delete a work
+
+NEWS
+A user can:
+- retrieve a list of blog posts in the same style as the news component.
+- create a new blog post using a form at the top of the page.
+A new blog post consists of:
+    1. An image to display on the blog card
+    2. An image to display on the blog post
+    3. A title
+    4. An array of text content, which is separated by paragraph
+    5. Today's date
+
+IN PRODUCTION
+A user can:
+- retrieve the current in production object
+- update the tall and wide images
+- update the title and subtitle
+- update the background and text color
+
+1. Build basic HTML preview in Node. 
+- Copy samples of Public folder, JSON files.
+- Make basic routing with forms ready to add logic later.
+
+2. Build functionality to alter JSON files using 
