@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const path = require("path");
+const productionObject = require("./production");
 
 app.set("view engine", "ejs");
 app.set("views", "views");
@@ -20,6 +21,14 @@ app.get("/hub", (req, res, next) => {
   res.render("hub", {
     path: "/hub",
     pageTitle: "Update IMTV",
+  });
+});
+
+app.get("/production", (req, res, next) => {
+  res.render("production", {
+    path: "/production",
+    pageTitle: "Update In Production",
+    object: productionObject,
   });
 });
 

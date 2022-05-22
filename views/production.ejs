@@ -1,0 +1,27 @@
+<%- include('includes/header.ejs') %>
+
+<script>
+  let textStyle = 'color: <%- object.color %>;background-color: <%-object.backgroundColor%>'
+</script>
+  <div class="editor__TopBar">
+    <h4>In Production</h4>
+    <button type="button" class="btn btn-info">Edit</button>
+    <a class="btn btn-danger" href="/hub">Hub</a>
+  </div>
+    <div class="prod">
+      <img src="<%= object.image %>" ></img>
+      <div class="prod__Text" style='color: <%- object.color %>;background-color: <%-object.backgroundColor%>'>
+        <div>생산 중</div>
+        <div>
+          <h1><%- object.mainTitleKR %></h1>
+          <h4><%- object.subTitleKR %></h4>
+        </div>
+        <div class="prod__ViewProduct">프로젝트 보기</div>
+      </div>
+
+    </div>
+          
+
+
+</div>
+<%- include('includes/end.ejs') %>
