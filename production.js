@@ -9,8 +9,8 @@ const production = {
   smallTitleENG: "In Production",
   mainTitleENG: "Fool in the End",
   subTitleENG: "In collaboration with Netflix",
-  color: "rgb(174, 213, 243)",
-  backgroundColor: "rgb(33,54,80)",
+  color: "#aed5f3",
+  backgroundColor: "#213650",
 };
 
 module.exports = production;

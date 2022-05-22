@@ -1,13 +1,12 @@
 <%- include('includes/header.ejs') %>
 
-<script>
-  let textStyle = 'color: <%- object.color %>;background-color: <%-object.backgroundColor%>'
-</script>
+
   <div class="editor__TopBar">
     <h4>In Production</h4>
-    <button type="button" class="btn btn-info">Edit</button>
-    <a class="btn btn-danger" href="/hub">Hub</a>
+    <a class="btn btn-success" href="/prodForm">Update</a>
+    <a class="btn btn-danger" href="/hub">Exit</a>
   </div>
+  <div class="prod__Container">
     <div class="prod">
       <img src="<%= object.image %>" ></img>
       <div class="prod__Text" style='color: <%- object.color %>;background-color: <%-object.backgroundColor%>'>
@@ -18,7 +17,7 @@
         </div>
         <div class="prod__ViewProduct">프로젝트 보기</div>
       </div>
-
+    </div>
     </div>
           
 

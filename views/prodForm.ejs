@@ -1,0 +1,72 @@
+<%- include('includes/header.ejs') %>
+
+
+    <div class="editor__TopBar">
+        <h4>In Production - Update</h4>
+    </div>
+
+    <div class="prod__Container">
+        <form action="/production" method="post" class="prod__Form">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">한국어 주요 제목</span>
+                </div>
+                <input type="text" class="form-control" placeholder="<%- object.mainTitleKR %>" id="mainTitleKR"  aria-label="mainTitleKR" aria-describedby="basic-addon1" name="mainTitleKR">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">한국어 두 번째 제목</span>
+                </div>
+                <input type="text" class="form-control" placeholder="<%- object.subTitleKR %>" id="subtTitleKR"  aria-label="subtTitleKR" aria-describedby="basic-addon1" name="subtTitleKR">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">영어 주요 제목</span>
+                </div>
+                <input type="text" class="form-control" placeholder="<%- object.mainTitleENG %>" id="mainTitleENG"  aria-label="mainTitleENG" aria-describedby="basic-addon1" name="mainTitleENG">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">영어 두 번째 제목</span>
+                </div>
+                <input type="text" class="form-control" placeholder="<%- object.subTitleENG %>" id="subtTitleENG"  aria-label="subtTitleENG" aria-describedby="basic-addon1" name="subtTitleENG">
+            </div>
+            <div class="mb-3">            
+                <label for="exampleColorInput" class="form-label">폰트 색상</label>
+                <input type="color" class="form-control form-control-color" id="exampleColorInput" value="<%- object.color %>" title="Font color">
+            </div>
+            <div>
+                <label for="exampleColorInput" class="form-label">배경색</label>
+                <input type="color" class="form-control form-control-color" id="exampleColorInput" value="<%- object.backgroundColor %>" title="Font color">
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="formFile" class="form-label">세로 이미지 업로드</label>
+                <input class="form-control" type="file" id="formFile">
+            <div>   
+                
+            <div class="mb-3 mt-3">
+                <label for="formFile" class="form-label">가로 이미지 업로드</label>
+                <input class="form-control" type="file" id="formFile">
+            </div>
+            <div>  
+                <div class="center">
+                    <button type="submit" class="btn btn-success">Submit</button>
+                    <a class="btn btn-danger" href="/production">Cancel</a>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const form = document.querySelector("prod__Form");
+        console.log(form);
+        // form.addEventListener("submit", (e) => {
+        //     e.preventDefault();
+        //     console.log(e);
+        // })
+    </script>    
+
+<%- include('includes/end.ejs') %>

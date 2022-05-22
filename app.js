@@ -32,6 +32,14 @@ app.get("/production", (req, res, next) => {
   });
 });
 
+app.get("/prodForm", (req, res, next) => {
+  res.render("prodForm", {
+    path: "/prodForm",
+    pageTitle: "Update In Production",
+    object: productionObject,
+  });
+});
+
 app.use((req, res, next) => {
   res.status(404).render("404", { pageTitle: "Page Not Found" });
 });
