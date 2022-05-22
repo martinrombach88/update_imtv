@@ -1,0 +1,49 @@
+<%- include('includes/header.ejs') %>
+
+
+  <div class="editor__TopBar">
+    <h4>Work</h4>
+    <p>When using Youtube Links, use the IMTV Youtube account: imtvwebvideos@gmail.com</p>
+    <a class="btn btn-success" href="/workForm">Add New Work</a>
+    <a class="btn btn-danger" href="/hub">Exit</a>
+  </div>
+  <div class="list__Container">
+        <% for (let work of object) { %>
+            <div class="list__Object">
+                <div class="list__ObjectImage">
+                    <img src="<%= work.mediaImg %>" alt="">
+                    <div class="list__ObjectImageTall"><img src="<%= work.mediaImgTall %>" alt=""></div>
+                    
+                </div>
+
+                <div class="list__ObjectText">
+                    <ul>
+                        <li>제목: <%= work.titleKR %></li>
+                        <li>설명: <%= work.descriptionKR %></li>
+                        <li>채널: <%= work.channels %></li>
+                        <li>날짜: <%= work.date %></li>
+                        <li>감독: <%= work.directorKR %></li>
+                        <li>작가: <%= work.writerKR %></li>
+                        <li>배우: <%= work.starringKR %></li>
+
+                        <li>영어 제목: <%= work.titleENG %></li>
+                        <li>영어 설명: <%= work.descriptionENG %></li>
+                        <li>영어 감독: <%= work.directorENG %></li>
+                        <li>영어 작가: <%= work.writerENG %></li>
+                        <li>영어 배우: <%= work.starringENG %></li>
+                        <li><a href="<%= work.prop_src %>">Trailer Video Link</a></li>
+                        <li><a href="<%= work.src %>">10 Second Slider Video</a></li>
+                    </ul> 
+                </div>
+            </div>
+            <p>
+
+
+            </p>
+        <% } %>
+   </div>
+          
+
+
+</div>
+<%- include('includes/end.ejs') %>

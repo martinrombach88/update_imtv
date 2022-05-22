@@ -1,0 +1,45 @@
+<%- include('includes/header.ejs') %>
+
+
+  <div class="editor__TopBar">
+    <h4>News</h4>
+    <a class="btn btn-success" href="/newsForm">Add New Blog</a>
+    <a class="btn btn-danger" href="/hub">Exit</a>
+  </div>
+  <div class="list__Container">
+        <% for (let news of object) { %>
+            <div class="list__Object">
+                <div class="list__ObjectImage">
+                    <img src="<%= news.imageLarge %>" alt="">
+                    <div class="list__ObjectImageTall"><img src="<%= news.image %>" alt=""></div>
+                </div>
+
+                <div class="list__ObjectText">
+                    <ul>
+                        <li>제목: <%= news.titleKR %></li>
+                        <li>영어 제목: <%= news.titleENG %></li>
+                        <li>블로그 콘텐츠: </li>
+                        <li>
+                            <% for (let paragraph of news.bodyKR) { %>
+                            <p><%= paragraph %></p>
+                            <% } %>
+                        </li>
+                        <li>블로그 영어 콘텐츠:</li>       
+                        <li><% for (let paragraph of news.bodyENG) { %>
+                            <p><%= paragraph %></p>
+                            <% } %></li>                     
+                            
+                    </ul> 
+                </div>
+            </div>
+            <p>
+
+
+            </p>
+        <% } %>
+   </div>
+          
+
+
+</div>
+<%- include('includes/end.ejs') %>

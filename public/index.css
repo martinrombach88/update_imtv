@@ -36,7 +36,6 @@ a:hover {
   padding: 1%;
   background-color: #e9ecef;
   text-align: center;
-  margin-bottom: 2%;
 }
 
 .editor__TopBar h4 {
@@ -46,12 +45,20 @@ a:hover {
 .prod__Container {
   display: flex;
   justify-content: center;
+  padding-top: 2%;
+}
+
+.list__Container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2%;
+  margin-left: 5%;
 }
 
 .prod {
   display: flex;
   justify-content: center;
-  margin: 0% 10%;
+  margin: 1% 10%;
   width: 680px;
 }
 
@@ -82,4 +89,32 @@ a:hover {
 
 .prod__viewProduct {
   color: white;
+}
+
+.list__Object {
+  display: flex;
+}
+
+.list__ObjectImage img {
+  width: 600px;
+}
+.list__ObjectImageTall {
+  display: flex;
+  justify-content: center;
+}
+.list__ObjectImageTall img {
+  padding: 2%;
+  width: 200px;
+}
+
+.list__ObjectText {
+  margin-right: 5%;
+}
+
+.list__ObjectText ul {
+  list-style: none;
+}
+
+.list__ObjectText p {
+  font-size: 0.8em;
 }

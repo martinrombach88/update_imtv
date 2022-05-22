@@ -1,0 +1,119 @@
+<%- include('includes/header.ejs') %>
+
+<div class="editor__TopBar">
+  <h4>News - Add New</h4>
+  <p>
+    Use as many paragraphs as you need. Any empty paragraphs will be ignored.
+  </p>
+</div>
+
+<div class="prod__Container">
+  <form action="/production" method="post" class="prod__Form">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">주요 제목</span>
+      </div>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="제목을 입력"
+        id="titleKR"
+        aria-label="titleKR"
+        aria-describedby="basic-addon1"
+        name="titleKR"
+      />
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">영어로 주요 제목</span>
+      </div>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="제목을 입력"
+        id="titleENG"
+        aria-label="titleENG"
+        aria-describedby="basic-addon1"
+        name="titleENG"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">단락 1</label>
+      <textarea
+        class="form-control"
+        id="exampleFormControlTextarea1"
+        rows="3"
+      ></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">단락 2</label>
+      <textarea
+        class="form-control"
+        id="exampleFormControlTextarea1"
+        rows="3"
+      ></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">단락 3</label>
+      <textarea
+        class="form-control"
+        id="exampleFormControlTextarea1"
+        rows="3"
+      ></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">단락 4</label>
+      <textarea
+        class="form-control"
+        id="exampleFormControlTextarea1"
+        rows="3"
+      ></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">단락 5</label>
+      <textarea
+        class="form-control"
+        id="exampleFormControlTextarea1"
+        rows="3"
+      ></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">단락 6</label>
+      <textarea
+        class="form-control"
+        id="exampleFormControlTextarea1"
+        rows="3"
+      ></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">단락 7</label>
+      <textarea
+        class="form-control"
+        id="exampleFormControlTextarea1"
+        rows="3"
+      ></textarea>
+    </div>
+
+    <div>
+      <div class="center">
+        <button type="submit" class="btn btn-success">Submit</button>
+        <a class="btn btn-danger" href="/work">Cancel</a>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script>
+  const form = document.querySelector("prod__Form");
+  // form.addEventListener("submit", (e) => {
+  //     e.preventDefault();
+  //     console.log(e);
+  // })
+</script>
+
+<%- include('includes/end.ejs') %>

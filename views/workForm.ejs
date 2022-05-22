@@ -1,0 +1,129 @@
+<%- include('includes/header.ejs') %>
+
+
+    <div class="editor__TopBar">
+        <h4>Work - Add New</h4>
+    </div>
+
+    <div class="prod__Container">
+        <form action="/production" method="post" class="prod__Form">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">한국어 주요 제목</span>
+                </div>
+                <input type="text" class="form-control" placeholder="제목을 입력" id="titleKR"  aria-label="titleKR" aria-describedby="basic-addon1" name="titleKR">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">한국어 설명</span>
+                </div>
+                <input type="text" class="form-control" placeholder="설명을 입력" id="descriptionKR"  aria-label="descriptionKR" aria-describedby="basic-addon1" name="descriptionKR">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">채널</span>
+                </div>
+                <input type="text" class="form-control" placeholder="채널을 입력" id="channels"  aria-label="channels" aria-describedby="basic-addon1" name="channels">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">감독</span>
+                </div>
+                <input type="text" class="form-control" placeholder="감독을 입력" id="directorKR"  aria-label="directorKR" aria-describedby="basic-addon1" name="directorKR">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">작가</span>
+                </div>
+                <input type="text" class="form-control" placeholder="작가를 입력" id="writerKR"  aria-label="writerKR" aria-describedby="basic-addon1" name="writerKR">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">배우</span>
+                </div>
+                <input type="text" class="form-control" placeholder="배우를 입력" id="starringKR"  aria-label="starringKR" aria-describedby="basic-addon1" name="starringKR">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">영어 주요 제목</span>
+                </div>
+                <input type="text" class="form-control" placeholder="영어로 제목을 입력" id="titleENG"  aria-label="titleENG" aria-describedby="basic-addon1" name="titleENG">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">영어 설명</span>
+                </div>
+                <input type="text" class="form-control" placeholder="영어로 설명을 입력" id="descriptionENG"  aria-label="descriptionENG" aria-describedby="basic-addon1" name="descriptionENG">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">영어 감독</span>
+                </div>
+                <input type="text" class="form-control" placeholder="영어로 감독을 입력" id="directorENG"  aria-label="directorENG" aria-describedby="basic-addon1" name="directorENG">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">영어 작가</span>
+                </div>
+                <input type="text" class="form-control" placeholder="영어로 작가를 입력" id="writerENG"  aria-label="writerENG" aria-describedby="basic-addon1" name="writerENG">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">영어 배우</span>
+                </div>
+                <input type="text" class="form-control" placeholder="영어로 배우를 입력" id="starringENG"  aria-label="starringENG" aria-describedby="basic-addon1" name="starringENG">
+            </div>
+
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">비디오 예고편 (유튜브 링크)</span>
+                </div>
+                <input type="text" class="form-control" placeholder="링크를 입력" id="fullTrailer"  aria-label="fullTrailer" aria-describedby="basic-addon1" name="fullTrailer">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">10초 비디오 클립 (유튜브 링크)</span>
+                </div>
+                <input type="text" class="form-control" placeholder="링크를 입력" id="fullTrailer"  aria-label="fullTrailer" aria-describedby="basic-addon1" name="fullTrailer">
+            </div>
+
+            <div class="mb-3 mt-3">
+                <label for="formFile" class="form-label">세로 이미지 업로드</label>
+                <input class="form-control" type="file" id="formFile">
+            <div>   
+                
+            <div class="mb-3 mt-3">
+                <label for="formFile" class="form-label">가로 이미지 업로드</label>
+                <input class="form-control" type="file" id="formFile">
+            </div>
+            <div>  
+                <div class="center">
+                    <button type="submit" class="btn btn-success">Submit</button>
+                    <a class="btn btn-danger" href="/work">Cancel</a>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const form = document.querySelector("prod__Form");
+        console.log(form);
+        // form.addEventListener("submit", (e) => {
+        //     e.preventDefault();
+        //     console.log(e);
+        // })
+    </script>    
+
+<%- include('includes/end.ejs') %>

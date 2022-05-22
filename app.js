@@ -3,6 +3,8 @@ const app = express();
 const bodyParser = require("body-parser");
 const path = require("path");
 const productionObject = require("./production");
+const workObject = require("./work");
+const newsObject = require("./news");
 
 app.set("view engine", "ejs");
 app.set("views", "views");
@@ -37,6 +39,38 @@ app.get("/prodForm", (req, res, next) => {
     path: "/prodForm",
     pageTitle: "Update In Production",
     object: productionObject,
+  });
+});
+
+app.get("/work", (req, res, next) => {
+  res.render("work", {
+    path: "/work",
+    pageTitle: "Update Work",
+    object: workObject,
+  });
+});
+
+app.get("/workForm", (req, res, next) => {
+  res.render("workForm", {
+    path: "/workForm",
+    pageTitle: "Update Work",
+    object: workObject,
+  });
+});
+
+app.get("/news", (req, res, next) => {
+  res.render("news", {
+    path: "/news",
+    pageTitle: "Update News",
+    object: newsObject,
+  });
+});
+
+app.get("/newsForm", (req, res, next) => {
+  res.render("newsForm", {
+    path: "/newsForm",
+    pageTitle: "Update News",
+    object: newsObject,
   });
 });
 
