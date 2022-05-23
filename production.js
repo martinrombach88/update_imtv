@@ -1,5 +1,4 @@
 const production = {
-  id: 0,
   title: "inProduction",
   image: "./assets/images/home/fool.png",
   imageWide: "./assets/images/home/foolWide.jpg",

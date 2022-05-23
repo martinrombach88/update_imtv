@@ -42,6 +42,13 @@ app.get("/prodForm", (req, res, next) => {
   });
 });
 
+//Production is an edit form. This requires more complicated logic than add, so just work with add for now.
+
+app.post("/prodForm", (req, res, next) => {
+  console.log(req.body);
+  res.redirect("/production");
+});
+
 app.get("/work", (req, res, next) => {
   res.render("work", {
     path: "/work",
@@ -56,6 +63,11 @@ app.get("/workForm", (req, res, next) => {
     pageTitle: "Update Work",
     object: workObject,
   });
+});
+
+app.post("/workForm", (req, res, next) => {
+  console.log(req.body);
+  res.redirect("/workForm");
 });
 
 app.get("/news", (req, res, next) => {

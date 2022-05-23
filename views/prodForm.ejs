@@ -5,8 +5,8 @@
         <h4>In Production - Update</h4>
     </div>
 
-    <div class="prod__Container">
-        <form action="/production" method="post" class="prod__Form">
+    <div class="form__Container">
+        <form action="/prodForm" method="post" class="form">
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">한국어 주요 제목</span>
@@ -18,7 +18,7 @@
                 <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">한국어 두 번째 제목</span>
                 </div>
-                <input type="text" class="form-control" placeholder="<%- object.subTitleKR %>" id="subtTitleKR"  aria-label="subtTitleKR" aria-describedby="basic-addon1" name="subtTitleKR">
+                <input type="text" class="form-control" placeholder="<%- object.subTitleKR %>" id="subTitleKR"  aria-label="subTitleKR" aria-describedby="basic-addon1" name="subTitleKR">
             </div>
 
             <div class="input-group mb-3">
@@ -32,25 +32,26 @@
                 <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">영어 두 번째 제목</span>
                 </div>
-                <input type="text" class="form-control" placeholder="<%- object.subTitleENG %>" id="subtTitleENG"  aria-label="subtTitleENG" aria-describedby="basic-addon1" name="subtTitleENG">
+                <input type="text" class="form-control" placeholder="<%- object.subTitleENG %>" id="subTitleENG"  aria-label="subTitleENG" aria-describedby="basic-addon1" name="subTitleENG">
             </div>
             <div class="mb-3">            
                 <label for="exampleColorInput" class="form-label">폰트 색상</label>
-                <input type="color" class="form-control form-control-color" id="exampleColorInput" value="<%- object.color %>" title="Font color">
+                <input type="color" name="fontColor" class="form-control form-control-color" id="exampleColorInput" value="<%- object.color %>" title="Font color">
             </div>
             <div>
                 <label for="exampleColorInput" class="form-label">배경색</label>
-                <input type="color" class="form-control form-control-color" id="exampleColorInput" value="<%- object.backgroundColor %>" title="Font color">
+                <input type="color" name="backgroundColor" class="form-control form-control-color" id="exampleColorInput" value="<%- object.backgroundColor %>" title="Font color">
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="formFile" class="form-label">가로 이미지 업로드</label>
+                <input class="form-control" name="mediaImage" type="file" id="formFile">
             </div>
             <div class="mb-3 mt-3">
                 <label for="formFile" class="form-label">세로 이미지 업로드</label>
-                <input class="form-control" type="file" id="formFile">
+                <input class="form-control" name="mediaImageTall" type="file" id="formFile">
             <div>   
                 
-            <div class="mb-3 mt-3">
-                <label for="formFile" class="form-label">가로 이미지 업로드</label>
-                <input class="form-control" type="file" id="formFile">
-            </div>
+
             <div>  
                 <div class="center">
                     <button type="submit" class="btn btn-success">Submit</button>
@@ -60,13 +61,6 @@
         </form>
     </div>
 
-    <script>
-        const form = document.querySelector("prod__Form");
-        console.log(form);
-        // form.addEventListener("submit", (e) => {
-        //     e.preventDefault();
-        //     console.log(e);
-        // })
-    </script>    
+
 
 <%- include('includes/end.ejs') %>

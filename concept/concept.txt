@@ -37,4 +37,13 @@ A user can:
 - Copy samples of Public folder, JSON files.
 - Make basic routing with forms ready to add logic later.
 
-2. Build functionality to alter JSON files using 
+2. Build post forms that add to the JSON.
+
+3. Build 'edit element' buttons that let you edit a particular id in the json list. 
+Build it in a different way to the school portal website.
+
+4. Build Rest API (which links to My SQL database)
+
+5. Build the React API retrieval component locally
+
+6. Deployment
