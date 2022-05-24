@@ -89,24 +89,24 @@
                 <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">비디오 예고편 (유튜브 링크)</span>
                 </div>
-                <input type="text" class="form-control" placeholder="링크를 입력" id="fullTrailer"  aria-label="fullTrailer" aria-describedby="basic-addon1" name="fullTrailer">
+                <input type="text" class="form-control" placeholder="링크를 입력" id="fullVid"  aria-label="fullVid" aria-describedby="basic-addon1" name="fullVid">
             </div>
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">10초 비디오 클립 (유튜브 링크)</span>
                 </div>
-                <input type="text" class="form-control" placeholder="링크를 입력" id="fullTrailer"  aria-label="fullTrailer" aria-describedby="basic-addon1" name="fullTrailer">
+                <input type="text" class="form-control" placeholder="링크를 입력" id="clipVid"  aria-label="clipVid" aria-describedby="basic-addon1" name="clipVid">
             </div>
 
             <div class="mb-3 mt-3">
                 <label for="formFile" class="form-label">세로 이미지 업로드</label>
-                <input class="form-control" type="file" id="formFile">
+                <input class="form-control" type="file" id="formFile" name="workImgTall">
             <div>   
                 
             <div class="mb-3 mt-3">
                 <label for="formFile" class="form-label">가로 이미지 업로드</label>
-                <input class="form-control" type="file" id="formFile">
+                <input class="form-control" type="file" id="formFile" name="workImg">
             </div>
             <div>  
                 <div class="center">
@@ -117,13 +117,6 @@
         </form>
     </div>
 
-    <script>
-        const form = document.querySelector("list__Form");
-        console.log(form);
-        // form.addEventListener("submit", (e) => {
-        //     e.preventDefault();
-        //     console.log(e);
-        // })
-    </script>    
+
 
 <%- include('includes/end.ejs') %>

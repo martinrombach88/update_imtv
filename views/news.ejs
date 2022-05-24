@@ -24,11 +24,12 @@
                             <p><%= paragraph %></p>
                             <% } %>
                         </li>
+                        <li><%= news.dateKR %></li>
                         <li>블로그 영어 콘텐츠:</li>       
                         <li><% for (let paragraph of news.bodyENG) { %>
                             <p><%= paragraph %></p>
                             <% } %></li>                     
-                            
+                        <li><%= news.dateENG %></li>
                     </ul> 
                 </div>
             </div>

@@ -1,10 +1,58 @@
 const express = require("express");
 const app = express();
+const fs = require("fs");
 const bodyParser = require("body-parser");
 const path = require("path");
-const productionObject = require("./production");
-const workObject = require("./work");
-const newsObject = require("./news");
+const productionJSON = require("./data/production.json");
+const workJSON = require("./data/work.json");
+const newsJSON = require("./data/news.json");
+
+const getListFromFile = (jsonFile) => {
+  const jsonPath = path.join(
+    path.dirname(process.mainModule.filename),
+    "data",
+    jsonFile
+  );
+  const file = fs.readFileSync(jsonPath);
+  return JSON.parse(file);
+};
+
+//Note: You are currently making changes synchronously.
+//You will probably need asynchronous code later on.
+
+const writeToList = (jsonFile, object) => {
+  const jsonPath = path.join(
+    path.dirname(process.mainModule.filename),
+    "data",
+    jsonFile
+  );
+  let updatedArray = [];
+  const originalArray = getListFromFile(jsonFile);
+  updatedArray = JSON.stringify([object, ...originalArray], null, 2);
+  //Stringify arguments:
+  //1 A spread array
+  //2 A replacer operator (which could change the format, if used) set to null
+  //3 A space argument of 2, which creates white space and indentation for readability
+  fs.writeFileSync(jsonPath, updatedArray);
+};
+
+const overwriteFile = (jsonFile, object) => {
+  const jsonPath = path.join(
+    path.dirname(process.mainModule.filename),
+    "data",
+    jsonFile
+  );
+  updatedArray = JSON.stringify(object, null, 2);
+  fs.writeFileSync(jsonPath, updatedArray);
+};
+
+const setFilePath = (folder, filename) => {
+  return path.join("assets", "images", folder, filename);
+};
+
+const newsList = getListFromFile("news.json");
+const workList = getListFromFile("work.json");
+const productionList = getListFromFile("production.json");
 
 app.set("view engine", "ejs");
 app.set("views", "views");
@@ -12,78 +60,129 @@ app.set("views", "views");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
-app.get("/", (req, res, next) => {
+app.get("/", (req, res) => {
   res.render("home", {
     path: "/",
     pageTitle: "Update IMTV",
   });
 });
 
-app.get("/hub", (req, res, next) => {
+app.get("/hub", (req, res) => {
   res.render("hub", {
     path: "/hub",
     pageTitle: "Update IMTV",
   });
 });
 
-app.get("/production", (req, res, next) => {
+app.get("/production", (req, res) => {
   res.render("production", {
     path: "/production",
     pageTitle: "Update In Production",
-    object: productionObject,
+    object: productionList,
   });
 });
 
-app.get("/prodForm", (req, res, next) => {
+app.get("/prodForm", (req, res) => {
   res.render("prodForm", {
     path: "/prodForm",
     pageTitle: "Update In Production",
-    object: productionObject,
+    object: productionList,
   });
 });
 
-//Production is an edit form. This requires more complicated logic than add, so just work with add for now.
-
-app.post("/prodForm", (req, res, next) => {
-  console.log(req.body);
+app.post("/prodForm", (req, res) => {
+  let prodObject = {};
+  prodObject.mainTitleKR = req.body.mainTitleKR;
+  prodObject.subTitleKR = req.body.subTitleKR;
+  prodObject.smallTitleKR = req.body.smallTitleKR;
+  prodObject.mainTitleENG = req.body.mainTitleENG;
+  prodObject.subTitleENG = req.body.subTitleENG;
+  prodObject.fontColor = req.body.fontColor;
+  prodObject.backgroundColor = req.body.backgroundColor;
+  prodObject.image = setFilePath("home", req.body.image);
+  prodObject.imageWide = setFilePath("home", req.body.imageWide);
+  overwriteFile("production.json", prodObject);
   res.redirect("/production");
 });
 
-app.get("/work", (req, res, next) => {
+app.get("/work", (req, res) => {
   res.render("work", {
     path: "/work",
     pageTitle: "Update Work",
-    object: workObject,
+    object: workList,
   });
 });
 
-app.get("/workForm", (req, res, next) => {
+app.get("/workForm", (req, res) => {
   res.render("workForm", {
     path: "/workForm",
-    pageTitle: "Update Work",
-    object: workObject,
+    pageTitle: "Add New Work",
+    object: workList,
   });
 });
 
-app.post("/workForm", (req, res, next) => {
-  console.log(req.body);
-  res.redirect("/workForm");
+app.post("/workForm", (req, res) => {
+  let workObject = {};
+  workObject.titleKR = req.body.titleKR;
+  workObject.titleENG = req.body.titleENG;
+  workObject.workImg = setFilePath("work", req.body.workImg);
+  workObject.workImgTall = setFilePath("work", req.body.workImgTall);
+  workObject.fullVid = req.body.fullVid;
+  workObject.clipVid = req.body.clipVid;
+  workObject.channels = req.body.channels;
+  workObject.date = req.body.date;
+  workObject.directorKR = req.body.directorKR;
+  workObject.writerKR = req.body.writerKR;
+  workObject.starringKR = req.body.starringKR;
+  workObject.descriptionKR = req.body.descriptionKR;
+  workObject.directorENG = req.body.directorENG;
+  workObject.writerENG = req.body.writerENG;
+  workObject.starringENG = req.body.starringENG;
+  workObject.descriptionENG = req.body.descriptionENG;
+  writeToList("work.json", workObject);
+  res.redirect("/work");
 });
 
-app.get("/news", (req, res, next) => {
+app.get("/news", (req, res) => {
   res.render("news", {
     path: "/news",
     pageTitle: "Update News",
-    object: newsObject,
+    object: newsList,
   });
 });
 
-app.get("/newsForm", (req, res, next) => {
+app.get("/newsForm", (req, res) => {
   res.render("newsForm", {
     path: "/newsForm",
     pageTitle: "Update News",
-    object: newsObject,
+    object: newsList,
   });
+});
+
+app.post("/newsForm", (req, res) => {
+  let today = new Date();
+  let dd = String(today.getDate()).padStart(2, "0");
+  let mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+  let yyyy = today.getFullYear();
+  let dateENG = dd + "/" + mm + "/" + +yyyy;
+  let dateKR = yyyy + " " + mm + "월 " + dd;
+  let newsObject = {};
+  let newsBodyKR = [];
+  let newsBodyENG = [];
+  newsObject.titleKR = req.body.titleKR;
+  newsObject.titleENG = req.body.titleENG;
+  newsObject.dateKR = dateKR;
+  newsObject.dateENG = dateENG;
+  for (let i = 1; i <= 14; i++) {
+    i <= 7 ? newsBodyKR.push(req.body[i]) : newsBodyENG.push(req.body[i]);
+  }
+  newsObject.bodyKR = newsBodyKR;
+  newsObject.bodyENG = newsBodyENG;
+
+  newsObject.image = setFilePath("news", req.body.image);
+  newsObject.imageLarge = setFilePath("news", req.body.imageLarge);
+  writeToList("news.json", newsObject);
+  res.redirect("/news");
 });
 
 app.use((req, res, next) => {

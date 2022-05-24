@@ -7,8 +7,8 @@
   </p>
 </div>
 
-<div class="prod__Container">
-  <form action="/production" method="post" class="prod__Form">
+<div class="form__Container">
+  <form action="/newsForm" method="post" class="form">
     <div class="input-group mb-3">
       <div class="input-group-prepend">
         <span class="input-group-text" id="basic-addon1">주요 제목</span>
@@ -39,9 +39,28 @@
       />
     </div>
 
+    <div class="mb-3 mt-3">
+      <label for="formFile" class="form-label">주 이미지 업로드</label>
+      <input name="imageLarge" class="form-control" type="file" id="formFile">
+  </div>
+
+    <div class="mb-3 mt-3">
+      <label for="formFile" class="form-label">작은 이미지 업로드</label>
+      <input name="image" class="form-control" type="file" id="formFile">
+  <div>   
+      
+
+
+    <br />
+    <div class="center__Column">
+      <h4>한국어 블로그</h4>
+      <p>블로그를 한국어로 써주세요.</p>
+    </div>
+
     <div class="mb-3">
       <label for="exampleFormControlTextarea1" class="form-label">단락 1</label>
       <textarea
+        name="1"
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
@@ -51,6 +70,7 @@
     <div class="mb-3">
       <label for="exampleFormControlTextarea1" class="form-label">단락 2</label>
       <textarea
+        name="2"
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
@@ -60,6 +80,7 @@
     <div class="mb-3">
       <label for="exampleFormControlTextarea1" class="form-label">단락 3</label>
       <textarea
+        name="3"
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
@@ -69,6 +90,7 @@
     <div class="mb-3">
       <label for="exampleFormControlTextarea1" class="form-label">단락 4</label>
       <textarea
+        name="4"
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
@@ -77,6 +99,7 @@
     <div class="mb-3">
       <label for="exampleFormControlTextarea1" class="form-label">단락 5</label>
       <textarea
+        name="5"
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
@@ -85,6 +108,7 @@
     <div class="mb-3">
       <label for="exampleFormControlTextarea1" class="form-label">단락 6</label>
       <textarea
+        name="6"
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
@@ -93,6 +117,79 @@
     <div class="mb-3">
       <label for="exampleFormControlTextarea1" class="form-label">단락 7</label>
       <textarea
+        name="7"
+        class="form-control"
+        id="exampleFormControlTextarea1"
+        rows="3"
+      ></textarea>
+    </div>
+
+    <div class="center__Column">
+      <h4>영어 블로그</h4>
+      <p>블로그를 영어로 써주세요.</p>
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">단락 1</label>
+      <textarea
+        name="8"
+        class="form-control"
+        id="exampleFormControlTextarea1"
+        rows="3"
+      ></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">단락 2</label>
+      <textarea
+        name="9"
+        class="form-control"
+        id="exampleFormControlTextarea1"
+        rows="3"
+      ></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">단락 3</label>
+      <textarea
+        name="10"
+        class="form-control"
+        id="exampleFormControlTextarea1"
+        rows="3"
+      ></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">단락 4</label>
+      <textarea
+        name="11"
+        class="form-control"
+        id="exampleFormControlTextarea1"
+        rows="3"
+      ></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">단락 5</label>
+      <textarea
+        name="12"
+        class="form-control"
+        id="exampleFormControlTextarea1"
+        rows="3"
+      ></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">단락 6</label>
+      <textarea
+        name="13"
+        class="form-control"
+        id="exampleFormControlTextarea1"
+        rows="3"
+      ></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">단락 7</label>
+      <textarea
+        name="14"
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
@@ -102,7 +199,7 @@
     <div>
       <div class="center">
         <button type="submit" class="btn btn-success">Submit</button>
-        <a class="btn btn-danger" href="/work">Cancel</a>
+        <a class="btn btn-danger" href="/news">Cancel</a>
       </div>
     </div>
   </form>

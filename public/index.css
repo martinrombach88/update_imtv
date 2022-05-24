@@ -55,21 +55,19 @@ a:hover {
   margin: 1% 10%;
   width: 680px;
 }
-.form__Container {
+
+.prod__Container {
   display: flex;
-  justify-content: center;
-  padding-top: 2%;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2%;
 }
 
-.form {
-  width: 600px;
-}
-
-.form img {
+.prod img {
   width: 50%;
 }
 
-.form__Text {
+.prod__Text {
   width: 80%;
   display: flex;
   flex-direction: column;
@@ -78,15 +76,15 @@ a:hover {
   text-align: center;
 }
 
-.form__Text h1 {
+.prod__Text h1 {
   font-size: 1.6em;
 }
 
-.form__Text h4 {
+.prod__Text h4 {
   font-size: 1.2em;
 }
 
-.form__viewProduct {
+.prod__viewProduct {
   color: white;
 }
 
@@ -116,4 +114,13 @@ a:hover {
 
 .list__ObjectText p {
   font-size: 0.8em;
+}
+
+.form__Container {
+  display: flex;
+  justify-content: center;
+  padding-top: 2%;
+}
+.form {
+  width: 600px;
 }
