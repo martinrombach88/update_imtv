@@ -42,13 +42,6 @@ a:hover {
   margin: 1% 0%;
 }
 
-.list__Container {
-  display: flex;
-  flex-direction: column;
-  margin-top: 2%;
-  margin-left: 5%;
-}
-
 .prod {
   display: flex;
   justify-content: center;
@@ -88,13 +81,29 @@ a:hover {
   color: white;
 }
 
+.list__Container {
+  display: flex;
+  flex-direction: column;
+  margin: 2% 5%;
+}
 .list__Object {
   display: flex;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.25);
+  border-radius: 1%;
+  padding: 1%;
+  margin-bottom: 2%;
 }
 
 .list__ObjectImage img {
   width: 600px;
 }
+
+.list__Buttons {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 5%;
+}
+
 .list__ObjectImageTall {
   display: flex;
   justify-content: center;
@@ -102,10 +111,6 @@ a:hover {
 .list__ObjectImageTall img {
   padding: 2%;
   width: 200px;
-}
-
-.list__ObjectText {
-  margin-right: 5%;
 }
 
 .list__ObjectText ul {

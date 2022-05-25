@@ -12,8 +12,8 @@
             <div class="list__Object">
                 <div class="list__ObjectImage">
                     <img src="<%= work.workImg %>" alt="">
-                    <div class="list__ObjectImageTall"><img src="<%= work.workImgTall %>" alt=""></div>
-                    
+                    <div class="list__ObjectImageTall"><img src="<%= work.workImgTall %>" alt="<%= work.titleKR %>"></div>
+
                 </div>
 
                 <div class="list__ObjectText">
@@ -34,12 +34,20 @@
                         <li><a href="<%= work.fullVid %>">Trailer Video Link</a></li>
                         <li><a href="<%= work.clipVid %>">10 Second Slider Video</a></li>
                     </ul> 
+     
+                    <div class="list__Buttons">      
+                        <form action="">
+                            <button class="btn btn-success" href="/work">Edit</button>
+                        </form>              
+                        <form action="deleteWorkForm">
+                            <button class="btn btn-danger" type="submit">Delete</button>
+                        </form>
+                        
+                    </div>
                 </div>
+
             </div>
-            <p>
 
-
-            </p>
         <% } %>
    </div>
           

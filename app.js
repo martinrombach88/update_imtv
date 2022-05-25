@@ -123,6 +123,7 @@ app.get("/workForm", (req, res) => {
 
 app.post("/workForm", (req, res) => {
   let workObject = {};
+  workObject.id = workList[0].id + 1;
   workObject.titleKR = req.body.titleKR;
   workObject.titleENG = req.body.titleENG;
   workObject.workImg = setFilePath("work", req.body.workImg);
@@ -140,6 +141,10 @@ app.post("/workForm", (req, res) => {
   workObject.starringENG = req.body.starringENG;
   workObject.descriptionENG = req.body.descriptionENG;
   writeToList("work.json", workObject);
+  res.redirect("/work");
+});
+
+app.get("/deleteWorkForm", (req, res) => {
   res.redirect("/work");
 });
 
@@ -169,6 +174,7 @@ app.post("/newsForm", (req, res) => {
   let newsObject = {};
   let newsBodyKR = [];
   let newsBodyENG = [];
+  newsObject.id = newsList[0].id + 1;
   newsObject.titleKR = req.body.titleKR;
   newsObject.titleENG = req.body.titleENG;
   newsObject.dateKR = dateKR;
@@ -178,10 +184,10 @@ app.post("/newsForm", (req, res) => {
   }
   newsObject.bodyKR = newsBodyKR;
   newsObject.bodyENG = newsBodyENG;
-
   newsObject.image = setFilePath("news", req.body.image);
   newsObject.imageLarge = setFilePath("news", req.body.imageLarge);
   writeToList("news.json", newsObject);
+
   res.redirect("/news");
 });
 

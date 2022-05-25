@@ -1,5 +1,6 @@
 [
   {
+    "id": 2,
     "titleKR": "쉿! 그놈을 부탁해",
     "titleENG": "Shh! Take Care of Him.",
     "workImg": "./assets/images/work/shhWide.png",
@@ -18,6 +19,7 @@
     "descriptionENG": "A suspicious nail shop opened in the middle of Hongdae! The hot revenge consulting of nail shop women who call revenge 'procedure!'"
   },
   {
+    "id": 1,
     "titleKR": "그남자 오수",
     "titleENG": "Mr Osu",
     "workImg": "./assets/images/work/osuWide.png",

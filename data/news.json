@@ -1,5 +1,6 @@
 [
   {
+    "id": 5,
     "image": "/assets/images//news/news1.jpg",
     "imageLarge": "/assets/images/news/news1large2.jpg",
     "dateKR": "2022 1월 13",
@@ -20,6 +21,7 @@
     ]
   },
   {
+    "id": 4,
     "image": "/assets/images/news/news2.png",
     "imageLarge": "/assets/images/news/news2large.png",
     "dateKR": "2021 12월 20",
@@ -40,6 +42,7 @@
     ]
   },
   {
+    "id": 3,
     "dateKR": "2021 12월 5",
     "dateENG": "5/12/2021",
     "image": "/assets/images/news/news3.jpg",
@@ -60,6 +63,7 @@
     ]
   },
   {
+    "id": 2,
     "dateKR": "2021 10월 16",
     "dateENG": "16/10/2021",
     "image": "/assets/images/news/news4.jpg",
@@ -84,6 +88,7 @@
     ]
   },
   {
+    "id": 1,
     "dateKR": "2021 10월 16",
     "dateENG": "16/10/2021",
     "image": "/assets/images/news/news5.jpg",
