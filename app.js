@@ -6,7 +6,6 @@ const path = require("path");
 const productionJSON = require("./data/production.json");
 const workJSON = require("./data/work.json");
 const newsJSON = require("./data/news.json");
-const alert = require("alert");
 
 const getListFromFile = (jsonFile) => {
   const jsonPath = path.join(
@@ -162,7 +161,7 @@ app.post("/deleteWorkForm", (req, res) => {
     }
   }
   overwriteFile("work.json", workObject);
-  res.redirect("/work");
+  res.redirect("/deleted");
 });
 
 app.get("/news", (req, res) => {
