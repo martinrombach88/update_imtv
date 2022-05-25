@@ -31,6 +31,16 @@
                             <% } %></li>                     
                         <li><%= news.dateENG %></li>
                     </ul> 
+                    <div class="list__Buttons">      
+                        <form action="">
+                            <button class="btn btn-success" href="/work">Edit</button>
+                        </form>              
+                        <form action="deleteNewsForm" method="post">
+                            <input type="hidden" name="id" id="newsId" value="<%= news.id %>">
+                            <button class="btn btn-danger" type="submit">Delete</button>
+                        </form>
+                        
+                    </div>
                 </div>
             </div>
             <p>

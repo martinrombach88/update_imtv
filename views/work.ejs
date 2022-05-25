@@ -39,7 +39,8 @@
                         <form action="">
                             <button class="btn btn-success" href="/work">Edit</button>
                         </form>              
-                        <form action="deleteWorkForm">
+                        <form action="deleteWorkForm" method="post">
+                            <input type="hidden" name="id" id="workId" value="<%= work.id %>">
                             <button class="btn btn-danger" type="submit">Delete</button>
                         </form>
                         
