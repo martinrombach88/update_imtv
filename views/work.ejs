@@ -36,8 +36,9 @@
                     </ul> 
      
                     <div class="list__Buttons">      
-                        <form action="">
-                            <button class="btn btn-success" href="/work">Edit</button>
+                        <form action="editWorkLink" method="post">
+                            <input type="hidden" name="id" id="workId" value="<%= work.id %>">
+                            <button class="btn btn-success" type="submit">Edit</button>
                         </form>              
                         <form action="deleteWorkForm" method="post">
                             <input type="hidden" name="id" id="workId" value="<%= work.id %>">

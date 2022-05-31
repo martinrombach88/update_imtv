@@ -1,14 +1,13 @@
 <%- include('includes/header.ejs') %>
 
 <div class="editor__TopBar">
-  <h4>News - Add New</h4>
-  <p>
-    Use as many paragraphs as you need. Any empty paragraphs will be ignored.
-  </p>
+  <h4>News - Edit</h4>
+
+  
 </div>
 
 <div class="form__Container">
-  <form action="/newsForm" method="post" class="form__News">
+  <form action="/editNewsForm" method="post" class="form__News">
     <div class="input-group mb-3">
       <div class="input-group-prepend">
         <span class="input-group-text" id="basic-addon1">주요 제목</span>
@@ -16,11 +15,11 @@
       <input
         type="text"
         class="form-control"
-        placeholder="제목을 입력"
         id="titleKR"
         aria-label="titleKR"
         aria-describedby="basic-addon1"
         name="titleKR"
+        value = "<%= object.titleKR %>"
       />
     </div>
 
@@ -36,17 +35,29 @@
         aria-label="titleENG"
         aria-describedby="basic-addon1"
         name="titleENG"
+        value = "<%= object.titleENG %>"
       />
     </div>
 
     <div class="mb-3 mt-3">
+
       <label for="formFile" class="form-label">주 이미지 업로드</label>
       <input name="imageLarge" class="form-control" type="file" id="formFile">
-  </div>
+      <br />      
+      <p>Current Large Image: </p>
+      <img src="<%= object.imageLarge %>" alt="<%= object.titleENG %>">
 
+    </div>
+
+ 
     <div class="mb-3 mt-3">
+      
       <label for="formFile" class="form-label">작은 이미지 업로드</label>
       <input name="image" class="form-control" type="file" id="formFile">
+      <br />
+      <p>Images will be automatically fit to size. For news, try not to make the Small Image too tall.</p>
+      <p>Current Small Image: </p>
+      <img src="<%= object.image %>" alt="<%= object.titleENG %>">
   <div>   
       
 
@@ -55,6 +66,7 @@
     <div class="center__Column">
       <h4>한국어 블로그</h4>
       <p>블로그를 한국어로 써주세요.</p>
+      <p>Use as many paragraphs as you need. Any empty paragraphs will be ignored.  </p>
     </div>
 
     <div class="mb-3">
@@ -64,7 +76,7 @@
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
-      ></textarea>
+      ><%= object.bodyKR[0] %></textarea>
     </div>
 
     <div class="mb-3">
@@ -74,7 +86,7 @@
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
-      ></textarea>
+      ><%= object.bodyKR[1] %></textarea>
     </div>
 
     <div class="mb-3">
@@ -84,7 +96,7 @@
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
-      ></textarea>
+      ><%= object.bodyKR[2] %></textarea>
     </div>
 
     <div class="mb-3">
@@ -94,7 +106,7 @@
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
-      ></textarea>
+      ><%= object.bodyKR[3] %></textarea>
     </div>
     <div class="mb-3">
       <label for="exampleFormControlTextarea1" class="form-label">단락 5</label>
@@ -103,7 +115,7 @@
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
-      ></textarea>
+      ><%= object.bodyKR[4] %></textarea>
     </div>
     <div class="mb-3">
       <label for="exampleFormControlTextarea1" class="form-label">단락 6</label>
@@ -112,7 +124,7 @@
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
-      ></textarea>
+      ><%= object.bodyKR[5] %></textarea>
     </div>
     <div class="mb-3">
       <label for="exampleFormControlTextarea1" class="form-label">단락 7</label>
@@ -121,12 +133,13 @@
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
-      ></textarea>
+      ><%= object.bodyKR[6] %></textarea>
     </div>
 
     <div class="center__Column">
       <h4>영어 블로그</h4>
       <p>블로그를 영어로 써주세요.</p>
+      <p>Use as many paragraphs as you need. Any empty paragraphs will be ignored.  </p>
     </div>
 
     <div class="mb-3">
@@ -136,7 +149,7 @@
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
-      ></textarea>
+      ><%= object.bodyENG[0] %></textarea>
     </div>
 
     <div class="mb-3">
@@ -146,7 +159,7 @@
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
-      ></textarea>
+      ><%= object.bodyENG[1] %></textarea>
     </div>
 
     <div class="mb-3">
@@ -156,7 +169,7 @@
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
-      ></textarea>
+      ><%= object.bodyENG[2] %></textarea>
     </div>
 
     <div class="mb-3">
@@ -166,7 +179,7 @@
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
-      ></textarea>
+      ><%= object.bodyENG[3] %></textarea>
     </div>
     <div class="mb-3">
       <label for="exampleFormControlTextarea1" class="form-label">단락 5</label>
@@ -175,7 +188,7 @@
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
-      ></textarea>
+      ><%= object.bodyENG[4] %></textarea>
     </div>
     <div class="mb-3">
       <label for="exampleFormControlTextarea1" class="form-label">단락 6</label>
@@ -184,7 +197,7 @@
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
-      ></textarea>
+      ><%= object.bodyENG[5] %></textarea>
     </div>
     <div class="mb-3">
       <label for="exampleFormControlTextarea1" class="form-label">단락 7</label>
@@ -193,9 +206,9 @@
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
-      ></textarea>
+      ><%= object.bodyENG[6] %></textarea>
     </div>
-
+    <input type="hidden" name="id" id="newsId" value="<%= object.id %>">
     <div>
       <div class="center">
         <button type="submit" class="btn btn-success">Submit</button>

@@ -1,8 +1,8 @@
 [
   {
-    "id": 5,
-    "image": "/assets/images//news/news1.jpg",
-    "imageLarge": "/assets/images/news/news1large2.jpg",
+    "id": "5",
+    "image": "assets\\images\\news",
+    "imageLarge": "assets\\images\\news",
     "dateKR": "2022 1월 13",
     "dateENG": "13/01/2022",
     "titleKR": "안은진·유아인·전성우·김윤혜, '종말의 바보' 출연 확정(공식)",
@@ -11,19 +11,25 @@
       "'종말의 바보'는 지구와 소행성 충돌까지 200일, 눈앞에 예고된 종말을 앞두고 혼란에 빠진 세상과 남은 시간을 살아가는 사람들의 이야기를 그린 넷플릭스 시리즈다.",
       "안은진은 진세경을 연기한다. 한때 중학교 기술가정교사였지만 소행성 사태 발발 후 웅천시청 아동청소년부에서 자원봉사를 하며 위험에 빠진 아이들을 지키기 위해 남몰래 고군분투하는 인물이다.넷플릭스 시리즈 '지옥'으로 전 세계를 강타한 유아인은 하윤상 역을 맡아 넷플릭스와 다시 조우한다. 윤상은 세경의 오랜 연인이자 생명공학연구소 연구원으로 안전한 미국에서 위험 지역인 대한민국으로 한달음에 달려와 세경 곁을 지킨다",
       "전성우는 우성재 역을 맡았다. 소행성 사태가 발표된 후 사라진 주임신부를 대신해 하루아침에 보좌신부가 된 그는 각종 소문에 혼란스러운 마음을 다잡고 신도들을 보살핀다.김윤혜는 강인아 역에 낙점되었다. 인아는 전투근무지원 대대 중대장으로 보급 수송과 치안 유지를 위해 폐허가 된 웅천시 곳곳을 누빈다.200일 후 예정된 종말을 앞두고 서로 다른 위치에 있는 인물들은 각자 어떤 신념과 선택으로 삶의 마지막을 맞이하게 될지 궁금증을 자아낸다.",
-      "'종말의 바보'는 '인간수업', '마이 네임'의 김진민 감독과 '밀회'의 정성주 작가가 의기투합 했다.제작사인 아이엠티브이는 주연배우들의 캐스팅 확정으로 촬영을 위한 막바지 점검과 함께 조만간 명품 조연들의 라인업도 공개할 예정이다.한편 제작사 아이엠티브이는 넷플릭스 시리즈 '종말의 바보' 외에도 22년, 23년에 걸쳐 6편의 드라마 시리즈를 방송사 및 국내외 OTT 플랫폼을 통해 전세계 시청자들에게 선보일 예정이다."
+      "'종말의 바보'는 '인간수업', '마이 네임'의 김진민 감독과 '밀회'의 정성주 작가가 의기투합 했다.제작사인 아이엠티브이는 주연배우들의 캐스팅 확정으로 촬영을 위한 막바지 점검과 함께 조만간 명품 조연들의 라인업도 공개할 예정이다.한편 제작사 아이엠티브이는 넷플릭스 시리즈 '종말의 바보' 외에도 22년, 23년에 걸쳐 6편의 드라마 시리즈를 방송사 및 국내외 OTT 플랫폼을 통해 전세계 시청자들에게 선보일 예정이다.",
+      "",
+      "",
+      ""
     ],
     "bodyENG": [
       "'The Fool of the End' is a Netflix series depicting the story of people living in a world in chaos ahead of the foretold apocalypse in 200 days until the Earth and an asteroid collide.",
       "Ahn Eun-jin plays Jin Se-kyung. She was once a junior high school technical tutor, but after an asteroid incident, she volunteered at the Children's Youth Department of Ungcheon City Hall and secretly struggled to protect children in danger. Yoo Ah-in takes on the role of Ha Yun-sang and meets Netflix again. Yoon Sang-eun is Se-kyung's longtime lover and a researcher at a biotechnology research institute.",
       "Jeon Seong-woo takes on the role of Woo Seong-jae. After the asteroid incident was announced, he became an assistant priest overnight in place of the priest who disappeared. He is confused by various rumors and takes care of the followers. Kim Yun-hye was cast for the role of Kang In-ah. As the commander of a combat service support battalion, In-ah travels around the ruins of Ungcheon-si to transport supplies and maintain security. Before the scheduled end 200 days later, characters in different positions face the end of their lives with their own beliefs and choices. It raises curiosity.",
-      "'The Fool of the End' is a collaboration between director Kim Jin-min of 'Human Lessons' and 'My Name' and writer Jeong Seong-ju of 'Secret Meeting'. The lineup of luxury supporting actors will also be released. Meanwhile, the production company, IMTV, will present six drama series over 22 and 23 years in addition to the Netflix series 'The Fool of the End' to viewers around the world through broadcasters and OTT platforms at home and abroad."
+      "'The Fool of the End' is a collaboration between director Kim Jin-min of 'Human Lessons' and 'My Name' and writer Jeong Seong-ju of 'Secret Meeting'. The lineup of luxury supporting actors will also be released. Meanwhile, the production company, IMTV, will present six drama series over 22 and 23 years in addition to the Netflix series 'The Fool of the End' to viewers around the world through broadcasters and OTT platforms at home and abroad.",
+      "",
+      "",
+      ""
     ]
   },
   {
-    "id": 4,
-    "image": "/assets/images/news/news2.png",
-    "imageLarge": "/assets/images/news/news2large.png",
+    "id": "4",
+    "image": "assets\\images\\news",
+    "imageLarge": "assets\\images\\news",
     "dateKR": "2021 12월 20",
     "dateENG": "20/12/2021",
     "titleKR": "넷플릭스 시리즈 <종말의 바보> 제작 확정 <인간수업><마이 네임> 김진민 감독과 [밀회] 정성주 작가의 특급 만남",
@@ -32,13 +38,19 @@
       "세계적인 엔터테인먼트 스트리밍 서비스 넷플릭스(Netflix)가 김진민 감독과 다시 한번 손잡고 새로운 시리즈 <종말의 바보> 제작을 확정했다.",
       "<인간수업>, <마이네임>의 김진민 감독이 <종말의 바보>로 넷플릭스와 세 번째 만난다.<종말의 바보>는 지구와 소행성 충돌까지 200일, 눈앞에 예고된 종말을 앞두고 혼란에 빠진 세상과 남은 시간을 살아가는 사람들의 이야기를 그린 넷플릭스 시리즈다.",
       "<종말의 바보>는 종말 이후의 사회상을 그려낸 여타의 디스토피아 장르물과 달리 예정된 종말을 앞둔 사회의 풍경을 담는다. 나사(NASA)가 소행성이 지구를 향해 접근하고 있으며, 280일 후 충돌할 것이라고 발표한다. 그리고 한반도가 직접적인 충돌 피해 지역에 포함된다. 대한민국은 순식간에 혼돈에 휩싸이고, 사람들은 대한민국을 떠나 안전한 곳으로 피신하기 위해 안간힘을 쓴다. 소행성 충돌이라는 대재앙 앞에서 남겨진 자들은 어떤 선택과 삶의 이유를 찾아갈까. 터전의 종말을 앞둔 사람들의 심리 묘사와 사회 현상을 리얼하게 그려내며 다른 시각의 지구 종말 이야기를 담은 <종말의 바보>는 <인간수업>, <마이 네임>의 김진민 감독이 연출을 맡아 넷플릭스와 세 번째 호흡을 맞춘다. 우리 사회의 비뚤어진 단면을 바라보는 깊이 있는 시각을 보여준 <인간수업>과 강렬한 액션 누아르의 정수를 선보인 <마이 네임>까지 다양한 장르에서 섬세하고 노련한 연출 내공을 과시했던 김진민 감독이 그려낼 디스토피아 세계관에 기대가 모인다. <종말의 바보> 각본은 드라마 [밀회]로 센세이션을 불러일으켰던 정성주 작가가 맡았다. [아내의 자격], [밀회], [풍문으로 들었소] 등 매 작품 현실에 대한 신랄한 묘사와 탄탄한 필력을 선보여온 베테랑 작가 정성주와 김진민 감독의 특급 만남을 성사시킨 <종말의 바보>는 드라마 [스파이], [다시 만난 세계], [그 남자 오수] 등을 제작한 아이엠티브이(IMTV)가 제작한다.",
-      "김진민 감독과 정성주 작가의 만남이 어떤 결과물을 가져올지 뜨거운 관심이 쏟아지고 있는 <종말의 바보>는 오직 넷플릭스에서 만나볼 수 있다."
+      "김진민 감독과 정성주 작가의 만남이 어떤 결과물을 가져올지 뜨거운 관심이 쏟아지고 있는 <종말의 바보>는 오직 넷플릭스에서 만나볼 수 있다.",
+      "",
+      "",
+      ""
     ],
     "bodyENG": [
       "Netflix, the world-class entertainment streaming service, has once again partnered with director Kim Jin-min to confirm the production of a new series <The Fool of the End>",
       "Director Jin-min Kim of <Human Lessons> and <My Name> meets Netflix for the third time with <The Fool of the End>. <The Fool of the End> is 200 days from the collision of the Earth with an asteroid, and is in chaos ahead of the predicted end. It is a Netflix series that tells the story of people living in the world and the rest of the time.",
       "Unlike other dystopian genre films that depict the post-apocalyptic society, <The Fool of the End> contains the landscape of a society that is about to end. And the Korean Peninsula is included in the direct impact zone. The Republic of Korea is quickly plunged into chaos, and people make every effort to leave the Republic of Korea and escape to a safe place. In the face of the catastrophe of an asteroid impact, what choices and lives are left for those left behind? <Apocalypse Fool>, which tells the story of the end of the world from a different perspective, realistically depicts the psychological descriptions and social phenomena of people who are nearing the end of their homeland, is directed by Kim Jin-min, director of <Human Class> and <My Name>. He takes on directing and works with Netflix for the third time. Expectations are high for the dystopian worldview that Kim Jin-min, who has shown off, will draw. The screenplay for <The Fool of the End> was written by Seong-Joo Jeong, who caused a sensation with the drama [Secret Meeting]. ], and <The End of the Fool>, which made a special meeting between veteran writer Jeong Seong-ju and director Kim Jin-min, who have demonstrated sharp depictions of reality and solid writing skills in each work, is the drama [Spy], [The World Again], [That Man Oh-su], etc. Produced by IMTV, which produced.",
-      "The Fool of the End, which is drawing keen interest as to the outcome of the meeting between director Kim Jin-min and writer Jeong Seong-ju, can only be seen on Netflix."
+      "The Fool of the End, which is drawing keen interest as to the outcome of the meeting between director Kim Jin-min and writer Jeong Seong-ju, can only be seen on Netflix.",
+      "",
+      "",
+      ""
     ]
   },
   {

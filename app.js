@@ -6,6 +6,8 @@ const path = require("path");
 const productionJSON = require("./data/production.json");
 const workJSON = require("./data/work.json");
 const newsJSON = require("./data/news.json");
+let currentNews = null;
+let currentWork = null;
 
 const getListFromFile = (jsonFile) => {
   const jsonPath = path.join(
@@ -67,10 +69,17 @@ app.get("/", (req, res) => {
   });
 });
 
-app.get("/deleted", (req, res, next) => {
-  res.render("deleted", {
-    path: "/deleted",
+app.get("/changeDelete", (req, res, next) => {
+  res.render("change", {
+    path: "/change",
     pageTitle: "Content Deleted",
+  });
+});
+
+app.get("/changeEdit", (req, res, next) => {
+  res.render("change", {
+    path: "/change",
+    pageTitle: "Content Edited",
   });
 });
 
@@ -151,6 +160,52 @@ app.post("/workForm", (req, res) => {
   res.redirect("/work");
 });
 
+app.post("/editWorkLink", (req, res) => {
+  let workObject = workJSON;
+  let id = req.body.id;
+  let target = workObject.length - id;
+  for (let i = 0; i <= workObject.length; i++) {
+    if (i === target) {
+      currentWork = workObject[i];
+    }
+  }
+  res.redirect("/editWorkForm");
+});
+
+app.get("/editWorkForm", (req, res) => {
+  res.render("editWorkForm", {
+    path: "/editWorkForm",
+    pageTitle: "Edit Work",
+    object: currentWork,
+  });
+});
+
+app.post("/editWorkForm", (req, res) => {
+  let workObject = workJSON;
+  let id = req.body.id;
+  let target = workObject.length - id;
+  workObject[target].id = id;
+  workObject[target].titleKR = req.body.titleKR;
+  workObject[target].titleKR = req.body.titleKR;
+  workObject[target].titleENG = req.body.titleENG;
+  workObject[target].workImg = setFilePath("work", req.body.workImg);
+  workObject[target].workImgTall = setFilePath("work", req.body.workImgTall);
+  workObject[target].fullVid = req.body.fullVid;
+  workObject[target].clipVid = req.body.clipVid;
+  workObject[target].channels = req.body.channels;
+  workObject[target].date = req.body.date;
+  workObject[target].directorKR = req.body.directorKR;
+  workObject[target].writerKR = req.body.writerKR;
+  workObject[target].starringKR = req.body.starringKR;
+  workObject[target].descriptionKR = req.body.descriptionKR;
+  workObject[target].directorENG = req.body.directorENG;
+  workObject[target].writerENG = req.body.writerENG;
+  workObject[target].starringENG = req.body.starringENG;
+  workObject[target].descriptionENG = req.body.descriptionENG;
+  overwriteFile("work.json", workObject);
+  res.redirect("/changeEdit");
+});
+
 app.post("/deleteWorkForm", (req, res) => {
   let id = req.body.id;
   let workObject = workJSON;
@@ -161,7 +216,7 @@ app.post("/deleteWorkForm", (req, res) => {
     }
   }
   overwriteFile("work.json", workObject);
-  res.redirect("/deleted");
+  res.redirect("/changeDelete");
 });
 
 app.get("/news", (req, res) => {
@@ -183,7 +238,7 @@ app.get("/newsForm", (req, res) => {
 app.post("/newsForm", (req, res) => {
   let today = new Date();
   let dd = String(today.getDate()).padStart(2, "0");
-  let mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+  let mm = String(today.getMonth() + 1).padStart(2, "0");
   let yyyy = today.getFullYear();
   let dateENG = dd + "/" + mm + "/" + +yyyy;
   let dateKR = yyyy + " " + mm + "월 " + dd;
@@ -217,6 +272,46 @@ app.post("/deleteNewsForm", (req, res) => {
   }
   overwriteFile("news.json", newsObject);
   res.redirect("/deleted");
+});
+
+app.post("/editNewsLink", (req, res) => {
+  let newsObject = newsJSON;
+  let id = req.body.id;
+  let target = newsObject.length - id;
+  for (let i = 0; i <= newsObject.length; i++) {
+    if (i === target) {
+      currentNews = newsObject[i];
+    }
+  }
+  res.redirect("/editNewsForm");
+});
+
+app.get("/editNewsForm", (req, res) => {
+  res.render("editNewsForm", {
+    path: "/editNewsForm",
+    pageTitle: "Edit News",
+    object: currentNews,
+  });
+});
+
+app.post("/editNewsForm", (req, res) => {
+  let newsObject = newsJSON;
+  let newsBodyKR = [];
+  let newsBodyENG = [];
+  let id = req.body.id;
+  let target = newsObject.length - id;
+  newsObject[target].id = id;
+  newsObject[target].titleKR = req.body.titleKR;
+  newsObject[target].titleENG = req.body.titleENG;
+  for (let i = 1; i <= 14; i++) {
+    i <= 7 ? newsBodyKR.push(req.body[i]) : newsBodyENG.push(req.body[i]);
+  }
+  newsObject[target].bodyKR = newsBodyKR;
+  newsObject[target].bodyENG = newsBodyENG;
+  newsObject[target].image = setFilePath("news", req.body.image);
+  newsObject[target].imageLarge = setFilePath("news", req.body.imageLarge);
+  overwriteFile("news.json", newsObject);
+  res.redirect("/changeEdit");
 });
 
 app.use((req, res, next) => {
