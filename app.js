@@ -3,9 +3,11 @@ const app = express();
 const fs = require("fs");
 const bodyParser = require("body-parser");
 const path = require("path");
-const productionJSON = require("./data/production.json");
-const workJSON = require("./data/work.json");
-const newsJSON = require("./data/news.json");
+const staffJSON = require("./data/staff.json");
+const workRoutes = require("./routes/work");
+const homeRoutes = require("./routes/home");
+const newsRoutes = require("./routes/news");
+
 let currentNews = null;
 let currentWork = null;
 
@@ -18,9 +20,6 @@ const getListFromFile = (jsonFile) => {
   const file = fs.readFileSync(jsonPath);
   return JSON.parse(file);
 };
-
-//Note: You are currently making changes synchronously.
-//You will probably need asynchronous code later on.
 
 const writeToList = (jsonFile, object) => {
   const jsonPath = path.join(
@@ -52,268 +51,23 @@ const setFilePath = (folder, filename) => {
   return path.join("assets", "images", folder, filename);
 };
 
-const newsList = getListFromFile("news.json");
-const workList = getListFromFile("work.json");
-const productionList = getListFromFile("production.json");
-
 app.set("view engine", "ejs");
 app.set("views", "views");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
-app.get("/", (req, res) => {
-  res.render("home", {
-    path: "/",
-    pageTitle: "Update IMTV",
+app.get("/staff", (req, res) => {
+  res.render("staff", {
+    path: "/staff",
+    pageTitle: "Update Staff",
+    object: staffJSON,
   });
 });
 
-app.get("/changeDelete", (req, res, next) => {
-  res.render("change", {
-    path: "/change",
-    pageTitle: "Content Deleted",
-  });
-});
-
-app.get("/changeEdit", (req, res, next) => {
-  res.render("change", {
-    path: "/change",
-    pageTitle: "Content Edited",
-  });
-});
-
-app.get("/hub", (req, res) => {
-  res.render("hub", {
-    path: "/hub",
-    pageTitle: "Update IMTV",
-  });
-});
-
-app.get("/production", (req, res) => {
-  res.render("production", {
-    path: "/production",
-    pageTitle: "Update In Production",
-    object: productionList,
-  });
-});
-
-app.get("/prodForm", (req, res) => {
-  res.render("prodForm", {
-    path: "/prodForm",
-    pageTitle: "Update In Production",
-    object: productionList,
-  });
-});
-
-app.post("/prodForm", (req, res) => {
-  let prodObject = {};
-  prodObject.mainTitleKR = req.body.mainTitleKR;
-  prodObject.subTitleKR = req.body.subTitleKR;
-  prodObject.smallTitleKR = req.body.smallTitleKR;
-  prodObject.mainTitleENG = req.body.mainTitleENG;
-  prodObject.subTitleENG = req.body.subTitleENG;
-  prodObject.fontColor = req.body.fontColor;
-  prodObject.backgroundColor = req.body.backgroundColor;
-  prodObject.image = setFilePath("home", req.body.image);
-  prodObject.imageWide = setFilePath("home", req.body.imageWide);
-  overwriteFile("production.json", prodObject);
-  res.redirect("/production");
-});
-
-app.get("/work", (req, res) => {
-  res.render("work", {
-    path: "/work",
-    pageTitle: "Update Work",
-    object: workList,
-  });
-});
-
-app.get("/workForm", (req, res) => {
-  res.render("workForm", {
-    path: "/workForm",
-    pageTitle: "Add New Work",
-    object: workList,
-  });
-});
-
-app.post("/workForm", (req, res) => {
-  let workObject = {};
-  workObject.id = workList[0].id + 1;
-  workObject.titleKR = req.body.titleKR;
-  workObject.titleENG = req.body.titleENG;
-  workObject.workImg = setFilePath("work", req.body.workImg);
-  workObject.workImgTall = setFilePath("work", req.body.workImgTall);
-  workObject.fullVid = req.body.fullVid;
-  workObject.clipVid = req.body.clipVid;
-  workObject.channels = req.body.channels;
-  workObject.date = req.body.date;
-  workObject.directorKR = req.body.directorKR;
-  workObject.writerKR = req.body.writerKR;
-  workObject.starringKR = req.body.starringKR;
-  workObject.descriptionKR = req.body.descriptionKR;
-  workObject.directorENG = req.body.directorENG;
-  workObject.writerENG = req.body.writerENG;
-  workObject.starringENG = req.body.starringENG;
-  workObject.descriptionENG = req.body.descriptionENG;
-  writeToList("work.json", workObject);
-  res.redirect("/work");
-});
-
-app.post("/editWorkLink", (req, res) => {
-  let workObject = workJSON;
-  let id = req.body.id;
-  let target = workObject.length - id;
-  for (let i = 0; i <= workObject.length; i++) {
-    if (i === target) {
-      currentWork = workObject[i];
-    }
-  }
-  res.redirect("/editWorkForm");
-});
-
-app.get("/editWorkForm", (req, res) => {
-  res.render("editWorkForm", {
-    path: "/editWorkForm",
-    pageTitle: "Edit Work",
-    object: currentWork,
-  });
-});
-
-app.post("/editWorkForm", (req, res) => {
-  let workObject = workJSON;
-  let id = req.body.id;
-  let target = workObject.length - id;
-  workObject[target].id = id;
-  workObject[target].titleKR = req.body.titleKR;
-  workObject[target].titleKR = req.body.titleKR;
-  workObject[target].titleENG = req.body.titleENG;
-  workObject[target].workImg = setFilePath("work", req.body.workImg);
-  workObject[target].workImgTall = setFilePath("work", req.body.workImgTall);
-  workObject[target].fullVid = req.body.fullVid;
-  workObject[target].clipVid = req.body.clipVid;
-  workObject[target].channels = req.body.channels;
-  workObject[target].date = req.body.date;
-  workObject[target].directorKR = req.body.directorKR;
-  workObject[target].writerKR = req.body.writerKR;
-  workObject[target].starringKR = req.body.starringKR;
-  workObject[target].descriptionKR = req.body.descriptionKR;
-  workObject[target].directorENG = req.body.directorENG;
-  workObject[target].writerENG = req.body.writerENG;
-  workObject[target].starringENG = req.body.starringENG;
-  workObject[target].descriptionENG = req.body.descriptionENG;
-  overwriteFile("work.json", workObject);
-  res.redirect("/changeEdit");
-});
-
-app.post("/deleteWorkForm", (req, res) => {
-  let id = req.body.id;
-  let workObject = workJSON;
-  let target = workObject.length - id;
-  for (let i = 0; i <= workObject.length; i++) {
-    if (i === target) {
-      workObject.splice(i, 1);
-    }
-  }
-  overwriteFile("work.json", workObject);
-  res.redirect("/changeDelete");
-});
-
-app.get("/news", (req, res) => {
-  res.render("news", {
-    path: "/news",
-    pageTitle: "Update News",
-    object: newsList,
-  });
-});
-
-app.get("/newsForm", (req, res) => {
-  res.render("newsForm", {
-    path: "/newsForm",
-    pageTitle: "Update News",
-    object: newsList,
-  });
-});
-
-app.post("/newsForm", (req, res) => {
-  let today = new Date();
-  let dd = String(today.getDate()).padStart(2, "0");
-  let mm = String(today.getMonth() + 1).padStart(2, "0");
-  let yyyy = today.getFullYear();
-  let dateENG = dd + "/" + mm + "/" + +yyyy;
-  let dateKR = yyyy + " " + mm + "월 " + dd;
-  let newsObject = {};
-  let newsBodyKR = [];
-  let newsBodyENG = [];
-  newsObject.id = newsList[0].id + 1;
-  newsObject.titleKR = req.body.titleKR;
-  newsObject.titleENG = req.body.titleENG;
-  newsObject.dateKR = dateKR;
-  newsObject.dateENG = dateENG;
-  for (let i = 1; i <= 14; i++) {
-    i <= 7 ? newsBodyKR.push(req.body[i]) : newsBodyENG.push(req.body[i]);
-  }
-  newsObject.bodyKR = newsBodyKR;
-  newsObject.bodyENG = newsBodyENG;
-  newsObject.image = setFilePath("news", req.body.image);
-  newsObject.imageLarge = setFilePath("news", req.body.imageLarge);
-  writeToList("news.json", newsObject);
-  res.redirect("/news");
-});
-
-app.post("/deleteNewsForm", (req, res) => {
-  let id = req.body.id;
-  let newsObject = newsJSON;
-  let target = newsObject.length - id;
-  for (let i = 0; i <= newsObject.length; i++) {
-    if (i === target) {
-      newsObject.splice(i, 1);
-    }
-  }
-  overwriteFile("news.json", newsObject);
-  res.redirect("/deleted");
-});
-
-app.post("/editNewsLink", (req, res) => {
-  let newsObject = newsJSON;
-  let id = req.body.id;
-  let target = newsObject.length - id;
-  for (let i = 0; i <= newsObject.length; i++) {
-    if (i === target) {
-      currentNews = newsObject[i];
-    }
-  }
-  res.redirect("/editNewsForm");
-});
-
-app.get("/editNewsForm", (req, res) => {
-  res.render("editNewsForm", {
-    path: "/editNewsForm",
-    pageTitle: "Edit News",
-    object: currentNews,
-  });
-});
-
-app.post("/editNewsForm", (req, res) => {
-  let newsObject = newsJSON;
-  let newsBodyKR = [];
-  let newsBodyENG = [];
-  let id = req.body.id;
-  let target = newsObject.length - id;
-  newsObject[target].id = id;
-  newsObject[target].titleKR = req.body.titleKR;
-  newsObject[target].titleENG = req.body.titleENG;
-  for (let i = 1; i <= 14; i++) {
-    i <= 7 ? newsBodyKR.push(req.body[i]) : newsBodyENG.push(req.body[i]);
-  }
-  newsObject[target].bodyKR = newsBodyKR;
-  newsObject[target].bodyENG = newsBodyENG;
-  newsObject[target].image = setFilePath("news", req.body.image);
-  newsObject[target].imageLarge = setFilePath("news", req.body.imageLarge);
-  overwriteFile("news.json", newsObject);
-  res.redirect("/changeEdit");
-});
-
+app.use(homeRoutes);
+app.use(workRoutes);
+app.use(newsRoutes);
 app.use((req, res, next) => {
   res.status(404).render("404", { pageTitle: "Page Not Found" });
 });

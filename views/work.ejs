@@ -1,18 +1,25 @@
 <%- include('includes/header.ejs') %>
 
-
   <div class="editor__TopBar">
-    <h4>Work</h4>
+    <h4>WORK</h4>
     <p>When using Youtube Links, use the IMTV Youtube account: imtvwebvideos@gmail.com</p>
     <a class="btn btn-success" href="/workForm">Add New Work</a>
     <a class="btn btn-danger" href="/hub">Exit</a>
   </div>
   <div class="list__Container">
+
+        <div class="prod__Container">
+                <div class="prod__Title">
+                    <h4>IN PRODUCTION</h4>
+                    <a class="prod__Link">See Live</a>
+                </div>
+        </div>
+    
         <% for (let work of object) { %>
             <div class="list__Object">
                 <div class="list__ObjectImage">
-                    <img src="<%= work.workImg %>" alt="">
-                    <div class="list__ObjectImageTall"><img src="<%= work.workImgTall %>" alt="<%= work.titleKR %>"></div>
+                    <img src="<%= work.image %>" alt="">
+                    <div class="list__ObjectImageTall"><img src="<%= work.imageTall %>" alt="<%= work.titleKR %>"></div>
 
                 </div>
 
@@ -21,35 +28,91 @@
                         <li>제목: <%= work.titleKR %></li>
                         <li>설명: <%= work.descriptionKR %></li>
                         <li>채널: <%= work.channels %></li>
-                        <li>날짜: <%= work.date %></li>
-                        <li>감독: <%= work.directorKR %></li>
+                        <li>날짜: <%= work.releaseDate %></li>
+                        <li>감독: <%= work.producerKR %></li>
                         <li>작가: <%= work.writerKR %></li>
                         <li>배우: <%= work.starringKR %></li>
                         
                         <li>영어 제목: <%= work.titleENG %></li>
                         <li>영어 설명: <%= work.descriptionENG %></li>
-                        <li>영어 감독: <%= work.directorENG %></li>
+                        <li>영어 감독: <%= work.producerENG %></li>
                         <li>영어 작가: <%= work.writerENG %></li>
                         <li>영어 배우: <%= work.starringENG %></li>
+
                         <li><a href="<%= work.fullVid %>">Trailer Video Link</a></li>
                         <li><a href="<%= work.clipVid %>">10 Second Slider Video</a></li>
                     </ul> 
      
-                    <div class="list__Buttons">      
-                        <form action="editWorkLink" method="post">
-                            <input type="hidden" name="id" id="workId" value="<%= work.id %>">
-                            <button class="btn btn-success" type="submit">Edit</button>
-                        </form>              
-                        <form action="deleteWorkForm" method="post">
-                            <input type="hidden" name="id" id="workId" value="<%= work.id %>">
-                            <button class="btn btn-danger" type="submit">Delete</button>
-                        </form>
-                        
-                    </div>
+
                 </div>
+                <div class="list__ObjectUI list__ObjectUISpaced"> 
 
+                           <div class="list__ObjectUIButtons">
+                                <form action="" method="post">
+                                    <button type="button" class="btn btn-outline-secondary">
+                                        <input type="hidden" name="id" id="newsId" value="<%= work.id %>">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="12" fill="currentColor" class="bi bi-chevron-up" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
+                                        </svg>
+                                    </button>
+                                </form>
+                           
+
+                           
+                                <form>
+                                    <button type="button" class="btn btn-outline-secondary">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="12" fill="currentColor" class="bi bi-chevron-double-up" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M7.646 2.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 3.707 2.354 9.354a.5.5 0 1 1-.708-.708l6-6z"/>
+                                            <path fill-rule="evenodd" d="M7.646 6.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 7.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
+                                        </svg>
+                                    </button>
+                                </form>
+                            </div>
+                        
+                    
+                    
+                            <div class="list__ObjectUIButtons">  
+                                <form action="editWorkLink" method="post">
+                                    <input type="hidden" name="id" id="workId" value="<%= work.id %>">
+                                    <button class="btn btn-info" type="submit">Set as IN PRODUCTION</button>
+                                </form>  
+                                
+                                <form action="editWorkLink" method="post">
+                                <input type="hidden" name="id" id="workId" value="<%= work.id %>">
+                                <button class="btn btn-success" type="submit">Edit</button>
+                                </form>  
+
+                                <form action="deleteWorkForm" method="post">
+                                    <input type="hidden" name="id" id="workId" value="<%= work.id %>">
+                                    <button class="btn btn-danger" type="submit">Delete</button>
+                                </form>
+                            
+                            </div>
+
+
+                            <div class="list__ObjectUIButtons">
+                                <form action="" method="post">
+                                    <input type="hidden" name="id" id="newsId" value="<%= work.id %>">
+                                    <button type="button" class="btn btn-outline-secondary">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="12" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                                          </svg>
+                                    </button>
+                                </form>
+
+                                <form action="" method="post">
+                                    <input type="hidden" name="id" id="newsId" value="<%= work.id %>">
+                                    <button type="button" class="btn btn-outline-secondary">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="12" fill="currentColor" class="bi bi-chevron-double-down" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M1.646 6.646a.5.5 0 0 1 .708 0L8 12.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                                            <path fill-rule="evenodd" d="M1.646 2.646a.5.5 0 0 1 .708 0L8 8.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                                          </svg>
+                                    </button>
+                                </form>
+                            </div>
+
+                </div>
             </div>
-
         <% } %>
    </div>
           

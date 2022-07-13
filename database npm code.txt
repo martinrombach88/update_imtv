@@ -1,0 +1,1 @@
+If you use mySql -> npm install --save mysql2

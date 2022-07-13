@@ -1,0 +1,110 @@
+const getListFromFile = (jsonFile) => {
+  const jsonPath = path.join(
+    path.dirname(process.mainModule.filename),
+    "data",
+    jsonFile
+  );
+  const file = fs.readFileSync(jsonPath);
+  return JSON.parse(file);
+};
+
+const workList = getListFromFile("work.json");
+const productionList = getListFromFile("production.json");
+
+router.get("/worktest", workController.test);
+// router.get("/addwork", workController.addWork);
+
+router.get("/work", (req, res) => {
+  res.render("work", {
+    path: "/work",
+    pageTitle: "Update Work",
+    object: workList,
+    prodObject: productionList,
+  });
+});
+
+router.get("/workForm", (req, res) => {
+
+});
+
+router.post("/workForm", (req, res) => {
+  let workObject = {};
+  workObject.id = workList[0].id + 1;
+  workObject.titleKR = req.body.titleKR;
+  workObject.titleENG = req.body.titleENG;
+  workObject.workImg = setFilePath("work", req.body.workImg);
+  workObject.workImgTall = setFilePath("work", req.body.workImgTall);
+  workObject.fullVid = req.body.fullVid;
+  workObject.clipVid = req.body.clipVid;
+  workObject.channels = req.body.channels;
+  workObject.date = req.body.date;
+  workObject.directorKR = req.body.directorKR;
+  workObject.writerKR = req.body.writerKR;
+  workObject.starringKR = req.body.starringKR;
+  workObject.descriptionKR = req.body.descriptionKR;
+  workObject.directorENG = req.body.directorENG;
+  workObject.writerENG = req.body.writerENG;
+  workObject.starringENG = req.body.starringENG;
+  workObject.descriptionENG = req.body.descriptionENG;
+  writeToList("work.json", workObject);
+  res.redirect("/work");
+});
+
+router.post("/editWorkLink", (req, res) => {
+  let workObject = workJSON;
+  let id = req.body.id;
+  let target = workObject.length - id;
+  for (let i = 0; i <= workObject.length; i++) {
+    if (i === target) {
+      currentWork = workObject[i];
+    }
+  }
+  res.redirect("/editWorkForm");
+});
+
+router.get("/editWorkForm", (req, res) => {
+  res.render("editWorkForm", {
+    path: "/editWorkForm",
+    pageTitle: "Edit Work",
+    object: currentWork,
+  });
+});
+
+router.post("/editWorkForm", (req, res) => {
+  let workObject = workJSON;
+  let id = req.body.id;
+  let target = workObject.length - id;
+  workObject[target].id = id;
+  workObject[target].titleKR = req.body.titleKR;
+  workObject[target].titleKR = req.body.titleKR;
+  workObject[target].titleENG = req.body.titleENG;
+  workObject[target].workImg = setFilePath("work", req.body.workImg);
+  workObject[target].workImgTall = setFilePath("work", req.body.workImgTall);
+  workObject[target].fullVid = req.body.fullVid;
+  workObject[target].clipVid = req.body.clipVid;
+  workObject[target].channels = req.body.channels;
+  workObject[target].date = req.body.date;
+  workObject[target].directorKR = req.body.directorKR;
+  workObject[target].writerKR = req.body.writerKR;
+  workObject[target].starringKR = req.body.starringKR;
+  workObject[target].descriptionKR = req.body.descriptionKR;
+  workObject[target].directorENG = req.body.directorENG;
+  workObject[target].writerENG = req.body.writerENG;
+  workObject[target].starringENG = req.body.starringENG;
+  workObject[target].descriptionENG = req.body.descriptionENG;
+  overwriteFile("work.json", workObject);
+  res.redirect("/changeEdit");
+});
+
+router.post("/deleteWorkForm", (req, res) => {
+  let id = req.body.id;
+  let workObject = workJSON;
+  let target = workObject.length - id;
+  for (let i = 0; i <= workObject.length; i++) {
+    if (i === target) {
+      workObject.splice(i, 1);
+    }
+  }
+  overwriteFile("work.json", workObject);
+  res.redirect("/changeDelete");
+});

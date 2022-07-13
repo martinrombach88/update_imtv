@@ -45,15 +45,33 @@ a:hover {
 .prod {
   display: flex;
   justify-content: center;
-  margin: 1% 10%;
-  width: 680px;
+  margin: 2% 5%;
+  width: 600px;
 }
 
 .prod__Container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 2%;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.25);
+  border-radius: 1%;
+}
+
+.prod__Title {
+  display: flex;
+  justify-content: center;
   margin-top: 2%;
+}
+
+.prod__Buttons {
+  display: flex;
+  justify-content: space-around;
+  margin: 5%;
+}
+
+.prod__Buttons a {
+  margin: 5%;
 }
 
 .prod img {
@@ -86,8 +104,10 @@ a:hover {
   flex-direction: column;
   margin: 2% 5%;
 }
+
 .list__Object {
   display: flex;
+  justify-content: space-between;
   box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.25);
   border-radius: 1%;
   padding: 1%;
@@ -95,13 +115,33 @@ a:hover {
 }
 
 .list__ObjectImage img {
-  width: 600px;
+  width: 500px;
 }
 
 .list__Buttons {
   display: flex;
   justify-content: space-evenly;
   margin-top: 5%;
+}
+
+.list__ObjectUI {
+  display: flex;
+  flex-direction: column;
+
+  margin: 1%;
+}
+
+.list__ObjectUISpaced {
+  justify-content: space-between;
+}
+
+.list__ObjectUIButtons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.list__ObjectUIButtons button {
+  margin: 10px;
 }
 
 .list__ObjectImageTall {
@@ -117,8 +157,8 @@ a:hover {
   list-style: none;
 }
 
-.list__ObjectText p {
-  font-size: 0.8em;
+.list__ObjectText li {
+  font-size: 1em;
 }
 
 .form__Container {

@@ -2,7 +2,7 @@
 
 
   <div class="editor__TopBar">
-    <h4>News</h4>
+    <h4>NEWS</h4>
     <a class="btn btn-success" href="/newsForm">Add New Blog</a>
     <a class="btn btn-danger" href="/hub">Exit</a>
   </div>
@@ -11,7 +11,20 @@
             <div class="list__Object">
                 <div class="list__ObjectImage">
                     <img src="<%= news.imageLarge %>" alt="">
-                    <div class="list__ObjectImageTall"><img src="<%= news.image %>" alt=""></div>
+                    <div class="list__ObjectImageTall"><img src="<%= news.image %>" alt="">
+                    </div>
+                    <div class="list__Buttons">      
+                        <form action="editNewsLink" method="post">
+                            <input type="hidden" name="id" id="newsId" value="<%= news.id %>">
+                            <button class="btn btn-success" type="submit">Edit</button>
+                        </form>              
+                        <form action="deleteNewsForm" method="post">
+                            <input type="hidden" name="id" id="newsId" value="<%= news.id %>">
+                            <button class="btn btn-danger" type="submit">Delete</button>
+                        </form>
+
+                        
+                    </div>
                 </div>
 
                 <div class="list__ObjectText">
@@ -31,17 +44,7 @@
                             <% } %></li>                     
                         <li><%= news.dateENG %></li>
                     </ul> 
-                    <div class="list__Buttons">      
-                        <form action="editNewsLink" method="post">
-                            <input type="hidden" name="id" id="newsId" value="<%= news.id %>">
-                            <button class="btn btn-success" type="submit">Edit</button>
-                        </form>              
-                        <form action="deleteNewsForm" method="post">
-                            <input type="hidden" name="id" id="newsId" value="<%= news.id %>">
-                            <button class="btn btn-danger" type="submit">Delete</button>
-                        </form>
-                        
-                    </div>
+                    
                 </div>
             </div>
 
