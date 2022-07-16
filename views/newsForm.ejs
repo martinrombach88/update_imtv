@@ -8,7 +8,12 @@
 </div>
 
 <div class="form__Container">
-  <form action="/newsForm" method="post" class="form__News">
+  <form
+    action="/newsForm"
+    method="post"
+    class="form__News"
+    enctype="multipart/form-data"
+  >
     <div class="input-group mb-3">
       <div class="input-group-prepend">
         <span class="input-group-text" id="basic-addon1">주요 제목</span>
@@ -41,15 +46,14 @@
 
     <div class="mb-3 mt-3">
       <label for="formFile" class="form-label">주 이미지 업로드</label>
-      <input name="imageLarge" class="form-control" type="file" id="formFile">
-  </div>
+      <input name="imageLarge" class="form-control" type="file" id="formFile" />
+    </div>
 
-    <div class="mb-3 mt-3">
+    <!-- <div class="mb-3 mt-3">
       <label for="formFile" class="form-label">작은 이미지 업로드</label>
       <input name="image" class="form-control" type="file" id="formFile">
   <div>   
-      
-
+       -->
 
     <br />
     <div class="center__Column">

@@ -6,5 +6,7 @@ const path = require("path");
 let currentNews = null;
 
 router.get("/news", newsController.getNews);
+router.get("/newsForm", newsController.getNewsForm);
+router.post("/newsForm", newsController.postNewsForm);
 
 module.exports = router;

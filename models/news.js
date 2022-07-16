@@ -30,3 +30,13 @@ exports.getNews = async () => {
     (err) => console.log(err);
   }
 };
+
+exports.postNews = (newsObject) => {
+  try {
+    console.log(newsObject);
+  } catch {
+    (err) => {
+      console.log(err);
+    };
+  }
+};
