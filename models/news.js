@@ -20,7 +20,7 @@ exports.getNews = async () => {
           titleENG: item.titleENG,
           titleKR: item.titleKR,
         };
-        newsList.push(newItem);
+        newsList.unshift(newItem);
       }
     } else {
       newsList = null;
@@ -31,12 +31,32 @@ exports.getNews = async () => {
   }
 };
 
-exports.postNews = (newsObject) => {
-  try {
-    console.log(newsObject);
-  } catch {
-    (err) => {
-      console.log(err);
-    };
+exports.postNews = (req) => {
+  let today = new Date();
+  let dd = String(today.getDate()).padStart(2, "0");
+  let mm = String(today.getMonth() + 1).padStart(2, "0");
+  let yyyy = today.getFullYear();
+  let dateENG = dd + "/" + mm + "/" + +yyyy;
+  let dateKR = yyyy + " " + mm + "월 " + dd;
+  let newsObject = {};
+  let newsBodyKR = [];
+  let newsBodyENG = [];
+  newsObject.image = "image";
+  newsObject.imageLarge = "imageLarge";
+  newsObject.titleKR = req.body.titleKR;
+  newsObject.titleENG = req.body.titleENG;
+  newsObject.dateKR = dateKR;
+  newsObject.dateENG = dateENG;
+  for (let i = 1; i <= 14; i++) {
+    i <= 7
+      ? newsBodyKR.push("~" + req.body[i])
+      : newsBodyENG.push("~" + req.body[i]);
   }
+  newsObject.bodyKR = newsBodyKR.join();
+  newsObject.bodyENG = newsBodyENG.join();
+  superagent
+    .post("http://localhost:8080/postnews/")
+    .send(newsObject)
+    .set("accept", "json")
+    .end((err) => console.log(err));
 };
