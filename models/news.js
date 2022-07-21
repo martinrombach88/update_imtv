@@ -31,7 +31,7 @@ exports.getNews = async () => {
   }
 };
 
-exports.postNews = (req) => {
+exports.postNews = async (req) => {
   let today = new Date();
   let dd = String(today.getDate()).padStart(2, "0");
   let mm = String(today.getMonth() + 1).padStart(2, "0");
@@ -54,7 +54,7 @@ exports.postNews = (req) => {
   }
   newsObject.bodyKR = newsBodyKR.join();
   newsObject.bodyENG = newsBodyENG.join();
-  superagent
+  const res = await superagent
     .post("http://localhost:8080/postnews/")
     .send(newsObject)
     .set("accept", "json")

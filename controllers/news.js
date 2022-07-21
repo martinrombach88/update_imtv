@@ -4,31 +4,35 @@ const fs = require("fs");
 const setFilePath = (folder, filename) => {
   return path.join("assets", "images", folder, filename);
 };
-// const multer = require("multer");
+const multer = require("multer");
+let imageLarge = null;
+let image = null;
 
-// const fileStorage = multer.diskStorage({
-//   destination: (req, file, cb) => {
-//     cb(null, "public/assets/images/news");
-//   },
-//   filename: (req, file, cb) => {
-//     cb(null, file.originalname);
-//   },
-// });
-// const fileFilter = (req, file, cb) => {
-//   if (
-//     file.mimetype === "image/png" ||
-//     file.mimetype === "image/jpg" ||
-//     file.mimetype === "image/jpeg"
-//   ) {
-//     cb(null, true);
-//   } else {
-//     cb(null, false);
-//   }
-// };
-// const upload = multer({ storage: fileStorage, fileFilter: fileFilter }).fields([
-//   { name: "imageLarge" },
-//   { name: "image" },
-// ]);
+const fileStorage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "public/assets/images/news");
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.originalname);
+  },
+});
+
+const fileFilter = (req, file, cb) => {
+  if (
+    file.mimetype === "image/png" ||
+    file.mimetype === "image/jpg" ||
+    file.mimetype === "image/jpeg"
+  ) {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
+};
+
+const upload = multer({ storage: fileStorage, fileFilter: fileFilter }).fields([
+  { name: "imageLarge" },
+  { name: "image" },
+]);
 
 exports.getNews = async (req, res) => {
   const response = await newsModel.getNews();
@@ -46,9 +50,16 @@ exports.getNewsForm = (req, res) => {
   });
 };
 
-exports.postNewsForm =
-  ("/newsForm",
-  (req, res) => {
-    newsModel.postNews(req);
-    res.redirect("/news");
+exports.postNewsForm = async (req, res) => {
+  upload(req, res, function (err) {
+    if (err) {
+      console.log(JSON.stringify(err));
+      res.status(400).send("fail saving image");
+    } else {
+      imageLarge = req.files.imageLarge;
+    }
   });
+  console.log(imageLarge);
+  newsModel.postNews(req);
+  res.redirect("/news");
+};
