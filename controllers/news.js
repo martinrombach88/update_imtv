@@ -54,12 +54,11 @@ exports.postNewsForm = async (req, res) => {
   upload(req, res, function (err) {
     if (err) {
       console.log(JSON.stringify(err));
-      res.status(400).send("fail saving image");
+      res.status(400).send("Failed to upload image.");
     } else {
       imageLarge = req.files.imageLarge;
+      newsModel.postNews(req);
     }
   });
-  console.log(imageLarge);
-  newsModel.postNews(req);
   res.redirect("/news");
 };
