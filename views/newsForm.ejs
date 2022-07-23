@@ -1,9 +1,9 @@
 <%- include('includes/header.ejs') %>
 
 <div class="editor__TopBar">
-  <h4>News - Add New</h4>
+  <h4>News - 새로운 항목</h4>
   <p>
-    Use as many paragraphs as you need. Any empty paragraphs will be ignored.
+    최소한 1문단을 채워야 해 주세요. PNG, JPG 또는 JPEG만 사용하세요.
   </p>
 </div>
 
@@ -26,6 +26,7 @@
         aria-label="titleKR"
         aria-describedby="basic-addon1"
         name="titleKR"
+        required
       />
     </div>
 
@@ -41,17 +42,18 @@
         aria-label="titleENG"
         aria-describedby="basic-addon1"
         name="titleENG"
+        required
       />
     </div>
 
     <div class="mb-3 mt-3">
       <label for="formFile" class="form-label">주 이미지 업로드</label>
-      <input name="imageLarge" class="form-control" type="file" id="formFile" />
+      <input name="imageLarge" class="form-control" type="file" id="formFile" required/>
     </div>
 
     <div class="mb-3 mt-3">
       <label for="formFile" class="form-label">작은 이미지 업로드</label>
-      <input name="image" class="form-control" type="file" id="formFile">
+      <input name="image" class="form-control" type="file" id="formFile" required>
   <div>   
       
 
@@ -68,6 +70,7 @@
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
+        required
       ></textarea>
     </div>
 
@@ -140,6 +143,7 @@
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
+        required
       ></textarea>
     </div>
 

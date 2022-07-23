@@ -5,8 +5,7 @@ const setFilePath = (folder, filename) => {
   return path.join("assets", "images", folder, filename);
 };
 const multer = require("multer");
-let imageLarge = null;
-let image = null;
+const alert = require("node-popup");
 
 const fileStorage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -25,7 +24,7 @@ const fileFilter = (req, file, cb) => {
   ) {
     cb(null, true);
   } else {
-    cb(null, false);
+    return cb(new Error("Only pdfs are allowed"));
   }
 };
 
@@ -53,12 +52,17 @@ exports.getNewsForm = (req, res) => {
 exports.postNewsForm = async (req, res) => {
   upload(req, res, function (err) {
     if (err) {
-      console.log(JSON.stringify(err));
-      res.status(400).send("Failed to upload image.");
+      res.redirect("/400");
     } else {
-      imageLarge = req.files.imageLarge;
       newsModel.postNews(req);
+      res.redirect("/news");
     }
   });
-  res.redirect("/news");
+};
+
+exports.get400 = (req, res, next) => {
+  res.render("400", {
+    path: "/400",
+    pageTitle: "Image Upload Failed",
+  });
 };
