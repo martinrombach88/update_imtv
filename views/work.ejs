@@ -2,20 +2,14 @@
 
   <div class="editor__TopBar">
     <h4>WORK</h4>
-    <p>When using Youtube Links, use the IMTV Youtube account: imtvwebvideos@gmail.com</p>
+
     <a class="btn btn-success" href="/workForm">Add New Work</a>
     <a class="btn btn-danger" href="/hub">Exit</a>
   </div>
   <div class="list__Container">
-
-        <div class="prod__Container">
-                <div class="prod__Title">
-                    <h4>IN PRODUCTION</h4>
-                    <a class="prod__Link">See Live</a>
-                </div>
-        </div>
     
         <% for (let work of object) { %>
+            
             <div class="list__Object">
                 <div class="list__ObjectImage">
                     <img src="<%= work.image %>" alt="">

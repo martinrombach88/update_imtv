@@ -10,3 +10,17 @@ exports.getStaff = async (req, res) => {
     object: response,
   });
 };
+
+exports.getStaffForm = (req, res) => {
+  res.render("staffForm", {
+    path: "/staffForm",
+    pageTitle: "Update Staff",
+  });
+};
+
+exports.postStaffForm = (req, res) => {
+  res.render("staffForm", {
+    path: "/staffForm",
+    pageTitle: "Update Staff",
+  });
+};

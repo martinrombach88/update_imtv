@@ -33,6 +33,7 @@ exports.getNews = async () => {
 };
 
 exports.postNews = async (req, res) => {
+  console.log(req.body.titleKR);
   let today = new Date();
   let dd = String(today.getDate()).padStart(2, "0");
   let mm = String(today.getMonth() + 1).padStart(2, "0");
@@ -72,5 +73,7 @@ exports.postNews = async (req, res) => {
       .send(newsObject)
       .set("accept", "json")
       .end((err) => console.log(err));
+  } else {
+    (err) => console.log(err);
   }
 };
