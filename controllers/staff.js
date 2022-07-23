@@ -22,3 +22,12 @@ exports.postStaffForm = async (req, res) => {
   staffModel.postStaff(req);
   res.redirect("/staff");
 };
+
+exports.deleteStaffForm = async (req, res) => {
+  const response = await staffModel.deleteStaff();
+  res.render("staff", {
+    path: "/staff",
+    pageTitle: "Update Staff",
+    object: response,
+  });
+};

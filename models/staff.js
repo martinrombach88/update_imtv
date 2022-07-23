@@ -37,3 +37,13 @@ exports.postStaff = async (req, res) => {
       .end((err) => console.log(err));
   }
 };
+
+exports.deleteStaff = async () => {
+  try {
+    const res = await superagent.get("http://localhost:8080/getstaff/");
+    const text = JSON.parse(res.text);
+    return text.staffItems;
+  } catch {
+    (err) => console.log(err);
+  }
+};
