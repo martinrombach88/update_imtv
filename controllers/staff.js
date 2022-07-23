@@ -18,9 +18,7 @@ exports.getStaffForm = (req, res) => {
   });
 };
 
-exports.postStaffForm = (req, res) => {
-  res.render("staffForm", {
-    path: "/staffForm",
-    pageTitle: "Update Staff",
-  });
+exports.postStaffForm = async (req, res) => {
+  staffModel.postStaff(req);
+  res.redirect("/staff");
 };

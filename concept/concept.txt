@@ -15,6 +15,13 @@ A user can:
 - move a work up or down in the list
 - delete a work
 
+IN PRODUCTION (a section of WORK)
+A user can:
+- retrieve the current in production object
+- update the tall and wide images
+- update the title and subtitle
+- update the background and text color
+
 NEWS
 A user can:
 - retrieve a list of blog posts in the same style as the news component.
@@ -26,12 +33,7 @@ A new blog post consists of:
     4. An array of text content, which is separated by paragraph
     5. Today's date
 
-IN PRODUCTION
-A user can:
-- retrieve the current in production object
-- update the tall and wide images
-- update the title and subtitle
-- update the background and text color
+
 
 1. Build basic HTML preview in Node. 
 - Copy samples of Public folder, JSON files.
