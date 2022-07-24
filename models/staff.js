@@ -38,12 +38,14 @@ exports.postStaff = async (req, res) => {
   }
 };
 
-exports.deleteStaff = async () => {
-  try {
-    const res = await superagent.get("http://localhost:8080/getstaff/");
-    const text = JSON.parse(res.text);
-    return text.staffItems;
-  } catch {
-    (err) => console.log(err);
+exports.deleteStaff = async (id) => {
+  let idObject = {};
+  id ? (idObject.id = id) : (idObject.id = null);
+  if (idObject.id) {
+    const res = await superagent
+      .post("http://localhost:8080/deletestaff/")
+      .send(idObject)
+      .set("accept", "json")
+      .end((err) => console.log(err));
   }
 };

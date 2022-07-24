@@ -6,6 +6,6 @@ const router = express.Router();
 router.get("/staff", staffController.getStaff);
 router.get("/staffForm", staffController.getStaffForm);
 router.post("/staffForm", staffController.postStaffForm);
-router.get("/deleteStaffForm", staffController.deleteStaffForm);
+router.post("/deleteStaffForm", staffController.deleteStaffForm);
 
 module.exports = router;

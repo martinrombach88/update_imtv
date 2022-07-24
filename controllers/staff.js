@@ -24,10 +24,6 @@ exports.postStaffForm = async (req, res) => {
 };
 
 exports.deleteStaffForm = async (req, res) => {
-  const response = await staffModel.deleteStaff();
-  res.render("staff", {
-    path: "/staff",
-    pageTitle: "Update Staff",
-    object: response,
-  });
+  staffModel.deleteStaff(req.body.id);
+  res.redirect("/staff");
 };
