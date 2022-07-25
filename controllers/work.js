@@ -57,3 +57,8 @@ exports.postWorkForm = async (req, res) => {
     }
   });
 };
+
+exports.deleteWorkForm = async (req, res) => {
+  workModel.deleteWork(req.body.id);
+  res.redirect("/work");
+};

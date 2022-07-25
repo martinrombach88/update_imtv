@@ -60,6 +60,18 @@ exports.postWork = async (req, res) => {
       .post("http://localhost:8080/postWork/")
       .send(workObject)
       .set("accept", "json")
-      .end((err) => console.log(err));
+      .end();
+  }
+};
+
+exports.deleteWork = async (id) => {
+  let idObject = {};
+  id ? (idObject.id = id) : (idObject.id = null);
+  if (idObject.id) {
+    const res = await superagent
+      .post("http://localhost:8080/deletework/")
+      .send(idObject)
+      .set("accept", "json")
+      .end();
   }
 };

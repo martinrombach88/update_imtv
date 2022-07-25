@@ -18,12 +18,21 @@ exports.getStaffForm = (req, res) => {
   });
 };
 
-exports.postStaffForm = async (req, res) => {
+exports.postStaff = async (req, res) => {
   staffModel.postStaff(req);
   res.redirect("/staff");
 };
 
-exports.deleteStaffForm = async (req, res) => {
-  staffModel.deleteStaff(req.body.id);
+exports.deleteStaff = async (req, res) => {
+  staffModel.sendId(req.body.id, "http://localhost:8080/deletestaff/");
+  res.redirect("/staff");
+};
+
+exports.staffDownMax = async (req, res) => {
+  staffModel.sendId(
+    req.body.id,
+    "http://localhost:8080/staffdownmax/",
+    req.body.downMaxId
+  );
   res.redirect("/staff");
 };

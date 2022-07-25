@@ -64,3 +64,8 @@ exports.get400 = (req, res, next) => {
     pageTitle: "Image Upload Failed",
   });
 };
+
+exports.deleteNewsForm = async (req, res) => {
+  newsModel.deleteNews(req.body.id);
+  res.redirect("/news");
+};

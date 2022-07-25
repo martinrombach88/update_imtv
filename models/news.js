@@ -71,8 +71,18 @@ exports.postNews = async (req, res) => {
       .post("http://localhost:8080/postnews/")
       .send(newsObject)
       .set("accept", "json")
-      .end((err) => console.log(err));
-  } else {
-    (err) => console.log(err);
+      .end();
+  }
+};
+
+exports.deleteNews = async (id) => {
+  let idObject = {};
+  id ? (idObject.id = id) : (idObject.id = null);
+  if (idObject.id) {
+    const res = await superagent
+      .post("http://localhost:8080/deletenews/")
+      .send(idObject)
+      .set("accept", "json")
+      .end();
   }
 };

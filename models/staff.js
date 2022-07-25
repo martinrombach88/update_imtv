@@ -38,12 +38,13 @@ exports.postStaff = async (req, res) => {
   }
 };
 
-exports.deleteStaff = async (id) => {
+exports.sendId = async (id, url, secondId) => {
   let idObject = {};
   id ? (idObject.id = id) : (idObject.id = null);
+  secondId ? (idObject.secondId = secondId) : (idObject.secondId = null);
   if (idObject.id) {
     const res = await superagent
-      .post("http://localhost:8080/deletestaff/")
+      .post(url)
       .send(idObject)
       .set("accept", "json")
       .end((err) => console.log(err));

@@ -5,5 +5,5 @@ const router = express.Router();
 router.get("/news", newsController.getNews);
 router.get("/newsForm", newsController.getNewsForm);
 router.post("/newsForm", newsController.postNewsForm);
-
+router.post("/deleteNewsForm", newsController.deleteNewsForm);
 module.exports = router;
