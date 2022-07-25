@@ -29,10 +29,11 @@ exports.deleteStaff = async (req, res) => {
 };
 
 exports.staffDownMax = async (req, res) => {
-  staffModel.sendId(
-    req.body.id,
-    "http://localhost:8080/staffdownmax/",
-    req.body.downMaxId
-  );
+  const response = await staffModel.getStaff();
+  const idObject = {
+    id: req.body.id,
+    orderID: req.body.downMaxId,
+  };
+  staffModel.downMax(response, idObject);
   res.redirect("/staff");
 };

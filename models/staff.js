@@ -50,3 +50,22 @@ exports.sendId = async (id, url, secondId) => {
       .end((err) => console.log(err));
   }
 };
+
+exports.downMax = async (array, object) => {
+  for (let num in array) {
+    if (array[num].orderID === 14) {
+      array[num].orderID = array[num].orderID - 1;
+    } else if (array[num].orderID > object.id) {
+      array[num].orderID = array[num].orderID - 1;
+    }
+    array[object.id - 1].orderID = 14;
+  }
+
+  if (array) {
+    const res = await superagent
+      .post("http://localhost:8080/staffdownmax/")
+      .send(array)
+      .set("accept", "json")
+      .end((err) => console.log(err));
+  }
+};
