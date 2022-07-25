@@ -63,7 +63,26 @@ exports.downMax = async (array, object) => {
 
   if (array) {
     const res = await superagent
-      .post("http://localhost:8080/staffdownmax/")
+      .post("http://localhost:8080/updatestafforder/")
+      .send(array)
+      .set("accept", "json")
+      .end((err) => console.log(err));
+  }
+};
+
+exports.upMax = async (array, object) => {
+  for (let num in array) {
+    if (array[num].orderID === 1) {
+      array[num].orderID = array[num].orderID + 1;
+    } else if (array[num].orderID < object.id) {
+      array[num].orderID = array[num].orderID + 1;
+    }
+    array[object.id - 1].orderID = 1;
+  }
+
+  if (array) {
+    const res = await superagent
+      .post("http://localhost:8080/updatestafforder/")
       .send(array)
       .set("accept", "json")
       .end((err) => console.log(err));
