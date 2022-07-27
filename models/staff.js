@@ -1,6 +1,16 @@
 const express = require("express");
 const superagent = require("superagent");
 
+const updateStaffOrder = async (array) => {
+  if (array) {
+    const res = await superagent
+      .post("http://localhost:8080/updatestafforder/")
+      .send(array)
+      .set("accept", "json")
+      .end((err) => console.log(err));
+  }
+};
+
 exports.getStaff = async () => {
   try {
     const res = await superagent.get("http://localhost:8080/getstaff/");
@@ -51,40 +61,56 @@ exports.sendId = async (id, url, secondId) => {
   }
 };
 
-exports.downMax = async (array, object) => {
+exports.upOne = (array, object) => {
+  let id = parseInt(object.id);
   for (let num in array) {
-    if (array[num].orderID === 14) {
-      array[num].orderID = array[num].orderID - 1;
-    } else if (array[num].orderID > object.id) {
-      array[num].orderID = array[num].orderID - 1;
+    if (array[num].id === id) {
+      array[num].orderID--;
     }
-    array[object.id - 1].orderID = 14;
+    if (array[num].id === id + 1) {
+      array[num].orderID++;
+    }
   }
-
-  if (array) {
-    const res = await superagent
-      .post("http://localhost:8080/updatestafforder/")
-      .send(array)
-      .set("accept", "json")
-      .end((err) => console.log(err));
-  }
+  updateStaffOrder(array);
 };
 
-exports.upMax = async (array, object) => {
+exports.downOne = (array, object) => {
+  let targetID = parseInt(object.orderID);
   for (let num in array) {
-    if (array[num].orderID === 1) {
-      array[num].orderID = array[num].orderID + 1;
-    } else if (array[num].orderID < object.id) {
+    if (array[num].orderID === targetID) {
+      array[num].orderID++;
+    }
+    if (array[num].orderID === targetID - 1) {
+      array[num].orderID--;
+    }
+  }
+  updateStaffOrder(array);
+};
+
+exports.upMax = (array, object) => {
+  let id = parseInt(object.id);
+  for (let num in array) {
+    if (array[num].id === id) {
+      array[num].orderID = 1;
+    } else if (array[num].orderID === 1) {
+      array[num].orderID = 2;
+    } else if (array[num].orderID > 1) {
       array[num].orderID = array[num].orderID + 1;
     }
-    array[object.id - 1].orderID = 1;
   }
+  updateStaffOrder(array);
+};
 
-  if (array) {
-    const res = await superagent
-      .post("http://localhost:8080/updatestafforder/")
-      .send(array)
-      .set("accept", "json")
-      .end((err) => console.log(err));
+exports.downMax = (array, object) => {
+  let id = parseInt(object.id);
+  for (let num in array) {
+    if (array[num].id === id) {
+      array[num].orderID = 14;
+    } else if (array[num].orderID === 14) {
+      array[num].orderID = 13;
+    } else if (array[num].orderID < 14) {
+      array[num].orderID = array[num].orderID - 1;
+    }
   }
+  updateStaffOrder(array);
 };

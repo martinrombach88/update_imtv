@@ -28,12 +28,54 @@ exports.deleteStaff = async (req, res) => {
   res.redirect("/staff");
 };
 
+exports.staffDirection = async (req, res) => {
+  const response = await staffModel.getStaff();
+  let idObject = null;
+  if (req.body.downOneId) {
+    idObject = {
+      id: req.body.id,
+      orderID: req.body.downOneId,
+    };
+    staffModel.downOne(response, idObject);
+  }
+
+  if (req.body.downMaxId) {
+    idObject = {
+      id: req.body.id,
+      orderID: req.body.downMaxId,
+    };
+    staffModel.downMax(response, idObject);
+  }
+
+  if (req.body.upOneId) {
+    idObject = {
+      id: req.body.id,
+      orderID: req.body.upOneId,
+    };
+    staffModel.upOne(response, idObject);
+  }
+
+  if (req.body.upMaxId) {
+    idObject = {
+      id: req.body.id,
+      orderID: req.body.upMaxId,
+    };
+    staffModel.upMax(response, idObject);
+  }
+
+  res.redirect("/staff");
+};
+
 exports.staffDownMax = async (req, res) => {
   const response = await staffModel.getStaff();
-  const idObject = {
-    id: req.body.id,
-    orderID: req.body.downMaxId,
-  };
-  staffModel.downMax(response, idObject);
+  let idObject = null;
+  if (req.body.downMaxId) {
+    idObject = {
+      id: req.body.id,
+      orderID: req.body.downMaxId,
+    };
+    staffModel.downMax(response, idObject);
+  }
+
   res.redirect("/staff");
 };

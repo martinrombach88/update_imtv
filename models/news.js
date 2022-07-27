@@ -32,7 +32,33 @@ exports.getNews = async () => {
   }
 };
 
-exports.postNews = async (req, res) => {
+exports.getNewsItem = async (id) => {
+  try {
+    let newsItem = null;
+    const res = await superagent.get("http://localhost:8080/getnewsitem/" + id);
+    const text = JSON.parse(res.text);
+    if (text.newsItem) {
+      newsItem = {
+        id: text.newsItem[0].id,
+        bodyKR: text.newsItem[0].bodyKR.split("~"),
+        bodyENG: text.newsItem[0].bodyENG.split("~"),
+        dateENG: text.newsItem[0].dateENG,
+        dateKR: text.newsItem[0].dateKR,
+        image: text.newsItem[0].image,
+        imageLarge: text.newsItem[0].imageLarge,
+        titleENG: text.newsItem[0].titleENG,
+        titleKR: text.newsItem[0].titleKR,
+      };
+      return newsItem;
+    } else {
+      newsItem = null;
+    }
+  } catch {
+    (err) => console.log(err);
+  }
+};
+
+exports.sendNews = async (req, res, url) => {
   let today = new Date();
   let dd = String(today.getDate()).padStart(2, "0");
   let mm = String(today.getMonth() + 1).padStart(2, "0");
@@ -67,11 +93,12 @@ exports.postNews = async (req, res) => {
         req.files.image[0].originalname)
     : (newsObject = null);
   if (newsObject) {
-    const res = await superagent
-      .post("http://localhost:8080/postnews/")
-      .send(newsObject)
-      .set("accept", "json")
-      .end();
+    console.log(newsObject);
+    // const res = await superagent
+    //   .post(url)
+    //   .send(newsObject)
+    //   .set("accept", "json")
+    //   .end();
   }
 };
 

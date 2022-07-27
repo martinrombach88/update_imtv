@@ -7,7 +7,7 @@
 </div>
 
 <div class="form__Container">
-  <form action="/editNewsForm" method="post" class="form__News">
+  <form action="/postUpdateNewsForm" method="post" class="form__News">
     <div class="input-group mb-3">
       <div class="input-group-prepend">
         <span class="input-group-text" id="basic-addon1">주요 제목</span>
@@ -42,22 +42,22 @@
     <div class="mb-3 mt-3">
 
       <label for="formFile" class="form-label">주 이미지 업로드</label>
-      <input name="imageLarge" class="form-control" type="file" id="formFile">
+      <input name="imageLarge" class="form-control" type="file" id="formFile" value="<%= object.imageLarge %>" required>
       <br />      
       <p>Current Large Image: </p>
       <img src="<%= object.imageLarge %>" alt="<%= object.titleENG %>">
 
     </div>
 
- 
+  
     <div class="mb-3 mt-3">
       
       <label for="formFile" class="form-label">작은 이미지 업로드</label>
-      <input name="image" class="form-control" type="file" id="formFile">
+      <input name="image" class="form-control" type="file" id="formFile" value="<%= object.image %>" required>
       <br />
       <p>Images will be automatically fit to size. For news, try not to make the Small Image too tall.</p>
       <p>Current Small Image: </p>
-      <img src="<%= object.image %>" alt="<%= object.titleENG %>">
+      <img src="<%= object.image %>" alt="titleENG">
   <div>   
       
 
@@ -76,7 +76,7 @@
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
-      ><%= object.bodyKR[0] %></textarea>
+      ><%= object.bodyKR[1] %></textarea>
     </div>
 
     <div class="mb-3">
@@ -86,7 +86,7 @@
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
-      ><%= object.bodyKR[1] %></textarea>
+      ><%= object.bodyKR[2] %></textarea>
     </div>
 
     <div class="mb-3">
@@ -96,7 +96,7 @@
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
-      ><%= object.bodyKR[2] %></textarea>
+      ><%= object.bodyKR[3] %></textarea>
     </div>
 
     <div class="mb-3">
@@ -106,7 +106,7 @@
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
-      ><%= object.bodyKR[3] %></textarea>
+      ><%= object.bodyKR[4] %></textarea>
     </div>
     <div class="mb-3">
       <label for="exampleFormControlTextarea1" class="form-label">단락 5</label>
@@ -115,7 +115,7 @@
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
-      ><%= object.bodyKR[4] %></textarea>
+      ><%= object.bodyKR[5] %></textarea>
     </div>
     <div class="mb-3">
       <label for="exampleFormControlTextarea1" class="form-label">단락 6</label>
@@ -124,7 +124,7 @@
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
-      ><%= object.bodyKR[5] %></textarea>
+      ><%= object.bodyKR[6] %></textarea>
     </div>
     <div class="mb-3">
       <label for="exampleFormControlTextarea1" class="form-label">단락 7</label>
@@ -133,7 +133,7 @@
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
-      ><%= object.bodyKR[6] %></textarea>
+      ><%= object.bodyKR[7] %></textarea>
     </div>
 
     <div class="center__Column">
@@ -149,7 +149,7 @@
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
-      ><%= object.bodyENG[0] %></textarea>
+      > <%= object.bodyENG[1] %></textarea>
     </div>
 
     <div class="mb-3">
@@ -159,7 +159,7 @@
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
-      ><%= object.bodyENG[1] %></textarea>
+      > <%= object.bodyENG[2] %></textarea>
     </div>
 
     <div class="mb-3">
@@ -169,7 +169,7 @@
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
-      ><%= object.bodyENG[2] %></textarea>
+      > <%= object.bodyENG[3] %></textarea>
     </div>
 
     <div class="mb-3">
@@ -179,7 +179,7 @@
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
-      ><%= object.bodyENG[3] %></textarea>
+      > <%= object.bodyENG[4] %></textarea>
     </div>
     <div class="mb-3">
       <label for="exampleFormControlTextarea1" class="form-label">단락 5</label>
@@ -188,7 +188,7 @@
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
-      ><%= object.bodyENG[4] %></textarea>
+      > <%= object.bodyENG[5] %></textarea>
     </div>
     <div class="mb-3">
       <label for="exampleFormControlTextarea1" class="form-label">단락 6</label>
@@ -197,7 +197,7 @@
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
-      ><%= object.bodyENG[5] %></textarea>
+      > <%= object.bodyENG[6] %></textarea>
     </div>
     <div class="mb-3">
       <label for="exampleFormControlTextarea1" class="form-label">단락 7</label>
@@ -206,9 +206,9 @@
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
-      ><%= object.bodyENG[6] %></textarea>
+      > <%= object.bodyENG[7] %></textarea>
     </div>
-    <input type="hidden" name="id" id="newsId" value="<%= object.id %>">
+    <input type="hidden" name="id" id="newsId" value="id">
     <div>
       <div class="center">
         <button type="submit" class="btn btn-success">Submit</button>

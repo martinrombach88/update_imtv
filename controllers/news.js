@@ -43,20 +43,40 @@ exports.getNewsForm = (req, res) => {
   });
 };
 
-exports.postNewsForm = async (req, res) => {
+exports.getUpdateNewsForm = async (req, res) => {
+  const response = await newsModel.getNewsItem(req.body.id);
+  res.render("updateNewsForm", {
+    path: "/updateNewsForm",
+    pageTitle: "Update News Form",
+    object: response,
+  });
+};
+
+exports.postUpdateNewsForm = async (req, res) => {
   upload(req, res, function (err) {
     if (err) {
       res.render(JSON.stringify(err));
-      // return res.render("storageErrors", {
-      //   pageTitle: "Error",
-      //   err: err,
-      // });
     } else {
-      newsModel.postNews(req);
+      // newsModel.sendNews(req, res, "http://localhost:8080/updatenews/");
       res.redirect("/news");
     }
   });
 };
+
+exports.addNewsForm = async (req, res) => {
+  upload(req, res, function (err) {
+    if (err) {
+      res.render(JSON.stringify(err));
+    } else {
+      newsModel.sendNews(req, res, "http://localhost:8080/addnews/");
+      res.redirect("/news");
+    }
+  });
+};
+
+// exports.updateNewsForm = async (req, res) => {
+
+// };
 
 exports.get400 = (req, res, next) => {
   res.render("get400", {

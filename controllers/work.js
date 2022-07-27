@@ -58,6 +58,36 @@ exports.postWorkForm = async (req, res) => {
   });
 };
 
+exports.workDirection = async (req, res) => {
+  const response = await workModel.getWork();
+  let idObject = null;
+  if (req.body.downOneId) {
+    idObject = {
+      id: req.body.id,
+      orderID: req.body.downOneId,
+    };
+    workModel.downOne(response, idObject);
+  } else if (req.body.downMaxId) {
+    idObject = {
+      id: req.body.id,
+      orderID: req.body.downMaxId,
+    };
+    workModel.downMax(response, idObject);
+  } else if (req.body.upOneId) {
+    idObject = {
+      id: req.body.id,
+      orderID: req.body.upOneId,
+    };
+    workModel.upOne(response, idObject);
+  } else if (req.body.upMaxId) {
+    idObject = {
+      id: req.body.id,
+      orderID: req.body.upMaxId,
+    };
+    workModel.upMax(response, idObject);
+  }
+};
+
 exports.deleteWorkForm = async (req, res) => {
   workModel.deleteWork(req.body.id);
   res.redirect("/work");
