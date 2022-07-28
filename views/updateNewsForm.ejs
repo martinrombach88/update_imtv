@@ -8,7 +8,21 @@
 
 <div class="form__Container">
   <form action="/postUpdateNewsForm" method="post" class="form__News">
-    <div class="input-group mb-3">
+
+
+    <div class="mb-3 mt-3">
+      <p>큰 이미지</p>
+      <img class="workImage" src="<%= object.imageLarge %>" alt="<%= object.titleKR %>">
+    </div>
+
+  
+    <div class="mb-3 mt-3">
+      <p>작은 이미지: </p>
+      <img class="workImage" src="<%= object.image %>" alt="<%= object.titleKR %>">
+    <div>   
+      
+
+    <div class="input-group mt-3 mb-3">
       <div class="input-group-prepend">
         <span class="input-group-text" id="basic-addon1">주요 제목</span>
       </div>
@@ -38,25 +52,6 @@
         value = "<%= object.titleENG %>"
       />
     </div>
-
-    <div class="mb-3 mt-3">
-  
-
-      <p>큰 이미지</p>
-
-      <img src="<%= object.imageLarge %>" alt="<%= object.titleKR %>">
-      <input type="hidden" name="imageLarge" id="newsId" value="<%= object.imageLarge %>">
-    </div>
-
-  
-    <div class="mb-3 mt-3">
-      <p>작은 이미지: </p>
-      <input type="hidden" name="image" id="newsId" value="<%= object.image %>">
-      <img src="<%= object.image %>" alt="<%= object.titleKR %>">
-  <div>   
-      
-
-
     <br />
     <div class="center__Column">
       <h4>한국어 블로그</h4>

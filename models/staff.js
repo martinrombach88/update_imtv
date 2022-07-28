@@ -7,7 +7,7 @@ const updateStaffOrder = async (array) => {
       .post("http://localhost:8080/updatestafforder/")
       .send(array)
       .set("accept", "json")
-      .end((err) => console.log(err));
+      .end();
   }
 };
 
@@ -44,7 +44,7 @@ exports.postStaff = async (req, res) => {
       .post("http://localhost:8080/poststaff/")
       .send(staffObject)
       .set("accept", "json")
-      .end((err) => console.log(err));
+      .end();
   }
 };
 
@@ -57,7 +57,7 @@ exports.sendId = async (id, url, secondId) => {
       .post(url)
       .send(idObject)
       .set("accept", "json")
-      .end((err) => console.log(err));
+      .end();
   }
 };
 

@@ -47,12 +47,8 @@ exports.postWorkForm = async (req, res) => {
   upload(req, res, function (err) {
     if (err) {
       res.render(JSON.stringify(err));
-      // return res.render("storageErrors", {
-      //   pageTitle: "Error",
-      //   err: err,
-      // });
     } else {
-      workModel.postWork(req);
+      workModel.postWork(req, res, "http://localhost:8080/postWork/", "add");
       res.redirect("/work");
     }
   });
@@ -86,6 +82,21 @@ exports.workDirection = async (req, res) => {
     };
     workModel.upMax(response, idObject);
   }
+};
+
+exports.getUpdateWorkForm = async (req, res) => {
+  const response = await workModel.getWorkItem(req.body.id);
+  console.log(response);
+  res.render("updateWorkForm", {
+    path: "/updateWorkForm",
+    pageTitle: "Update Work Form",
+    object: response,
+  });
+};
+
+exports.postUpdateWorkForm = async (req, res) => {
+  workModel.postWork(req, res, "http://localhost:8080/updatework/", "update");
+  res.redirect("/work");
 };
 
 exports.deleteWorkForm = async (req, res) => {

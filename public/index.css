@@ -172,3 +172,14 @@ a:hover {
 .form__News {
   width: 900px;
 }
+
+.workImageWide {
+  width: 95%;
+  margin: 2%;
+}
+
+.workImageTall {
+  width: 70%;
+  height: 50%;
+  margin: 2%;
+}

@@ -32,9 +32,11 @@
                         <li>영어 감독: <%= work.producerENG %></li>
                         <li>영어 작가: <%= work.writerENG %></li>
                         <li>영어 배우: <%= work.starringENG %></li>
-
-                        <li><a href="<%= work.fullVid %>">Trailer Video Link</a></li>
-                        <li><a href="<%= work.clipVid %>">10 Second Slider Video</a></li>
+                        <br />
+                        <li><a href="<%= work.fullVid %>">긴 트레일러 링크</a></li>
+                        <li><a href="<%= work.clipVid %>"><%= work.clipVid ? "10초 트레일러 링크": null %></a></li>
+                        <br />
+                        <li><strong><%= work.inProduction === "1" ? "생산 중, 홈 프로덕션 섹션에 있습니다" : "생산 중이 아님니다"%></strong></li>
                     </ul> 
      
 
@@ -69,12 +71,8 @@
                     
                     
                             <div class="list__ObjectUIButtons">  
-                                <form action="editWorkLink" method="post">
-                                    <input type="hidden" name="id" id="workId" value="<%= work.id %>">
-                                    <button class="btn btn-info" type="submit">Set as IN PRODUCTION</button>
-                                </form>  
                                 
-                                <form action="editWorkLink" method="post">
+                                <form action="/updateWorkForm" method="post">
                                 <input type="hidden" name="id" id="workId" value="<%= work.id %>">
                                 <button class="btn btn-success" type="submit">Edit</button>
                                 </form>  
