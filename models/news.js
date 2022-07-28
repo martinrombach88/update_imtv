@@ -58,7 +58,7 @@ exports.getNewsItem = async (id) => {
   }
 };
 
-exports.sendNews = async (req, res, url) => {
+exports.sendNews = async (req, res, url, format) => {
   let today = new Date();
   let dd = String(today.getDate()).padStart(2, "0");
   let mm = String(today.getMonth() + 1).padStart(2, "0");
@@ -69,36 +69,53 @@ exports.sendNews = async (req, res, url) => {
   let newsBodyKR = [];
   let newsBodyENG = [];
 
-  newsObject.titleKR = req.body.titleKR;
-  newsObject.titleENG = req.body.titleENG;
-  newsObject.dateKR = dateKR;
-  newsObject.dateENG = dateENG;
-  for (let i = 1; i <= 14; i++) {
-    i <= 7
-      ? newsBodyKR.push("~" + req.body[i])
-      : newsBodyENG.push("~" + req.body[i]);
+  if (format === "update") {
+    newsObject.id = req.body.id;
+    newsObject.titleKR = req.body.titleKR;
+    newsObject.titleENG = req.body.titleENG;
+    newsObject.dateKR = dateKR;
+    newsObject.dateENG = dateENG;
+    for (let i = 1; i <= 14; i++) {
+      i <= 7
+        ? newsBodyKR.push("~" + req.body[i])
+        : newsBodyENG.push("~" + req.body[i]);
+    }
+    newsObject.bodyKR = newsBodyKR.join();
+    newsObject.bodyENG = newsBodyENG.join();
+  } else if (format === "add") {
+    newsObject.titleKR = req.body.titleKR;
+    newsObject.titleENG = req.body.titleENG;
+    newsObject.dateKR = dateKR;
+    newsObject.dateENG = dateENG;
+    for (let i = 1; i <= 14; i++) {
+      i <= 7
+        ? newsBodyKR.push("~" + req.body[i])
+        : newsBodyENG.push("~" + req.body[i]);
+    }
+    newsObject.bodyKR = newsBodyKR.join();
+    newsObject.bodyENG = newsBodyENG.join();
+    req.files.imageLarge
+      ? (newsObject.imageLarge =
+          req.files.imageLarge[0].destination.slice(7) +
+          "/" +
+          req.files.imageLarge[0].originalname)
+      : (newsObject = null);
+    req.files.image
+      ? (newsObject.image =
+          req.files.image[0].destination.slice(7) +
+          "/" +
+          req.files.image[0].originalname)
+      : (newsObject = null);
+  } else {
+    newsObject = null;
   }
-  newsObject.bodyKR = newsBodyKR.join();
-  newsObject.bodyENG = newsBodyENG.join();
-  req.files.imageLarge
-    ? (newsObject.imageLarge =
-        req.files.imageLarge[0].destination.slice(7) +
-        "/" +
-        req.files.imageLarge[0].originalname)
-    : (newsObject = null);
-  req.files.image
-    ? (newsObject.image =
-        req.files.image[0].destination.slice(7) +
-        "/" +
-        req.files.image[0].originalname)
-    : (newsObject = null);
+
   if (newsObject) {
-    console.log(newsObject);
-    // const res = await superagent
-    //   .post(url)
-    //   .send(newsObject)
-    //   .set("accept", "json")
-    //   .end();
+    const res = await superagent
+      .post(url)
+      .send(newsObject)
+      .set("accept", "json")
+      .end();
   }
 };
 

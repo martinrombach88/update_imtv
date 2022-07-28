@@ -1,8 +1,8 @@
 <%- include('includes/header.ejs') %>
 
 <div class="editor__TopBar">
-  <h4>News - Edit</h4>
-
+  <h4>News - 편집하다</h4>
+  <p>블로그를 만들 때 이미지를 설정해야 합니다. 이미지를 변경하려면 이 블로그를 삭제하고 다시 시작하세요.</p>
   
 </div>
 
@@ -40,24 +40,19 @@
     </div>
 
     <div class="mb-3 mt-3">
+  
 
-      <label for="formFile" class="form-label">주 이미지 업로드</label>
-      <input name="imageLarge" class="form-control" type="file" id="formFile" value="<%= object.imageLarge %>" required>
-      <br />      
-      <p>Current Large Image: </p>
-      <img src="<%= object.imageLarge %>" alt="<%= object.titleENG %>">
+      <p>큰 이미지</p>
 
+      <img src="<%= object.imageLarge %>" alt="<%= object.titleKR %>">
+      <input type="hidden" name="imageLarge" id="newsId" value="<%= object.imageLarge %>">
     </div>
 
   
     <div class="mb-3 mt-3">
-      
-      <label for="formFile" class="form-label">작은 이미지 업로드</label>
-      <input name="image" class="form-control" type="file" id="formFile" value="<%= object.image %>" required>
-      <br />
-      <p>Images will be automatically fit to size. For news, try not to make the Small Image too tall.</p>
-      <p>Current Small Image: </p>
-      <img src="<%= object.image %>" alt="titleENG">
+      <p>작은 이미지: </p>
+      <input type="hidden" name="image" id="newsId" value="<%= object.image %>">
+      <img src="<%= object.image %>" alt="<%= object.titleKR %>">
   <div>   
       
 
@@ -208,7 +203,7 @@
         rows="3"
       > <%= object.bodyENG[7] %></textarea>
     </div>
-    <input type="hidden" name="id" id="newsId" value="id">
+    <input type="hidden" name="id" id="newsId" value="<%= object.id %>">
     <div>
       <div class="center">
         <button type="submit" class="btn btn-success">Submit</button>

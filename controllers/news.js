@@ -57,7 +57,12 @@ exports.postUpdateNewsForm = async (req, res) => {
     if (err) {
       res.render(JSON.stringify(err));
     } else {
-      // newsModel.sendNews(req, res, "http://localhost:8080/updatenews/");
+      newsModel.sendNews(
+        req,
+        res,
+        "http://localhost:8080/updatenews/",
+        "update"
+      );
       res.redirect("/news");
     }
   });
@@ -68,7 +73,7 @@ exports.addNewsForm = async (req, res) => {
     if (err) {
       res.render(JSON.stringify(err));
     } else {
-      newsModel.sendNews(req, res, "http://localhost:8080/addnews/");
+      newsModel.sendNews(req, res, "http://localhost:8080/addnews/", "add");
       res.redirect("/news");
     }
   });
