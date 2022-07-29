@@ -3,7 +3,6 @@
 
   <div class="editor__TopBar">
     <h4>STAFF</h4>
-    <p>When using Youtube Links, use the IMTV Youtube account: imtvwebvideos@gmail.com</p>
     <a class="btn btn-success" href="/staffForm">Add Staff Member</a>
     <a class="btn btn-danger" href="/hub">Exit</a>
   </div>
@@ -20,14 +19,14 @@
                         <li>영어 이름: <%= staff.nameENG %></li>
                         <li>한국어 정보: </li>
                         <ul>
-                            <%for (let info of staff.infoKR.split('-')) {%>
+                            <%for (let info of staff.infoKR.split('~')) {%>
                                 <li><%= info %></li>
                             <%} %>
                             </ul>
                         <br>
                         <li>영어 정보: </li>
                         <ul>
-                            <%for (let info of staff.infoENG.split('-')) {%>
+                            <%for (let info of staff.infoENG.split('~')) {%>
                                 <li><%= info %></li>
                             <%} %>
                         </ul>
@@ -50,26 +49,14 @@
                                 </form>
                            
 
-                           
-                                <form action="staffDirection" method="post" enctype="application/x-www-form-urlencoded">
-                                    <input type="hidden" name="upMaxId" value="<%= staff.orderID %>">
-                                    <input type="hidden" name="id"  value="<%= staff.id %>">
-                                    <button type="submit" class="btn btn-outline-secondary">
-                                        UP MAX
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" fill="currentColor" class="bi bi-chevron-double-up" viewBox="0 0 16 16">
-                                            
-                                            <path fill-rule="evenodd" d="M7.646 2.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 3.707 2.354 9.354a.5.5 0 1 1-.708-.708l6-6z"/>
-                                            <path fill-rule="evenodd" d="M7.646 6.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 7.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
-                                        </svg>
-                                    </button> 
-                                </form>
+
                             </div>
                         
                     
                     
                             <div class="list__ObjectUIButtons">  
                                 
-                                <form action="editStaffForm" method="post" enctype="application/x-www-form-urlencoded">
+                                <form action="updateStaffForm" method="post" enctype="application/x-www-form-urlencoded">
                                     <input type="hidden" name="id" id="staffId" value="<%= staff.id %>">
                                     <button class="btn btn-success" type="submit">Edit</button>
                                 </form>  
@@ -91,17 +78,6 @@
                                             <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
                                         </svg>
                                     </button> 
-                                </form>
-
-                                <form action="staffDownMax" method="post" enctype="application/x-www-form-urlencoded">
-                                    <input type="hidden" name="downMaxId" value="<%= staff.orderID %>">
-                                    <input type="hidden" name="id" value="<%= staff.id %>">
-                                    <button type="submit" class="btn btn-outline-secondary">DOWN MAX
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" fill="currentColor" class="bi bi-chevron-double-down" viewBox="0 0 16 16"> 
-                                            <path fill-rule="evenodd" d="M1.646 6.646a.5.5 0 0 1 .708 0L8 12.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                                            <path fill-rule="evenodd" d="M1.646 2.646a.5.5 0 0 1 .708 0L8 8.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                                          </svg>
-                                    </button>
                                 </form>
                             </div>
 

@@ -19,7 +19,27 @@ exports.getStaffForm = (req, res) => {
 };
 
 exports.postStaff = async (req, res) => {
-  staffModel.postStaff(req);
+  staffModel.postStaff(req, res, "http://localhost:8080/poststaff/", "post");
+  res.redirect("/staff");
+};
+
+exports.getUpdateStaffForm = async (req, res) => {
+  const response = await staffModel.getStaffItem(req.body.id);
+
+  res.render("updateStaffForm", {
+    path: "/updateStaffForm",
+    pageTitle: "Update Staff Form",
+    object: response,
+  });
+};
+
+exports.postUpdateStaffForm = async (req, res) => {
+  staffModel.postStaff(
+    req,
+    res,
+    "http://localhost:8080/updatestaff/",
+    "update"
+  );
   res.redirect("/staff");
 };
 
@@ -38,43 +58,12 @@ exports.staffDirection = async (req, res) => {
     };
     staffModel.downOne(response, idObject);
   }
-
-  if (req.body.downMaxId) {
-    idObject = {
-      id: req.body.id,
-      orderID: req.body.downMaxId,
-    };
-    staffModel.downMax(response, idObject);
-  }
-
   if (req.body.upOneId) {
     idObject = {
       id: req.body.id,
       orderID: req.body.upOneId,
     };
     staffModel.upOne(response, idObject);
-  }
-
-  if (req.body.upMaxId) {
-    idObject = {
-      id: req.body.id,
-      orderID: req.body.upMaxId,
-    };
-    staffModel.upMax(response, idObject);
-  }
-
-  res.redirect("/staff");
-};
-
-exports.staffDownMax = async (req, res) => {
-  const response = await staffModel.getStaff();
-  let idObject = null;
-  if (req.body.downMaxId) {
-    idObject = {
-      id: req.body.id,
-      orderID: req.body.downMaxId,
-    };
-    staffModel.downMax(response, idObject);
   }
 
   res.redirect("/staff");
