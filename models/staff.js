@@ -1,16 +1,6 @@
 const express = require("express");
 const superagent = require("superagent");
 
-const updateStaffOrder = async (array) => {
-  if (array) {
-    const res = await superagent
-      .post("http://localhost:8080/updatestafforder/")
-      .send(array)
-      .set("accept", "json")
-      .end();
-  }
-};
-
 exports.getStaff = async () => {
   try {
     const res = await superagent.get("http://localhost:8080/getstaff/");
@@ -92,69 +82,16 @@ exports.postStaff = async (req, res, url, format) => {
   }
 };
 
-exports.sendId = async (id, url, secondId) => {
-  let idObject = {};
-  id ? (idObject.id = id) : (idObject.id = null);
-  secondId ? (idObject.secondId = secondId) : (idObject.secondId = null);
-  if (idObject.id) {
+exports.resetStaffOrder = async () => {
+  await superagent.get("http://localhost:8080/resetstafforder/");
+};
+
+exports.staffDirection = async (idObject, url) => {
+  if (idObject) {
     const res = await superagent
       .post(url)
       .send(idObject)
       .set("accept", "json")
       .end();
   }
-};
-
-exports.upOne = (array, object) => {
-  let id = parseInt(object.id);
-  for (let num in array) {
-    if (array[num].id === id) {
-      array[num].orderID--;
-    }
-    if (array[num].id === id + 1) {
-      array[num].orderID++;
-    }
-  }
-  updateStaffOrder(array);
-};
-
-exports.downOne = (array, object) => {
-  let targetID = parseInt(object.orderID);
-  for (let num in array) {
-    if (array[num].orderID === targetID) {
-      array[num].orderID++;
-    }
-    if (array[num].orderID === targetID - 1) {
-      array[num].orderID--;
-    }
-  }
-  updateStaffOrder(array);
-};
-
-exports.upMax = (array, object) => {
-  let id = parseInt(object.id);
-  for (let num in array) {
-    if (array[num].id === id) {
-      array[num].orderID = 1;
-    } else if (array[num].orderID === 1) {
-      array[num].orderID = 2;
-    } else if (array[num].orderID > 1) {
-      array[num].orderID = array[num].orderID + 1;
-    }
-  }
-  updateStaffOrder(array);
-};
-
-exports.downMax = (array, object) => {
-  let id = parseInt(object.id);
-  for (let num in array) {
-    if (array[num].id === id) {
-      array[num].orderID = 14;
-    } else if (array[num].orderID === 14) {
-      array[num].orderID = 13;
-    } else if (array[num].orderID < 14) {
-      array[num].orderID = array[num].orderID - 1;
-    }
-  }
-  updateStaffOrder(array);
 };

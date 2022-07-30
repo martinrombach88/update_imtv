@@ -48,23 +48,37 @@ exports.deleteStaff = async (req, res) => {
   res.redirect("/staff");
 };
 
-exports.staffDirection = async (req, res) => {
-  const response = await staffModel.getStaff();
-  let idObject = null;
-  if (req.body.downOneId) {
-    idObject = {
-      id: req.body.id,
-      orderID: req.body.downOneId,
-    };
-    staffModel.downOne(response, idObject);
-  }
-  if (req.body.upOneId) {
-    idObject = {
-      id: req.body.id,
-      orderID: req.body.upOneId,
-    };
-    staffModel.upOne(response, idObject);
-  }
+exports.resetStaffOrder = (req, res) => {
+  staffModel.resetStaffOrder();
+  res.redirect("/resetStaffPage");
+};
 
-  res.redirect("/staff");
+exports.resetStaffPage = async (req, res) => {
+  res.render("resetStaffPage", {
+    path: "/resetStaffPage",
+    pageTitle: "Staff Reset",
+  });
+};
+
+exports.staffChangePage = async (req, res) => {
+  res.render("staffChangePage", {
+    path: "/staffChangePage",
+    pageTitle: "Staff Changed",
+  });
+};
+exports.staffDirectionUp = async (req, res) => {
+  console.log(req.body.id);
+  staffModel.staffDirection(
+    req.body,
+    "http://localhost:8080/staffdirectionup/"
+  );
+  res.redirect("/staffChangePage");
+};
+
+exports.staffDirectionDown = async (req, res) => {
+  staffModel.staffDirection(
+    req.body,
+    "http://localhost:8080/staffdirectiondown/"
+  );
+  res.redirect("/staffChangePage");
 };

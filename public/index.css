@@ -38,6 +38,11 @@ a:hover {
   text-align: center;
 }
 
+.editor__TopBar p {
+  margin-top: 1%;
+  margin-bottom: 0%;
+}
+
 .editor__TopBar h4 {
   margin: 1% 0%;
 }
@@ -137,7 +142,7 @@ a:hover {
 
 .list__ObjectUIButtons {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .list__ObjectUIButtons button {

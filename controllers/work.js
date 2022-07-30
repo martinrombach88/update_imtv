@@ -54,43 +54,26 @@ exports.postWorkForm = async (req, res) => {
   });
 };
 
-exports.workDirection = async (req, res) => {
-  const response = await workModel.getWork();
-  let idObject = null;
-  if (req.body.downOneId) {
-    idObject = {
-      id: req.body.id,
-      orderID: req.body.downOneId,
-    };
-    workModel.downOne(response, idObject);
-  } else if (req.body.downMaxId) {
-    idObject = {
-      id: req.body.id,
-      orderID: req.body.downMaxId,
-    };
-    workModel.downMax(response, idObject);
-  } else if (req.body.upOneId) {
-    idObject = {
-      id: req.body.id,
-      orderID: req.body.upOneId,
-    };
-    workModel.upOne(response, idObject);
-  } else if (req.body.upMaxId) {
-    idObject = {
-      id: req.body.id,
-      orderID: req.body.upMaxId,
-    };
-    workModel.upMax(response, idObject);
-  }
-};
-
 exports.getUpdateWorkForm = async (req, res) => {
   const response = await workModel.getWorkItem(req.body.id);
-  console.log(response);
   res.render("updateWorkForm", {
     path: "/updateWorkForm",
     pageTitle: "Update Work Form",
     object: response,
+  });
+};
+
+exports.resetWorkPage = async (req, res) => {
+  res.render("resetWorkPage", {
+    path: "/resetWorkPage",
+    pageTitle: "Work Reset",
+  });
+};
+
+exports.workChangePage = async (req, res) => {
+  res.render("workChangePage", {
+    path: "/workChangePage",
+    pageTitle: "Work Order Changed",
   });
 };
 
@@ -102,4 +85,19 @@ exports.postUpdateWorkForm = async (req, res) => {
 exports.deleteWorkForm = async (req, res) => {
   workModel.deleteWork(req.body.id);
   res.redirect("/work");
+};
+
+exports.resetWorkOrder = (req, res) => {
+  workModel.resetWorkOrder();
+  res.redirect("/resetWorkPage");
+};
+
+exports.workDirectionUp = async (req, res) => {
+  workModel.workDirection(req.body, "http://localhost:8080/workdirectionup/");
+  res.redirect("/workChangePage");
+};
+
+exports.workDirectionDown = async (req, res) => {
+  workModel.workDirection(req.body, "http://localhost:8080/workdirectiondown/");
+  res.redirect("/workChangePage");
 };
