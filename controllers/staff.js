@@ -20,7 +20,7 @@ exports.getStaffForm = (req, res) => {
 
 exports.postStaff = async (req, res) => {
   staffModel.postStaff(req, res, "http://localhost:8080/poststaff/", "post");
-  res.redirect("/staff");
+  res.redirect("/staffListUpdate");
 };
 
 exports.getUpdateStaffForm = async (req, res) => {
@@ -40,45 +40,17 @@ exports.postUpdateStaffForm = async (req, res) => {
     "http://localhost:8080/updatestaff/",
     "update"
   );
-  res.redirect("/staff");
+  res.redirect("/staffListUpdate");
 };
 
 exports.deleteStaff = async (req, res) => {
-  staffModel.sendId(req.body.id, "http://localhost:8080/deletestaff/");
-  res.redirect("/staff");
+  staffModel.deleteStaff(req.body.id);
+  res.redirect("/staffListUpdate");
 };
 
-exports.resetStaffOrder = (req, res) => {
-  staffModel.resetStaffOrder();
-  res.redirect("/resetStaffPage");
-};
-
-exports.resetStaffPage = async (req, res) => {
-  res.render("resetStaffPage", {
-    path: "/resetStaffPage",
-    pageTitle: "Staff Reset",
+exports.staffListUpdate = async (req, res) => {
+  res.render("staffListUpdate", {
+    path: "/staffListUpdate",
+    pageTitle: "Staff Updated",
   });
-};
-
-exports.staffChangePage = async (req, res) => {
-  res.render("staffChangePage", {
-    path: "/staffChangePage",
-    pageTitle: "Staff Changed",
-  });
-};
-exports.staffDirectionUp = async (req, res) => {
-  console.log(req.body.id);
-  staffModel.staffDirection(
-    req.body,
-    "http://localhost:8080/staffdirectionup/"
-  );
-  res.redirect("/staffChangePage");
-};
-
-exports.staffDirectionDown = async (req, res) => {
-  staffModel.staffDirection(
-    req.body,
-    "http://localhost:8080/staffdirectiondown/"
-  );
-  res.redirect("/staffChangePage");
 };

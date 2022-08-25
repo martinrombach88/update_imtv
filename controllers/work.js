@@ -31,7 +31,7 @@ exports.getWork = async (req, res) => {
   const response = await workModel.getWork();
   res.render("work", {
     path: "/work",
-    pageTitle: "Update Work",
+    pageTitle: "Work",
     object: response,
   });
 };
@@ -39,7 +39,7 @@ exports.getWork = async (req, res) => {
 exports.getWorkForm = (req, res) => {
   res.render("workForm", {
     path: "/workForm",
-    pageTitle: "Update Work",
+    pageTitle: "Work",
   });
 };
 
@@ -49,9 +49,13 @@ exports.postWorkForm = async (req, res) => {
       res.render(JSON.stringify(err));
     } else {
       workModel.postWork(req, res, "http://localhost:8080/postWork/", "add");
-      res.redirect("/work");
+      res.redirect("/workListUpdate");
     }
   });
+};
+exports.resetWorkOrder = (req, res) => {
+  workModel.resetWorkOrder();
+  res.redirect("/workListUpdate");
 };
 
 exports.getUpdateWorkForm = async (req, res) => {
@@ -63,41 +67,29 @@ exports.getUpdateWorkForm = async (req, res) => {
   });
 };
 
-exports.resetWorkPage = async (req, res) => {
-  res.render("resetWorkPage", {
-    path: "/resetWorkPage",
-    pageTitle: "Work Reset",
-  });
-};
-
-exports.workChangePage = async (req, res) => {
-  res.render("workChangePage", {
-    path: "/workChangePage",
-    pageTitle: "Work Order Changed",
+exports.workListUpdate = async (req, res) => {
+  res.render("workListUpdate", {
+    path: "/workListUpdate",
+    pageTitle: "List Updated",
   });
 };
 
 exports.postUpdateWorkForm = async (req, res) => {
   workModel.postWork(req, res, "http://localhost:8080/updatework/", "update");
-  res.redirect("/work");
+  res.redirect("/workListUpdate");
 };
 
 exports.deleteWorkForm = async (req, res) => {
   workModel.deleteWork(req.body.id);
-  res.redirect("/work");
-};
-
-exports.resetWorkOrder = (req, res) => {
-  workModel.resetWorkOrder();
-  res.redirect("/resetWorkPage");
+  res.redirect("/workListUpdate");
 };
 
 exports.workDirectionUp = async (req, res) => {
   workModel.workDirection(req.body, "http://localhost:8080/workdirectionup/");
-  res.redirect("/workChangePage");
+  res.redirect("/workListUpdate");
 };
 
 exports.workDirectionDown = async (req, res) => {
   workModel.workDirection(req.body, "http://localhost:8080/workdirectiondown/");
-  res.redirect("/workChangePage");
+  res.redirect("/workListUpdate");
 };

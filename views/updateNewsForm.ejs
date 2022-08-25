@@ -1,32 +1,23 @@
 <%- include('includes/header.ejs') %>
 
 <div class="editor__TopBar">
-  <h4>News - 편집하다</h4>
-  <p>블로그를 만들 때 이미지를 설정해야 합니다. 이미지를 변경하려면 이 블로그를 삭제하고 다시 시작하세요.</p>
-  <p>'~' 문자이나 " " 문자이를 사용하지 마십시오.</p>
+  <h4>Edit News</h4>
   
 </div>
  
 <div class="form__Container"> 
   <form action="/postUpdateNewsForm" method="post" class="form__News">
-
-
     <div class="mb-3 mt-3">
-      <p>큰 이미지</p>
+      <p>Wide Image</p>
       <img class="workImageWide" src="<%= object.imageLarge %>" alt="<%= object.titleKR %>">
     </div>
-
-  
     <div class="mb-3 mt-3">
-      <p>작은 이미지: </p>
-      <img class="workImageWide" src="<%= object.image %>" alt="<%= object.titleKR %>">
+      <p>Small Image (optional)</p>
+      <img class="workImageWide" src="<%= object.image ? object.image : '' %>" >
     <div>   
       
 
     <div class="input-group mt-3 mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="basic-addon1">주요 제목</span>
-      </div>
       <input
         type="text"
         class="form-control"
@@ -39,9 +30,6 @@
     </div>
 
     <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="basic-addon1">영어로 주요 제목</span>
-      </div>
       <input
         type="text"
         class="form-control"
@@ -55,67 +43,59 @@
     </div>
     <br />
     <div class="center__Column">
-      <h4>한국어 블로그</h4>
-      <p>블로그를 한국어로 써주세요.</p>
-      <p>Use as many paragraphs as you need. Any empty paragraphs will be ignored.  </p>
+      <h4>KR Blog</h4>
     </div>
 
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">단락 1</label>
       <textarea
         name="1"
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
-      ><%= object.bodyKR[1] %></textarea>
+      ><%= object.bodyKR1 %></textarea>
     </div>
 
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">단락 2</label>
       <textarea
         name="2"
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
-      ><%= object.bodyKR[2] %></textarea>
+      ><%= object.bodyKR2 %></textarea>
     </div>
 
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">단락 3</label>
       <textarea
         name="3"
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
-      ><%= object.bodyKR[3] %></textarea>
+      ><%= object.bodyKR3 %></textarea>
     </div>
 
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">단락 4</label>
       <textarea
         name="4"
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
-      ><%= object.bodyKR[4] %></textarea>
+      ><%= object.bodyKR4 %></textarea>
     </div>
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">단락 5</label>
       <textarea
         name="5"
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
-      ><%= object.bodyKR[5] %></textarea>
+      ><%= object.bodyKR5 %></textarea>
     </div>
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">단락 6</label>
       <textarea
         name="6"
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
-      ><%= object.bodyKR[6] %></textarea>
+      ><%= object.bodyKR6 %></textarea>
     </div>
     <div class="mb-3">
       <label for="exampleFormControlTextarea1" class="form-label">단락 7</label>
@@ -124,7 +104,7 @@
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
-      ><%= object.bodyKR[7] %></textarea>
+      ><%= object.bodyKR7 %></textarea>
     </div>
 
     <div class="center__Column">
@@ -140,7 +120,7 @@
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
-      > <%= object.bodyENG[1] %></textarea>
+      > <%= object.bodyENG1 %></textarea>
     </div>
 
     <div class="mb-3">
@@ -150,7 +130,7 @@
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
-      > <%= object.bodyENG[2] %></textarea>
+      > <%= object.bodyENG2 %></textarea>
     </div>
 
     <div class="mb-3">
@@ -160,7 +140,7 @@
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
-      > <%= object.bodyENG[3] %></textarea>
+      > <%= object.bodyENG3 %></textarea>
     </div>
 
     <div class="mb-3">
@@ -170,7 +150,7 @@
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
-      > <%= object.bodyENG[4] %></textarea>
+      > <%= object.bodyENG4 %></textarea>
     </div>
     <div class="mb-3">
       <label for="exampleFormControlTextarea1" class="form-label">단락 5</label>
@@ -179,7 +159,7 @@
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
-      > <%= object.bodyENG[5] %></textarea>
+      > <%= object.bodyENG5 %></textarea>
     </div>
     <div class="mb-3">
       <label for="exampleFormControlTextarea1" class="form-label">단락 6</label>
@@ -188,7 +168,7 @@
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
-      > <%= object.bodyENG[6] %></textarea>
+      > <%= object.bodyENG6 %></textarea>
     </div>
     <div class="mb-3">
       <label for="exampleFormControlTextarea1" class="form-label">단락 7</label>
@@ -197,8 +177,14 @@
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
-      > <%= object.bodyENG[7] %></textarea>
+      > <%= object.bodyENG7 %></textarea>
     </div>
+    <div class="form-check ml-3" style="align-self:center">
+      <input class="form-check-input" type="checkbox" value="1" id="flexCheckChecked" name="inProduction">
+      <label class="form-check-label" for="inProduction">
+          In Production
+      </label>
+  </div>
     <input type="hidden" name="id" id="newsId" value="<%= object.id %>">
     <div>
       <div class="center">

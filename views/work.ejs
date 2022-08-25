@@ -2,12 +2,9 @@
 
   <div class="editor__TopBar">
     <h4>WORK</h4>
-    <a class="btn btn-info" href="/resetWorkOrder">작품 순서 재설정</a>
-    <a class="btn btn-success" href="/workForm">작품 추가</a>
-    <a class="btn btn-danger" href="/hub">출구</a>
-
-    <p>새로운 직원을 추가할 때 직원 순서를 재설정하십시오. 재설정 후 직원의 순서를 변경하십시오.</p>
-    <p>편집 내용이 표시되지 않으면 페이지를 새로고침하세요.</p>
+    <a class="btn btn-info" href="/resetWorkOrder">Reset Order</a>
+    <a class="btn btn-success" href="/workForm">Add New</a>
+    <a class="btn btn-danger" href="/hub">Exit</a>
   </div>
   <div class="list__Container">
     
@@ -22,24 +19,24 @@
 
                 <div class="list__ObjectText">
                     <ul>
-                        <li>제목: <%= work.titleKR %></li>
-                        <li>설명: <%= work.descriptionKR %></li>
-                        <li>채널: <%= work.channels %></li>
-                        <li>날짜: <%= work.releaseDate %></li>
-                        <li>감독: <%= work.producerKR %></li>
-                        <li>작가: <%= work.writerKR %></li>
-                        <li>배우: <%= work.starringKR %></li>
+                        <li>KR Title: <%= work.titleKR %></li>
+                        <li>KR Description: <%= work.descriptionKR %></li>
+                        <li>KR Channels: <%= work.channels %></li>
+                        <li>KR Release Date: <%= work.releaseDate %></li>
+                        <li>KR Producer: <%= work.producerKR %></li>
+                        <li>KR Writer: <%= work.writerKR %></li>
+                        <li>KR Starring: <%= work.starringKR %></li>
                         
-                        <li>영어 제목: <%= work.titleENG %></li>
-                        <li>영어 설명: <%= work.descriptionENG %></li>
-                        <li>영어 감독: <%= work.producerENG %></li>
-                        <li>영어 작가: <%= work.writerENG %></li>
-                        <li>영어 배우: <%= work.starringENG %></li>
+                        <li>ENG Title: <%= work.titleENG %></li>
+                        <li>ENG Description: <%= work.descriptionENG %></li>
+                        <li>ENG Producer: <%= work.producerENG %></li>
+                        <li>ENG Writer: <%= work.writerENG %></li>
+                        <li>ENG Starring: <%= work.starringENG %></li>
                         <br />
-                        <li><a href="<%= work.fullVid %>">긴 트레일러 링크</a></li>
-                        <li><a href="<%= work.clipVid %>"><%= work.clipVid ? "10초 트레일러 링크": null %></a></li>
+                        <li><a href="<%= work.fullVid %>"><%= work.fullVid ? "Trailer Link" : null %></a></li>
+                        <li><a href="<%= work.clipVid %>"><%= work.clipVid ? "Carousel Trailer Link": null %></a></li>
                         <br />
-                        <li><strong><%= work.inProduction === "1" ? "생산 중, 홈 프로덕션 섹션에 있습니다" : "생산 중이 아님니다"%></strong></li>
+                        <li><%= work.inProduction === "1" ? "IN PRODUCTION" : "Not set as In Production"%></li>
                     </ul> 
      
 
@@ -51,9 +48,9 @@
                                     <button type="submit" class="btn btn-outline-secondary center">
                                         <input type="hidden" name="id"  value="<%= work.id %>">
                                         <input type="hidden" name="orderID"  value="<%= work.orderID %>">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="12" fill="currentColor" class="bi bi-chevron-up" viewBox="0 0 16 16">UP ONE
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="12" fill="currentColor" class="bi bi-chevron-up" viewBox="0 0 16 16">
                                             <path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
-                                        </svg>이동
+                                        </svg>Up
                                     </button>
                                 </form>
                            
@@ -67,12 +64,12 @@
                                 
                                 <form action="/updateWorkForm" method="post">
                                 <input type="hidden" name="id" id="workId" value="<%= work.id %>">
-                                <button class="btn btn-success" type="submit">편집하다</button>
+                                <button class="btn btn-success" type="submit">Edit</button>
                                 </form>  
 
                                 <form action="deleteWorkForm" method="post">
                                     <input type="hidden" name="id" id="workId" value="<%= work.id %>">
-                                    <button class="btn btn-danger" type="submit">삭제</button>
+                                    <button class="btn btn-danger" type="submit">Delete</button>
                                 </form>
                             
                             </div>
@@ -85,7 +82,7 @@
                                         <input type="hidden" name="orderID" value="<%= work.orderID %>">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="12" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
                                                 <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                                            </svg>아래로 이동
+                                            </svg>Down
                                     </button>
                                 </form>
 

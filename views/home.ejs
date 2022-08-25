@@ -3,22 +3,18 @@
 <div class="center__Column">
   <div class="jumbotron">
     <h1 class="display-5">Update IMTV</h1>
-    <p class="lead">
-      IMTV 홈페이지 업데이트를 위한 웹사이트입니다. 계속하려면 로그인하십시오.
-    </p>
-    <p class="lead">
-      The website for updating the IMTV homepage. Please login to continue.
-    </p>
+
     <hr class="my-4" />
 
-    <form class="form-signin">
+    <form class="form-signin" action="/login" method="POST">
       <div class="form-label-group">
         <input
           type="username"
           id="username"
+          name="username"
           class="form-control"
-          placeholder="사용자 이름"
-          required="true"
+          placeholder="username"
+          required
           autofocus=""
         />
         <label for="inputEmail"></label>
@@ -26,27 +22,25 @@
 
       <div class="form-label-group">
         <input
+          name="password"
           type="password"
           id="inputPassword"
           class="form-control"
-          placeholder="비밀번호"
-          required=""
+          placeholder="password"
+          required
         />
         <label for="inputPassword"></label>
       </div>
 
-      <div class="checkbox mb-3">
-        <label> <input type="checkbox" value="remember-me" /> 날 기억해 </label>
-      </div>
       <button class="btn btn-lg btn-secondary btn-block" type="submit">
-        로그인
+        Login
       </button>
       <p class="mt-5 mb-3 text-muted text-center">
-        © Copyright IMTV All Rights Reserved. IMTV Home and Update IMTV created
-        in React and Node by Martin Rombach.
+        © Copyright IMTV All Rights Reserved. IMTV Home and Update IMTV were
+        created in React and Node.js by Martin Rombach.
       </p>
     </form>
-    <a href="/hub">Shortcut to Hub</a>
+    <!-- <a href="/hub">Shortcut to Hub</a> -->
   </div>
 </div>
 <%- include('includes/end.ejs') %>

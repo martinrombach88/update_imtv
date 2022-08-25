@@ -1,10 +1,7 @@
 <%- include('includes/header.ejs') %>
 
 <div class="editor__TopBar">
-  <h4>News - 새로운 항목</h4>
-  <p>
-    최소한 1문단을 채워야 해 주세요. PNG, JPG 또는 JPEG만 사용하세요.
-  </p>
+  <h4>Add News</h4>
 </div>
 
 <div class="form__Container">
@@ -16,12 +13,11 @@
   >
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text" id="basic-addon1">주요 제목</span>
+        <span class="input-group-text" id="basic-addon1">KR Title</span>
       </div>
       <input
         type="text"
         class="form-control"
-        placeholder="제목을 입력"
         id="titleKR"
         aria-label="titleKR"
         aria-describedby="basic-addon1"
@@ -32,12 +28,11 @@
 
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text" id="basic-addon1">영어로 주요 제목</span>
+        <span class="input-group-text" id="basic-addon1">ENG Title</span>
       </div>
       <input
         type="text"
         class="form-control"
-        placeholder="제목을 입력"
         id="titleENG"
         aria-label="titleENG"
         aria-describedby="basic-addon1"
@@ -47,24 +42,22 @@
     </div>
 
     <div class="mb-3 mt-3">
-      <label for="formFile" class="form-label">큰 이미지 업로드</label>
+      <label for="formFile" class="form-label">Large Image</label>
       <input name="imageLarge" class="form-control" type="file" id="formFile" required/>
     </div>
 
     <div class="mb-3 mt-3">
-      <label for="formFile" class="form-label">작은 이미지 업로드</label>
-      <input name="image" class="form-control" type="file" id="formFile" required>
+      <label for="formFile" class="form-label">Small Image (optional)</label>
+      <input name="image" class="form-control" type="file" id="formFile">
   <div>   
       
 
     <br />
     <div class="center__Column">
-      <h4>한국어 블로그</h4>
-      <p>블로그를 한국어로 써주세요.</p>
+      <h4>KR Blog</h4>
     </div>
 
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">단락 1</label>
       <textarea
         name="1"
         class="form-control"
@@ -75,7 +68,6 @@
     </div>
 
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">단락 2</label>
       <textarea
         name="2"
         class="form-control"
@@ -85,7 +77,6 @@
     </div>
 
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">단락 3</label>
       <textarea
         name="3"
         class="form-control"
@@ -95,7 +86,6 @@
     </div>
 
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">단락 4</label>
       <textarea
         name="4"
         class="form-control"
@@ -104,7 +94,6 @@
       ></textarea>
     </div>
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">단락 5</label>
       <textarea
         name="5"
         class="form-control"
@@ -113,7 +102,6 @@
       ></textarea>
     </div>
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">단락 6</label>
       <textarea
         name="6"
         class="form-control"
@@ -122,7 +110,6 @@
       ></textarea>
     </div>
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">단락 7</label>
       <textarea
         name="7"
         class="form-control"
@@ -132,12 +119,10 @@
     </div>
 
     <div class="center__Column">
-      <h4>영어 블로그</h4>
-      <p>블로그를 영어로 써주세요.</p>
+      <h4>ENG Blog</h4>
     </div>
 
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">단락 1</label>
       <textarea
         name="8"
         class="form-control"
@@ -148,7 +133,6 @@
     </div>
 
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">단락 2</label>
       <textarea
         name="9"
         class="form-control"
@@ -158,7 +142,6 @@
     </div>
 
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">단락 3</label>
       <textarea
         name="10"
         class="form-control"
@@ -168,7 +151,6 @@
     </div>
 
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">단락 4</label>
       <textarea
         name="11"
         class="form-control"
@@ -177,7 +159,6 @@
       ></textarea>
     </div>
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">단락 5</label>
       <textarea
         name="12"
         class="form-control"
@@ -186,7 +167,6 @@
       ></textarea>
     </div>
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">단락 6</label>
       <textarea
         name="13"
         class="form-control"
@@ -195,7 +175,6 @@
       ></textarea>
     </div>
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">단락 7</label>
       <textarea
         name="14"
         class="form-control"
@@ -204,6 +183,16 @@
       ></textarea>
     </div>
 
+    <div class="input-group mb-3">
+
+
+      <div class="form-check ml-3" style="align-self:center">
+          <input class="form-check-input" type="checkbox" value="1" id="flexCheckChecked" name="inProduction">
+          <label class="form-check-label" for="inProduction">
+              In Production
+          </label>
+      </div>
+  </div>
     <div>
       <div class="center">
         <button type="submit" class="btn btn-success">Submit</button>

@@ -2,132 +2,127 @@
 
 
     <div class="editor__TopBar">
-        <h4>Work - 새로운 항목</h4>
-        <p>비디오 사용할 때 IMTV 유튜브 imtvwebvideos@gmail.com으로 사용해 주세요.
-            URL을 복사하여 양식에 입력하십시오.
-        </p>
-        <p>이미지를 사용할 때 PNG, JPG 또는 JPEG만 사용하세요.</p>
+        <h4>Add Work</h4>
+        
+    <p>Please do not use speech marks ("" or '') while submitting text.</p>
     </div>
 
     <div class="form__Container">
         <form action="/workForm" method="post" class="form" enctype="multipart/form-data">
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">한국어 주요 제목</span>
+                <span class="input-group-text" id="basic-addon1">KR Title</span>
                 </div>
-                <input type="text" class="form-control" placeholder="제목을 입력" id="titleKR"  aria-label="titleKR" aria-describedby="basic-addon1" name="titleKR" >
+                <input type="text" class="form-control" id="titleKR"  aria-label="titleKR" aria-describedby="basic-addon1" name="titleKR" >
             </div>
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">한국어 설명</span>
+                <span class="input-group-text" id="basic-addon1">KR Description</span>
                 </div>
-                <input type="text" class="form-control" placeholder="설명을 입력" id="descriptionKR"  aria-label="descriptionKR" aria-describedby="basic-addon1" name="descriptionKR" >
+                <input type="text" class="form-control"  id="descriptionKR"  aria-label="descriptionKR" aria-describedby="basic-addon1" name="descriptionKR" >
             </div>
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">채널</span>
+                <span class="input-group-text" id="basic-addon1">Channels</span>
                 </div>
-                <input type="text" class="form-control" placeholder="채널을 입력" id="channels"  aria-label="channels" aria-describedby="basic-addon1" name="channels" >
+                <input type="text" class="form-control" placeholder="" id="channels"  aria-label="channels" aria-describedby="basic-addon1" name="channels" >
             </div>
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">출시일</span>
+                <span class="input-group-text" id="basic-addon1">Release Date</span>
                 </div>
-                <input type="text" class="form-control" placeholder="출시일 입력" id="releaseDate"  aria-label="releaseDate" aria-describedby="basic-addon1" name="releaseDate" >
+                <input type="text" class="form-control"  id="releaseDate"  aria-label="releaseDate" aria-describedby="basic-addon1" name="releaseDate" >
             </div>
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">감독</span>
+                <span class="input-group-text" id="basic-addon1">KR Producer</span>
                 </div>
-                <input type="text" class="form-control" placeholder="감독을 입력" id="producerKR"  aria-label="producerKR" aria-describedby="basic-addon1" name="producerKR" >
+                <input type="text" class="form-control" " id="producerKR"  aria-label="producerKR" aria-describedby="basic-addon1" name="producerKR" >
             </div>
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">작가</span>
+                <span class="input-group-text" id="basic-addon1">KR Writer </span>
                 </div>
-                <input type="text" class="form-control" placeholder="작가를 입력" id="writerKR"  aria-label="writerKR" aria-describedby="basic-addon1" name="writerKR" >
+                <input type="text" class="form-control" id="writerKR"  aria-label="writerKR" aria-describedby="basic-addon1" name="writerKR" >
             </div>
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">배우</span>
+                <span class="input-group-text" id="basic-addon1">KR Starring</span>
                 </div>
-                <input type="text" class="form-control" placeholder="배우를 입력" id="starringKR"  aria-label="starringKR" aria-describedby="basic-addon1" name="starringKR" >
+                <input type="text" class="form-control" id="starringKR"  aria-label="starringKR" aria-describedby="basic-addon1" name="starringKR" >
             </div>
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">영어 주요 제목</span>
+                <span class="input-group-text" id="basic-addon1">ENG Title</span>
                 </div>
-                <input type="text" class="form-control" placeholder="영어로 제목을 입력" id="titleENG"  aria-label="titleENG" aria-describedby="basic-addon1" name="titleENG" >
+                <input type="text" class="form-control" id="titleENG"  aria-label="titleENG" aria-describedby="basic-addon1" name="titleENG" >
             </div>
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">영어 설명</span>
+                <span class="input-group-text" id="basic-addon1">ENG Description</span>
                 </div>
-                <input type="text" class="form-control" placeholder="영어로 설명을 입력" id="descriptionENG"  aria-label="descriptionENG" aria-describedby="basic-addon1" name="descriptionENG" >
+                <input type="text" class="form-control"  id="descriptionENG"  aria-label="descriptionENG" aria-describedby="basic-addon1" name="descriptionENG" >
             </div>
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">영어 감독</span>
+                <span class="input-group-text" id="basic-addon1">ENG Producer</span>
                 </div>
-                <input type="text" class="form-control" placeholder="영어로 감독을 입력" id="producerENG"  aria-label="producerENG" aria-describedby="basic-addon1" name="producerENG" >
+                <input type="text" class="form-control" id="producerENG"  aria-label="producerENG" aria-describedby="basic-addon1" name="producerENG" >
             </div>
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">영어 작가</span>
+                <span class="input-group-text" id="basic-addon1">ENG Writer</span>
                 </div>
-                <input type="text" class="form-control" placeholder="영어로 작가를 입력" id="writerENG"  aria-label="writerENG" aria-describedby="basic-addon1" name="writerENG" >
+                <input type="text" class="form-control" id="writerENG"  aria-label="writerENG" aria-describedby="basic-addon1" name="writerENG" >
             </div>
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">영어 배우</span>
+                <span class="input-group-text" id="basic-addon1">ENG Starring</span>
                 </div>
-                <input type="text" class="form-control" placeholder="영어로 배우를 입력" id="starringENG"  aria-label="starringENG" aria-describedby="basic-addon1" name="starringENG" >
+                <input type="text" class="form-control" id="starringENG"  aria-label="starringENG" aria-describedby="basic-addon1" name="starringENG" >
             </div>
 
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">비디오 예고편 (유튜브 링크)</span>
+                <span class="input-group-text" id="basic-addon1">Main Video Link</span>
                 </div>
-                <input type="text" class="form-control" placeholder="링크를 입력" id="fullVid"  aria-label="fullVid" aria-describedby="basic-addon1" name="fullVid" >
+                <input type="text" class="form-control"  id="fullVid"  aria-label="fullVid" aria-describedby="basic-addon1" name="fullVid" >
             </div>
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">10초 비디오 클립 (유튜브 링크)</span>
+                <span class="input-group-text" id="basic-addon1">Carousel Video Link (Optional)</span>
                 </div>
-                <input type="text" class="form-control" placeholder="링크를 입력" id="clipVid"  aria-label="clipVid" aria-describedby="basic-addon1" name="clipVid" >
+                <input type="text" class="form-control" id="clipVid"  aria-label="clipVid" aria-describedby="basic-addon1" name="clipVid" >
             </div>
 
 
 
             <div class="mb-3 mt-3">
-                <label for="formFile" class="form-label">세로 이미지 업로드</label>
-                <input class="form-control" type="file" id="formFile" name="imageTall" >
+                <label for="formFile" class="form-label">Tall Image File</label>
+                <input class="form-control" type="file" id="formFile" name="imageTall" required>
             <div>   
 
                 
             <div class="mb-3 mt-3">
-                <label for="formFile" class="form-label">가로 이미지 업로드</label>
-                <input class="form-control" type="file" id="formFile" name="image" >
+                <label for="formFile" class="form-label">Wide Image File</label>
+                <input class="form-control" type="file" id="formFile" name="image" required>
             </div>
 
             <div class="input-group mb-3">
 
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">프로덕션 중으로 설정하시겠습니까? 홈 섹션을 덮어씁니다.</span>
-                </div>
 
                 <div class="form-check ml-3" style="align-self:center">
                     <input class="form-check-input" type="checkbox" value="1" id="flexCheckChecked" name="inProduction">
@@ -139,25 +134,25 @@
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">한국어 두 번째 제목</span>
+                <span class="input-group-text" id="basic-addon1">In Production KR Sub Title </span>
                 </div>
-                <input type="text" class="form-control" placeholder="Subtitle for Production Section" id="subTitleKR"  aria-label="subTitleKR" aria-describedby="basic-addon1" name="subTitleKR">
+                <input type="text" class="form-control"  id="subTitleKR"  aria-label="subTitleKR" aria-describedby="basic-addon1" name="subTitleKR">
             </div>
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">영어 두 번째 제목</span>
+                <span class="input-group-text" id="basic-addon1">In Production ENG Sub Title</span>
                 </div>
-                <input type="text" class="form-control" placeholder="Subtitle for Production Section" id="subTitleENG"  aria-label="subTitleENG" aria-describedby="basic-addon1" name="subTitleENG">
+                <input type="text" class="form-control"  id="subTitleENG"  aria-label="subTitleENG" aria-describedby="basic-addon1" name="subTitleENG">
             </div>
 
             <div class="mb-3">            
-                <label for="fontColor" class="form-label">프로덕션 섹션 폰트 색상</label>
-                <input type="color" name="fontColor" class="form-control form-control-color" id="exampleColorInput" value="#FFFF" title="Font color">
+                <label for="color" class="form-label">In Production Font Color</label>
+                <input type="color" name="color" class="form-control form-control-color" id="exampleColorInput"  title="Font color">
             </div>
             <div>
-                <label for="backgroundColor" class="form-label">프로덕션 섹션 배경색</label>
-                <input type="color" name="backgroundColor" class="form-control form-control-color" id="exampleColorInput" value="#FFFF" title="Background color">
+                <label for="backgroundColor" class="form-label">In Production Background Color</label>
+                <input type="color" name="backgroundColor" class="form-control form-control-color" id="exampleColorInput"  title="Background color">
             </div>
             <div>  
                 <div class="center">

@@ -2,38 +2,38 @@
 
 
     <div class="editor__TopBar">
-        <h4>Work - 편집하다</h4>
-        <p>블로그를 만들 때 이미지를 설정해야 합니다. 이미지를 변경하려면 이 블로그를 삭제하고 다시 시작하세요.</p>
+        <h4>Edit Work</h4>
+
     </div>
 
     <div class="form__Container">
         <form action="/postUpdateWorkForm" method="post" class="form">
             <div class="mb-3 mt-3">
-                <p>가로 이미지</p>
+                <p>Wide Image</p>
                 <img class="workImageWide" src="<%= object.image %>" alt="<%= object.titleKR %>">
             </div>
             <div class="mb-3 mt-3">
-                <p>세로 이미지</p>
+                <p>Tall Image</p>
                 <img class="workImageTall" src="<%= object.imageTall %>" alt="<%= object.titleKR %>">
             <div>   
                 
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">한국어 주요 제목</span>
+                <span class="input-group-text" id="basic-addon1">KR Title</span>
                 </div>
-                <input type="text" class="form-control" placeholder="제목을 입력" id="titleKR"  aria-label="titleKR" aria-describedby="basic-addon1" name="titleKR" value = "<%= object.titleKR %>">
+                <input type="text" class="form-control" placeholder="Enter" id="titleKR"  aria-label="titleKR" aria-describedby="basic-addon1" name="titleKR" value = "<%= object.titleKR %>">
             </div>
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">출시일</span>
+                <span class="input-group-text" id="basic-addon1">Release Date</span>
                 </div>
-                <input type="text" class="form-control" placeholder="출시일 입력" id="releaseDate"  aria-label="releaseDate" aria-describedby="basic-addon1" name="releaseDate" >
+                <input type="text" class="form-control" placeholder="출시일 입력" id="releaseDate"  aria-label="releaseDate" aria-describedby="basic-addon1" name="releaseDate" value = "<%= object.releaseDate %>">
             </div>
 
             <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label"><span class="input-group-text" id="basic-addon1">한국어 설명</span></label>
+                <label for="exampleFormControlTextarea1" class="form-label"><span class="input-group-text" id="basic-addon1">KR Description</span></label>
                 <textarea
                   name="descriptionKR"
                   class="form-control"
@@ -46,42 +46,42 @@
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">채널</span>
+                <span class="input-group-text" id="basic-addon1">Channels</span>
                 </div>
                 <input type="text" class="form-control" placeholder="채널을 입력" id="channels"  aria-label="channels" aria-describedby="basic-addon1" name="channels" value = "<%= object.channels %>">
             </div>
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">감독</span>
+                <span class="input-group-text" id="basic-addon1">KR Producer</span>
                 </div>
                 <input type="text" class="form-control" id="producerKR"  aria-label="producerKR" aria-describedby="basic-addon1" name="producerKR" value = "<%= object.producerKR %>">
             </div>
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">작가</span>
+                <span class="input-group-text" id="basic-addon1">KR Writer</span>
                 </div>
-                <input type="text" class="form-control" placeholder="작가를 입력" id="writerKR"  aria-label="writerKR" aria-describedby="basic-addon1" name="writerKR" value = "<%= object.writerKR %>">
+                <input type="text" class="form-control" id="writerKR"  aria-label="writerKR" aria-describedby="basic-addon1" name="writerKR" value = "<%= object.writerKR %>">
             </div>
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">배우</span>
+                <span class="input-group-text" id="basic-addon1">KR Starring</span>
                 </div>
-                <input type="text" class="form-control" placeholder="배우를 입력" id="starringKR"  aria-label="starringKR" aria-describedby="basic-addon1" name="starringKR" value = "<%= object.starringKR %>">
+                <input type="text" class="form-control" id="starringKR"  aria-label="starringKR" aria-describedby="basic-addon1" name="starringKR" value = "<%= object.starringKR %>">
             </div>
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">영어 주요 제목</span>
+                <span class="input-group-text" id="basic-addon1">ENG Title</span>
                 </div>
-                <input type="text" class="form-control" placeholder="영어로 제목을 입력" id="titleENG"  aria-label="titleENG" aria-describedby="basic-addon1" name="titleENG" value="<%= object.titleENG %>">
+                <input type="text" class="form-control" id="titleENG"  aria-label="titleENG" aria-describedby="basic-addon1" name="titleENG" value="<%= object.titleENG %>">
             </div>
 
 
                 <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label"><span class="input-group-text" id="basic-addon1">영어 설명</span></label>
+                    <label for="exampleFormControlTextarea1" class="form-label"><span class="input-group-text" id="basic-addon1">ENG Description</span></label>
                     <textarea
                       name="descriptionENG"
                       class="form-control"
@@ -94,36 +94,36 @@
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">영어 감독</span>
+                <span class="input-group-text" id="basic-addon1">ENG Producer</span>
                 </div>
-                <input type="text" class="form-control" placeholder="영어로 감독을 입력" id="producerENG"  aria-label="producerENG" aria-describedby="basic-addon1" name="producerENG" value="<%= object.producerENG %>">
+                <input type="text" class="form-control" id="producerENG"  aria-label="producerENG" aria-describedby="basic-addon1" name="producerENG" value="<%= object.producerENG %>">
             </div>
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">영어 작가</span>
+                <span class="input-group-text" id="basic-addon1">ENG Writer</span>
                 </div>
-                <input type="text" class="form-control" placeholder="영어로 작가를 입력" id="writerENG"  aria-label="writerENG" aria-describedby="basic-addon1" name="writerENG" value="<%= object.writerENG %>">
+                <input type="text" class="form-control" id="writerENG"  aria-label="writerENG" aria-describedby="basic-addon1" name="writerENG" value="<%= object.writerENG %>">
             </div>
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">영어 배우</span>
+                <span class="input-group-text" id="basic-addon1">ENG Starring</span>
                 </div>
-                <input type="text" class="form-control" placeholder="영어로 배우를 입력" id="starringENG"  aria-label="starringENG" aria-describedby="basic-addon1" name="starringENG" value="<%= object.starringENG %>">
+                <input type="text" class="form-control"  id="starringENG"  aria-label="starringENG" aria-describedby="basic-addon1" name="starringENG" value="<%= object.starringENG %>">
             </div>
 
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">비디오 예고편 (유튜브 링크)</span>
+                <span class="input-group-text" id="basic-addon1">Main Video Link</span>
                 </div>
                 <input type="text" class="form-control" placeholder="링크를 입력" id="fullVid"  aria-label="fullVid" aria-describedby="basic-addon1" name="fullVid" value="<%= object.fullVid %>">
             </div>
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">10초 비디오 클립 (유튜브 링크)</span>
+                <span class="input-group-text" id="basic-addon1">Carousel Video Link (Optional)</span>
                 </div>
                 <input type="text" class="form-control" placeholder="링크를 입력" id="clipVid"  aria-label="clipVid" aria-describedby="basic-addon1" name="clipVid" value="<%= object.clipVid %>">
             </div>
@@ -131,52 +131,49 @@
 
                 <div class="input-group mb-3">
 
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1">프로덕션 중으로 설정하시겠습니까? 홈 섹션을 덮어씁니다.</span>
-                    </div>
     
                     <div class="form-check" style="align-self:center">
 
-                        <p>Current: <%= object.inProduction === "1" ? "생산 중" : "생산 중이 아님"%></p>
+                        <p>In Production: <%= object.inProduction === "1" ? "Set" : "Not Set"%></p>
 
                         <input class="form-check-input ml-2" type="checkbox" value="1" id="flexCheckChecked" name="inProduction">
                         <label class="form-check-label ml-5" for="inProduction">
-                            In Production
+                            Set In Production
                         </label>
                     </div>
                 </div>
     
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">홈 프로덕션 섹션  한국어 두 번째 제목</span>
+                    <span class="input-group-text" id="basic-addon1">In Production KR Sub Title</span>
                     </div>
-                    <input type="text" class="form-control" placeholder="프로덕션 섹션 자막" id="subTitleKR"  aria-label="subTitleKR" aria-describedby="basic-addon1" name="subTitleKR" value=" <%= object.subTitleKR %>">
+                    <input type="text" class="form-control"  id="subTitleKR"  aria-label="subTitleKR" aria-describedby="basic-addon1" name="subTitleKR" value=" <%= object.subTitleKR %>">
                 </div>
     
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">홈 프로덕션 섹션  영어 두 번째 제목</span>
+                    <span class="input-group-text" id="basic-addon1">In Production ENG Sub Title</span>
                     </div>
-                    <input type="text" class="form-control" placeholder="프로덕션 섹션 영어 자막" id="subTitleENG"  aria-label="subTitleENG" aria-describedby="basic-addon1" name="subTitleENG" value=" <%= object.subTitleENG %>">
+                    <input type="text" class="form-control"  id="subTitleENG"  aria-label="subTitleENG" aria-describedby="basic-addon1" name="subTitleENG" value=" <%= object.subTitleENG %>">
                 </div>
     
 
             </div>
             <div class="mb-3">   
-                <p> 현재 글꼴 색상: <%= object.color %></p>
-                <a href="https://g.co/kgs/YEKmXF/">View Color</a> 
-                <label for="fontColor" class="form-label">홈 프로덕션 섹션  폰트 색상</label>
-                <input type="color" name="fontColor" class="form-control form-control-color" id="exampleColorInput" value=" <%= object.color %>" title="Font color">
+                <p> Current Font Color: <%= object.color %></p>
+                <label for="color" class="form-label">New Font Color</label>
+                <input type="text" name="color" class="form-control form-control-color" id="exampleColorInput" value="<%= object.color %>" title="Font color" required>
             </div>
-            <div>
-                <p> 현재 배경색: <%= object.backgroundColor %></p>
-                <a href="https://g.co/kgs/YEKmXF/"></a>
-                <label for="backgroundColor" class="form-label">홈 프로덕션 섹션 배경색</label>
-                <input type="color" name="backgroundColor" class="form-control form-control-color" id="exampleColorInput" title="Background color">
+            <div class="mb-3">
+                <p> Current Background Color: <%= object.backgroundColor %></p>
+                <label for="backgroundColor" class="form-label">New Background Color</label>
+                <input type="text" name="backgroundColor" class="form-control form-control-color" id="exampleColorInput" title="Background color" value=" <%= object.backgroundColor %>">
             </div>
-            <div>  
+
+            <div>   
                 <div class="center">
-                    <input type="hidden" name="id" id="newsId" value="<%= object.id %>">
+                    <input type="hidden" name="id"  value="<%= object.id %>">
+                    <input type="hidden" name="orderID" value="<%= object.orderID %>">
                     <button type="submit" class="btn btn-success">Submit</button>
                     <a class="btn btn-danger" href="/work">Cancel</a>
                 </div>

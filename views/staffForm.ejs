@@ -1,20 +1,18 @@
 <%- include('includes/header.ejs') %>
 
 <div class="editor__TopBar">
-  <h4>Staff - 편집하다</h4>
-  <p>'~' 문자이나 " " 문자이를 사용하지 마십시오.</p>
+  <h4>Add Staff</h4>
 </div>
 
 <div class="form__Container">
   <form action="/staffForm" method="post" class="form">
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text" id="basic-addon1">한국어 주요 제목</span>
+        <span class="input-group-text" id="basic-addon1">KR Title</span>
       </div>
       <input
         type="text"
         class="form-control"
-        placeholder="제목을 입력"
         id="titleKR"
         aria-label="titleKR"
         aria-describedby="basic-addon1"
@@ -24,12 +22,11 @@
 
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text" id="basic-addon1">영어 주요 제목</span>
+        <span class="input-group-text" id="basic-addon1">ENG Title</span>
       </div>
       <input
         type="text"
         class="form-control"
-        placeholder="영어로 제목을 입력"
         id="titleENG"
         aria-label="titleENG"
         aria-describedby="basic-addon1"
@@ -39,12 +36,11 @@
 
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text" id="basic-addon1">한국어 이름</span>
+        <span class="input-group-text" id="basic-addon1">KR Name</span>
       </div>
       <input
         type="text"
         class="form-control"
-        placeholder="한국어 이름 입력"
         id="nameKR"
         aria-label="nameKR"
         aria-describedby="basic-addon1"
@@ -54,12 +50,11 @@
 
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text" id="basic-addon1">영어 이름</span>
+        <span class="input-group-text" id="basic-addon1">ENG Name</span>
       </div>
       <input
         type="text"
         class="form-control"
-        placeholder="영어 이름 입력"
         id="nameENG"
         aria-label="nameENG"
         aria-describedby="basic-addon1"
@@ -68,209 +63,183 @@
     </div>
 
     <div class="center__Column">
-      <h4>한국어 이력서</h4>
-      <p>이력서를 한국어로 써주세요.</p>
+      <h4>KR Resume</h4>
     </div>
 
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">단락 1</label>
       <textarea
         name="1"
-        class="form-control"
+        class="form-control p-3"
         id="exampleFormControlTextarea1"
-        rows="2"
+        rows="3"
         required
       ></textarea>
     </div>
 
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">단락 2</label>
       <textarea
         name="2"
-        class="form-control"
+        class="form-control p-3"
         id="exampleFormControlTextarea1"
-        rows="2"
+        rows="3"
       ></textarea>
     </div>
 
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">단락 3</label>
       <textarea
         name="3"
-        class="form-control"
+        class="form-control p-3"
         id="exampleFormControlTextarea1"
-        rows="2"
+        rows="3"
       ></textarea>
     </div>
 
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">단락 4</label>
       <textarea
         name="4"
-        class="form-control"
+        class="form-control p-3"
         id="exampleFormControlTextarea1"
-        rows="2"
+        rows="3"
       ></textarea>
     </div>
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">단락 5</label>
       <textarea
         name="5"
-        class="form-control"
+        class="form-control p-3"
         id="exampleFormControlTextarea1"
-        rows="2"
+        rows="3"
       ></textarea>
     </div>
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">단락 6</label>
       <textarea
         name="6"
-        class="form-control"
+        class="form-control p-3"
         id="exampleFormControlTextarea1"
-        rows="2"
+        rows="3"
       ></textarea>
     </div>
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">단락 7</label>
       <textarea
         name="7"
-        class="form-control"
+        class="form-control p-3"
         id="exampleFormControlTextarea1"
-        rows="2"
+        rows="3"
       ></textarea>
     </div>
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">단락 8</label>
       <textarea
         name="8"
-        class="form-control"
+        class="form-control p-3"
         id="exampleFormControlTextarea1"
-        rows="2"
+        rows="3"
       ></textarea>
     </div>
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">단락 9</label>
       <textarea
         name="9"
-        class="form-control"
+        class="form-control p-3"
         id="exampleFormControlTextarea1"
-        rows="2"
+        rows="3"
       ></textarea>
     </div>
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label"
-        >단락 10</label
-      >
       <textarea
         name="10"
-        class="form-control"
+        class="form-control p-3"
         id="exampleFormControlTextarea1"
-        rows="2"
+        rows="3"
       ></textarea>
     </div>
 
     <div class="center__Column">
-      <h4>영어 이력서</h4>
-      <p>이력서를 영어로 써주세요.</p>
+      <h4>ENG Resume</h4>
     </div>
 
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">단락 1</label>
       <textarea
         name="11"
-        class="form-control"
+        class="form-control p-3"
         id="exampleFormControlTextarea1"
-        rows="2"
+        rows="3"
         required
       ></textarea>
     </div>
 
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">단락 2</label>
       <textarea
         name="12"
-        class="form-control"
+        class="form-control p-3"
         id="exampleFormControlTextarea1"
-        rows="2"
+        rows="3"
       ></textarea>
     </div>
 
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">단락 3</label>
       <textarea
         name="13"
-        class="form-control"
+        class="form-control p-3"
         id="exampleFormControlTextarea1"
-        rows="2"
+        rows="3"
       ></textarea>
     </div>
 
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">단락 4</label>
       <textarea
         name="14"
-        class="form-control"
+        class="form-control p-3"
         id="exampleFormControlTextarea1"
-        rows="2"
+        rows="3"
       ></textarea>
     </div>
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">단락 5</label>
       <textarea
         name="15"
-        class="form-control"
+        class="form-control p-3"
         id="exampleFormControlTextarea1"
-        rows="2"
+        rows="3"
       ></textarea>
     </div>
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">단락 6</label>
       <textarea
         name="16"
-        class="form-control"
+        class="form-control p-3"
         id="exampleFormControlTextarea1"
-        rows="2"
+        rows="3"
       ></textarea>
     </div>
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">단락 7</label>
       <textarea
         name="17"
-        class="form-control"
+        class="form-control p-3"
         id="exampleFormControlTextarea1"
-        rows="2"
+        rows="3"
       ></textarea>
     </div>
 
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">단락 8</label>
       <textarea
         name="18"
-        class="form-control"
+        class="form-control pb-3"
         id="exampleFormControlTextarea1"
-        rows="2"
+        rows="3"
       ></textarea>
     </div>
 
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">단락 9</label>
       <textarea
         name="19"
-        class="form-control"
+        class="form-control p-3"
         id="exampleFormControlTextarea1"
-        rows="2"
+        rows="3"
       ></textarea>
     </div>
 
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label"
-        >단락 10</label
-      >
       <textarea
         name="20"
-        class="form-control"
+        class="form-control p-3"
         id="exampleFormControlTextarea1"
-        rows="2"
+        rows="3"
       ></textarea>
     </div>
 

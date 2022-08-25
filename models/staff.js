@@ -26,10 +26,27 @@ exports.getStaffItem = async (id) => {
         titleENG: text.staffItem[0].titleENG,
         nameKR: text.staffItem[0].nameKR,
         nameENG: text.staffItem[0].nameENG,
-        infoKR: text.staffItem[0].infoKR.split("~"),
-        infoENG: text.staffItem[0].infoENG.split("~"),
+        infoKR1: text.staffItem[0].infoKR1,
+        infoKR2: text.staffItem[0].infoKR2,
+        infoKR3: text.staffItem[0].infoKR3,
+        infoKR4: text.staffItem[0].infoKR4,
+        infoKR5: text.staffItem[0].infoKR5,
+        infoKR6: text.staffItem[0].infoKR6,
+        infoKR7: text.staffItem[0].infoKR7,
+        infoKR8: text.staffItem[0].infoKR8,
+        infoKR9: text.staffItem[0].infoKR9,
+        infoKR10: text.staffItem[0].infoKR10,
+        infoENG1: text.staffItem[0].infoENG1,
+        infoENG2: text.staffItem[0].infoENG2,
+        infoENG3: text.staffItem[0].infoENG3,
+        infoENG4: text.staffItem[0].infoENG4,
+        infoENG5: text.staffItem[0].infoENG5,
+        infoENG6: text.staffItem[0].infoENG6,
+        infoENG7: text.staffItem[0].infoENG7,
+        infoENG8: text.staffItem[0].infoENG8,
+        infoENG9: text.staffItem[0].infoENG9,
+        infoENG10: text.staffItem[0].infoENG10,
       };
-      console.log(staffItem);
       return staffItem;
     } else {
       staffItem = null;
@@ -41,8 +58,6 @@ exports.getStaffItem = async (id) => {
 
 exports.postStaff = async (req, res, url, format) => {
   let staffObject = {};
-  let staffInfoKR = [];
-  let staffInfoENG = [];
 
   if (format === "update") {
     staffObject.id = req.body.id;
@@ -52,13 +67,8 @@ exports.postStaff = async (req, res, url, format) => {
     staffObject.nameENG = req.body.nameENG;
 
     for (let i = 1; i <= 20; i++) {
-      i <= 10
-        ? staffInfoKR.push("~" + req.body[i])
-        : staffInfoENG.push("~" + req.body[i]);
+      staffObject[i] = req.body[i];
     }
-
-    staffObject.infoKR = staffInfoKR.join();
-    staffObject.infoENG = staffInfoENG.join();
   } else if (format === "post") {
     staffObject.titleKR = req.body.titleKR;
     staffObject.titleENG = req.body.titleENG;
@@ -66,12 +76,8 @@ exports.postStaff = async (req, res, url, format) => {
     staffObject.nameENG = req.body.nameENG;
 
     for (let i = 1; i <= 20; i++) {
-      i <= 10
-        ? staffInfoKR.push("~" + req.body[i])
-        : staffInfoENG.push("~" + req.body[i]);
+      staffObject[i] = req.body[i];
     }
-    staffObject.infoKR = staffInfoKR.join();
-    staffObject.infoENG = staffInfoENG.join();
   }
   if (staffObject) {
     const res = await superagent
@@ -82,14 +88,12 @@ exports.postStaff = async (req, res, url, format) => {
   }
 };
 
-exports.resetStaffOrder = async () => {
-  await superagent.get("http://localhost:8080/resetstafforder/");
-};
-
-exports.staffDirection = async (idObject, url) => {
-  if (idObject) {
+exports.deleteStaff = async (id) => {
+  let idObject = {};
+  id ? (idObject.id = id) : (idObject.id = null);
+  if (idObject.id) {
     const res = await superagent
-      .post(url)
+      .post("http://localhost:8080/deletestaff/")
       .send(idObject)
       .set("accept", "json")
       .end();

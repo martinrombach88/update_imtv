@@ -41,6 +41,7 @@ exports.getWorkItem = async (id) => {
         color: text.workItem[0].color,
         backgroundColor: text.workItem[0].backgroundColor,
         inProduction: text.workItem[0].inProduction,
+        orderID: text.workItem[0].orderID,
       };
 
       return workItem;
@@ -79,20 +80,22 @@ exports.postWork = async (req, res, url, format) => {
     req.body.subTitleENG
       ? (workObject.subTitleENG = req.body.subTitleENG)
       : (workObject.subTitleENG = "");
-    req.body.fontColor
-      ? (workObject.fontColor = req.body.fontColor)
-      : (workObject.fontColor = "");
+    req.body.color
+      ? (workObject.color = req.body.color)
+      : (workObject.color = "");
     req.body.backgroundColor
       ? (workObject.backgroundColor = req.body.backgroundColor)
       : (workObject.backgroundColor = "");
     req.files.imageTall
       ? (workObject.imageTall =
+          "./" +
           req.files.imageTall[0].destination.slice(7) +
           "/" +
           req.files.imageTall[0].originalname)
       : (workObject = null);
     req.files.image
       ? (workObject.image =
+          "./" +
           req.files.image[0].destination.slice(7) +
           "/" +
           req.files.image[0].originalname)
@@ -122,15 +125,17 @@ exports.postWork = async (req, res, url, format) => {
     req.body.subTitleENG
       ? (workObject.subTitleENG = req.body.subTitleENG)
       : (workObject.subTitleENG = "");
-    req.body.fontColor
-      ? (workObject.fontColor = req.body.fontColor)
-      : (workObject.fontColor = "");
+    req.body.color
+      ? (workObject.color = req.body.color)
+      : (workObject.color = "");
     req.body.backgroundColor
       ? (workObject.backgroundColor = req.body.backgroundColor)
       : (workObject.backgroundColor = "");
+    req.body.orderID
+      ? (workObject.orderID = req.body.orderID)
+      : (workObject.orderID = "");
   }
   if (workObject) {
-    console.log(workObject);
     const res = await superagent
       .post(url)
       .send(workObject)

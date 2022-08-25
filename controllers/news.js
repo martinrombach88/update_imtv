@@ -31,7 +31,7 @@ exports.getNews = async (req, res) => {
   const response = await newsModel.getNews();
   res.render("news", {
     path: "/news",
-    pageTitle: "Update News",
+    pageTitle: "News",
     object: response,
   });
 };
@@ -39,7 +39,7 @@ exports.getNews = async (req, res) => {
 exports.getNewsForm = (req, res) => {
   res.render("newsForm", {
     path: "/newsForm",
-    pageTitle: "Update News",
+    pageTitle: "Add News",
   });
 };
 
@@ -47,14 +47,14 @@ exports.getUpdateNewsForm = async (req, res) => {
   const response = await newsModel.getNewsItem(req.body.id);
   res.render("updateNewsForm", {
     path: "/updateNewsForm",
-    pageTitle: "Update News Form",
+    pageTitle: "Edit News",
     object: response,
   });
 };
 
 exports.postUpdateNewsForm = async (req, res) => {
   newsModel.sendNews(req, res, "http://localhost:8080/updatenews/", "update");
-  res.redirect("/news");
+  res.redirect("/newsListUpdate");
 };
 
 exports.addNewsForm = async (req, res) => {
@@ -63,7 +63,7 @@ exports.addNewsForm = async (req, res) => {
       res.render(JSON.stringify(err));
     } else {
       newsModel.sendNews(req, res, "http://localhost:8080/addnews/", "add");
-      res.redirect("/news");
+      res.redirect("/newsListUpdate");
     }
   });
 };
@@ -77,5 +77,12 @@ exports.get400 = (req, res, next) => {
 
 exports.deleteNewsForm = async (req, res) => {
   newsModel.deleteNews(req.body.id);
-  res.redirect("/news");
+  res.redirect("/newsListUpdate");
+};
+
+exports.newsListUpdate = async (req, res) => {
+  res.render("newsListUpdate", {
+    path: "/newsListUpdate",
+    pageTitle: "List Updated",
+  });
 };

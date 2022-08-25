@@ -1,7 +1,6 @@
 const express = require("express");
 const http = require("http");
 const superagent = require("superagent");
-const alert = require("node-popup");
 
 exports.getNews = async () => {
   try {
@@ -12,8 +11,20 @@ exports.getNews = async () => {
       for (let item of text.newsItems) {
         let newItem = {
           id: item.id,
-          bodyKR: item.bodyKR.split("~"),
-          bodyENG: item.bodyENG.split("~"),
+          bodyKR1: item.bodyKR1 ? item.bodyKR1 : "",
+          bodyKR2: item.bodyKR2 ? item.bodyKR2 : "",
+          bodyKR3: item.bodyKR3 ? item.bodyKR3 : "",
+          bodyKR4: item.bodyKR4 ? item.bodyKR4 : "",
+          bodyKR5: item.bodyKR5 ? item.bodyKR5 : "",
+          bodyKR6: item.bodyKR6 ? item.bodyKR6 : "",
+          bodyKR7: item.bodyKR7 ? item.bodyKR7 : "",
+          bodyENG1: item.bodyENG1 ? item.bodyENG1 : "",
+          bodyENG2: item.bodyENG2 ? item.bodyENG2 : "",
+          bodyENG3: item.bodyENG3 ? item.bodyENG3 : "",
+          bodyENG4: item.bodyENG4 ? item.bodyENG4 : "",
+          bodyENG5: item.bodyENG5 ? item.bodyENG5 : "",
+          bodyENG6: item.bodyENG6 ? item.bodyENG6 : "",
+          bodyENG7: item.bodyENG7 ? item.bodyENG7 : "",
           dateENG: item.dateENG,
           dateKR: item.dateKR,
           image: item.image,
@@ -40,8 +51,20 @@ exports.getNewsItem = async (id) => {
     if (text.newsItem) {
       newsItem = {
         id: text.newsItem[0].id,
-        bodyKR: text.newsItem[0].bodyKR.split("~"),
-        bodyENG: text.newsItem[0].bodyENG.split("~"),
+        bodyKR1: text.newsItem[0].bodyKR1,
+        bodyKR2: text.newsItem[0].bodyKR2,
+        bodyKR3: text.newsItem[0].bodyKR3,
+        bodyKR4: text.newsItem[0].bodyKR4,
+        bodyKR5: text.newsItem[0].bodyKR5,
+        bodyKR6: text.newsItem[0].bodyKR6,
+        bodyKR7: text.newsItem[0].bodyKR7,
+        bodyENG1: text.newsItem[0].bodyENG1,
+        bodyENG2: text.newsItem[0].bodyENG2,
+        bodyENG3: text.newsItem[0].bodyENG3,
+        bodyENG4: text.newsItem[0].bodyENG4,
+        bodyENG5: text.newsItem[0].bodyENG5,
+        bodyENG6: text.newsItem[0].bodyENG6,
+        bodyENG7: text.newsItem[0].bodyENG7,
         dateENG: text.newsItem[0].dateENG,
         dateKR: text.newsItem[0].dateKR,
         image: text.newsItem[0].image,
@@ -76,24 +99,19 @@ exports.sendNews = async (req, res, url, format) => {
     newsObject.dateKR = dateKR;
     newsObject.dateENG = dateENG;
     for (let i = 1; i <= 14; i++) {
-      i <= 7
-        ? newsBodyKR.push("~" + req.body[i])
-        : newsBodyENG.push("~" + req.body[i]);
+      i <= 7 ? (newsObject[i] = req.body[i]) : (newsObject[i] = req.body[i]);
     }
-    newsObject.bodyKR = newsBodyKR.join();
-    newsObject.bodyENG = newsBodyENG.join();
+    req.body.inProduction
+      ? (newsObject.inProduction = req.body.inProduction)
+      : (newsObject.inProduction = "0");
   } else if (format === "add") {
     newsObject.titleKR = req.body.titleKR;
     newsObject.titleENG = req.body.titleENG;
     newsObject.dateKR = dateKR;
     newsObject.dateENG = dateENG;
     for (let i = 1; i <= 14; i++) {
-      i <= 7
-        ? newsBodyKR.push("~" + req.body[i])
-        : newsBodyENG.push("~" + req.body[i]);
+      i <= 7 ? (newsObject[i] = req.body[i]) : (newsObject[i] = req.body[i]);
     }
-    newsObject.bodyKR = newsBodyKR.join();
-    newsObject.bodyENG = newsBodyENG.join();
     req.files.imageLarge
       ? (newsObject.imageLarge =
           req.files.imageLarge[0].destination.slice(7) +
@@ -105,7 +123,10 @@ exports.sendNews = async (req, res, url, format) => {
           req.files.image[0].destination.slice(7) +
           "/" +
           req.files.image[0].originalname)
-      : (newsObject = null);
+      : "''";
+    req.body.inProduction
+      ? (newsObject.inProduction = req.body.inProduction)
+      : (newsObject.inProduction = "0");
   } else {
     newsObject = null;
   }
