@@ -85,11 +85,21 @@ exports.deleteWorkForm = async (req, res) => {
 };
 
 exports.workDirectionUp = async (req, res) => {
-  workModel.workDirection(req.body, "http://localhost:8080/workdirectionup/");
+  const response = await workModel.getWork();
+  workModel.workDirection(
+    req.body,
+    response,
+    "http://localhost:8080/workdirectionup/"
+  );
   res.redirect("/workListUpdate");
 };
 
 exports.workDirectionDown = async (req, res) => {
-  workModel.workDirection(req.body, "http://localhost:8080/workdirectiondown/");
+  const response = await workModel.getWork();
+  workModel.workDirection(
+    req.body,
+    response,
+    "http://localhost:8080/workdirectiondown/"
+  );
   res.redirect("/workListUpdate");
 };

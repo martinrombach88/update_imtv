@@ -156,11 +156,16 @@ exports.deleteWork = async (id) => {
   }
 };
 
-exports.workDirection = async (idObject, url) => {
-  if (idObject) {
+exports.workDirection = async (idObject, fullObject, url) => {
+  if ((idObject, fullObject)) {
+    let object = {
+      idObject: idObject,
+      fullObject: fullObject,
+    };
+
     const res = await superagent
       .post(url)
-      .send(idObject)
+      .send(object)
       .set("accept", "json")
       .end();
   }
