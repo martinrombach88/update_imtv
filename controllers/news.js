@@ -1,14 +1,6 @@
 const newsModel = require("../models/news.js");
 const multer = require("multer");
-
-const fileStorage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "public/assets/images/news");
-  },
-  filename: (req, file, cb) => {
-    cb(null, file.originalname);
-  },
-});
+const ImgurStorage = require("multer-storage-imgur");
 
 const fileFilter = (req, file, cb) => {
   if (
@@ -22,10 +14,10 @@ const fileFilter = (req, file, cb) => {
   }
 };
 
-const upload = multer({ storage: fileStorage, fileFilter: fileFilter }).fields([
-  { name: "imageLarge" },
-  { name: "image" },
-]);
+const upload = multer({
+  storage: ImgurStorage({ clientId: "d8cadc7650a9991" }),
+  fileFilter: fileFilter,
+}).fields([{ name: "imageLarge" }, { name: "image" }]);
 
 exports.getNews = async (req, res) => {
   const response = await newsModel.getNews();

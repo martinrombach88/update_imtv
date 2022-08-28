@@ -87,19 +87,9 @@ exports.postWork = async (req, res, url, format) => {
       ? (workObject.backgroundColor = req.body.backgroundColor)
       : (workObject.backgroundColor = "");
     req.files.imageTall
-      ? (workObject.imageTall =
-          "./" +
-          req.files.imageTall[0].destination.slice(7) +
-          "/" +
-          req.files.imageTall[0].originalname)
-      : (workObject = null);
-    req.files.image
-      ? (workObject.image =
-          "./" +
-          req.files.image[0].destination.slice(7) +
-          "/" +
-          req.files.image[0].originalname)
-      : (workObject = null);
+      ? (workObject.imageTall = req.files.imageTall[0].link)
+      : null;
+    req.files.image ? (workObject.image = req.files.image[0].link) : null;
   } else if (format === "update") {
     workObject.id = req.body.id;
     workObject.titleKR = req.body.titleKR;

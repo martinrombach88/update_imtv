@@ -113,17 +113,9 @@ exports.sendNews = async (req, res, url, format) => {
       i <= 7 ? (newsObject[i] = req.body[i]) : (newsObject[i] = req.body[i]);
     }
     req.files.imageLarge
-      ? (newsObject.imageLarge =
-          req.files.imageLarge[0].destination.slice(7) +
-          "/" +
-          req.files.imageLarge[0].originalname)
-      : (newsObject = null);
-    req.files.image
-      ? (newsObject.image =
-          req.files.image[0].destination.slice(7) +
-          "/" +
-          req.files.image[0].originalname)
+      ? (newsObject.imageLarge = req.files.imageLarge[0].link)
       : "''";
+    req.files.image ? (newsObject.image = req.files.image[0].link) : "''";
     req.body.inProduction
       ? (newsObject.inProduction = req.body.inProduction)
       : (newsObject.inProduction = "0");

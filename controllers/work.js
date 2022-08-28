@@ -1,14 +1,6 @@
 const workModel = require("../models/work.js");
 const multer = require("multer");
-
-const fileStorage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "public/assets/images/work");
-  },
-  filename: (req, file, cb) => {
-    cb(null, file.originalname);
-  },
-});
+const ImgurStorage = require("multer-storage-imgur");
 
 const fileFilter = (req, file, cb) => {
   if (
@@ -22,10 +14,10 @@ const fileFilter = (req, file, cb) => {
   }
 };
 
-const upload = multer({ storage: fileStorage, fileFilter: fileFilter }).fields([
-  { name: "imageTall" },
-  { name: "image" },
-]);
+const upload = multer({
+  storage: ImgurStorage({ clientId: "d8cadc7650a9991" }),
+  fileFilter: fileFilter,
+}).fields([{ name: "imageTall" }, { name: "image" }]);
 
 exports.getWork = async (req, res) => {
   const response = await workModel.getWork();
