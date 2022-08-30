@@ -22,7 +22,7 @@ const upload = multer({
 exports.getWork = async (req, res) => {
   const response = await workModel.getWork();
   res.render("work", {
-    path: "/work",
+    path: "/update_imtv/work",
     pageTitle: "Work",
     object: response,
   });
@@ -30,7 +30,7 @@ exports.getWork = async (req, res) => {
 
 exports.getWorkForm = (req, res) => {
   res.render("workForm", {
-    path: "/workForm",
+    path: "/update_imtv/workForm",
     pageTitle: "Work",
   });
 };
@@ -40,20 +40,25 @@ exports.postWorkForm = async (req, res) => {
     if (err) {
       res.render(JSON.stringify(err));
     } else {
-      workModel.postWork(req, res, "http://localhost:8080/postWork/", "add");
-      res.redirect("/workListUpdate");
+      workModel.postWork(
+        req,
+        res,
+        "https://imtv-api.herokuapp.com/postWork/",
+        "add"
+      );
+      res.redirect("/update_imtv/workListUpdate");
     }
   });
 };
 exports.resetWorkOrder = (req, res) => {
   workModel.resetWorkOrder();
-  res.redirect("/workListUpdate");
+  res.redirect("/update_imtv/workListUpdate");
 };
 
 exports.getUpdateWorkForm = async (req, res) => {
   const response = await workModel.getWorkItem(req.body.id);
   res.render("updateWorkForm", {
-    path: "/updateWorkForm",
+    path: "/update_imtv/updateWorkForm",
     pageTitle: "Update Work Form",
     object: response,
   });
@@ -61,19 +66,24 @@ exports.getUpdateWorkForm = async (req, res) => {
 
 exports.workListUpdate = async (req, res) => {
   res.render("workListUpdate", {
-    path: "/workListUpdate",
+    path: "/update_imtv/workListUpdate",
     pageTitle: "List Updated",
   });
 };
 
 exports.postUpdateWorkForm = async (req, res) => {
-  workModel.postWork(req, res, "http://localhost:8080/updatework/", "update");
-  res.redirect("/workListUpdate");
+  workModel.postWork(
+    req,
+    res,
+    "https://imtv-api.herokuapp.com/updatework/",
+    "update"
+  );
+  res.redirect("/update_imtv/workListUpdate");
 };
 
 exports.deleteWorkForm = async (req, res) => {
   workModel.deleteWork(req.body.id);
-  res.redirect("/workListUpdate");
+  res.redirect("/update_imtv/workListUpdate");
 };
 
 exports.workDirectionUp = async (req, res) => {
@@ -81,9 +91,9 @@ exports.workDirectionUp = async (req, res) => {
   workModel.workDirection(
     req.body,
     response,
-    "http://localhost:8080/workdirectionup/"
+    "https://imtv-api.herokuapp.com/workdirectionup/"
   );
-  res.redirect("/workListUpdate");
+  res.redirect("/update_imtv/workListUpdate");
 };
 
 exports.workDirectionDown = async (req, res) => {
@@ -91,7 +101,7 @@ exports.workDirectionDown = async (req, res) => {
   workModel.workDirection(
     req.body,
     response,
-    "http://localhost:8080/workdirectiondown/"
+    "https://imtv-api.herokuapp.com/workdirectiondown/"
   );
-  res.redirect("/workListUpdate");
+  res.redirect("/update_imtv/workListUpdate");
 };

@@ -22,7 +22,7 @@ const upload = multer({
 exports.getNews = async (req, res) => {
   const response = await newsModel.getNews();
   res.render("news", {
-    path: "/news",
+    path: "/update_imtv/news",
     pageTitle: "News",
     object: response,
   });
@@ -30,7 +30,7 @@ exports.getNews = async (req, res) => {
 
 exports.getNewsForm = (req, res) => {
   res.render("newsForm", {
-    path: "/newsForm",
+    path: "/update_imtv/newsForm",
     pageTitle: "Add News",
   });
 };
@@ -38,15 +38,20 @@ exports.getNewsForm = (req, res) => {
 exports.getUpdateNewsForm = async (req, res) => {
   const response = await newsModel.getNewsItem(req.body.id);
   res.render("updateNewsForm", {
-    path: "/updateNewsForm",
+    path: "/update_imtv/updateNewsForm",
     pageTitle: "Edit News",
     object: response,
   });
 };
 
 exports.postUpdateNewsForm = async (req, res) => {
-  newsModel.sendNews(req, res, "http://localhost:8080/updatenews/", "update");
-  res.redirect("/newsListUpdate");
+  newsModel.sendNews(
+    req,
+    res,
+    "https://imtv-api.herokuapp.com/updatenews/",
+    "update"
+  );
+  res.redirect("/update_imtv/newsListUpdate");
 };
 
 exports.addNewsForm = async (req, res) => {
@@ -54,27 +59,32 @@ exports.addNewsForm = async (req, res) => {
     if (err) {
       res.render(JSON.stringify(err));
     } else {
-      newsModel.sendNews(req, res, "http://localhost:8080/addnews/", "add");
-      res.redirect("/newsListUpdate");
+      newsModel.sendNews(
+        req,
+        res,
+        "https://imtv-api.herokuapp.com/addnews/",
+        "add"
+      );
+      res.redirect("/update_imtv/newsListUpdate");
     }
   });
 };
 
 exports.get400 = (req, res, next) => {
   res.render("get400", {
-    path: "/get400",
+    path: "/update_imtv/get400",
     pageTitle: "Image Upload Failed",
   });
 };
 
 exports.deleteNewsForm = async (req, res) => {
   newsModel.deleteNews(req.body.id);
-  res.redirect("/newsListUpdate");
+  res.redirect("/update_imtv/newsListUpdate");
 };
 
 exports.newsListUpdate = async (req, res) => {
   res.render("newsListUpdate", {
-    path: "/newsListUpdate",
+    path: "/update_imtv/newsListUpdate",
     pageTitle: "List Updated",
   });
 };

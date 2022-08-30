@@ -5,7 +5,7 @@ const fs = require("fs");
 exports.getStaff = async (req, res) => {
   const response = await staffModel.getStaff();
   res.render("staff", {
-    path: "/staff",
+    path: "/update_imtv/staff",
     pageTitle: "Update Staff",
     object: response,
   });
@@ -13,21 +13,26 @@ exports.getStaff = async (req, res) => {
 
 exports.getStaffForm = (req, res) => {
   res.render("staffForm", {
-    path: "/staffForm",
+    path: "/update_imtv/staffForm",
     pageTitle: "Update Staff",
   });
 };
 
 exports.postStaff = async (req, res) => {
-  staffModel.postStaff(req, res, "http://localhost:8080/poststaff/", "post");
-  res.redirect("/staffListUpdate");
+  staffModel.postStaff(
+    req,
+    res,
+    "https://imtv-api.herokuapp.com/poststaff/",
+    "post"
+  );
+  res.redirect("/update_imtv/staffListUpdate");
 };
 
 exports.getUpdateStaffForm = async (req, res) => {
   const response = await staffModel.getStaffItem(req.body.id);
 
   res.render("updateStaffForm", {
-    path: "/updateStaffForm",
+    path: "/update_imtv/updateStaffForm",
     pageTitle: "Update Staff Form",
     object: response,
   });
@@ -37,20 +42,20 @@ exports.postUpdateStaffForm = async (req, res) => {
   staffModel.postStaff(
     req,
     res,
-    "http://localhost:8080/updatestaff/",
+    "https://imtv-api.herokuapp.com/updatestaff/",
     "update"
   );
-  res.redirect("/staffListUpdate");
+  res.redirect("/update_imtv/staffListUpdate");
 };
 
 exports.deleteStaff = async (req, res) => {
   staffModel.deleteStaff(req.body.id);
-  res.redirect("/staffListUpdate");
+  res.redirect("/update_imtv/staffListUpdate");
 };
 
 exports.staffListUpdate = async (req, res) => {
   res.render("staffListUpdate", {
-    path: "/staffListUpdate",
+    path: "/update_imtv/staffListUpdate",
     pageTitle: "Staff Updated",
   });
 };

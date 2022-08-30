@@ -42,7 +42,7 @@ exports.changeEdit = (req, res, next) => {
   });
 };
 
-exports.hub = (req, res) => {
+exports.hub = async (req, res) => {
   res.render("hub", {
     path: "/update_imtv/hub",
     pageTitle: "Update IMTV",
