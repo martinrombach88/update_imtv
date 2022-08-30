@@ -3,8 +3,8 @@
 
   <div class="editor__TopBar">
     <h4>NEWS</h4>
-    <a class="btn btn-success" href="/newsForm">Add New Blog</a>
-    <a class="btn btn-danger" href="/hub">Exit</a>
+    <a class="btn btn-success" href="/update_imtv/newsForm">Add New Blog</a>
+    <a class="btn btn-danger" href="/update_imtv/hub">Exit</a>
   </div>
   <div class="list__Container">
         <% for (let news of object) { %>
@@ -15,12 +15,12 @@
                     </div>
                     <div class="list__Buttons">
 
-                        <form action="updateNewsForm" method="post">
+                        <form action="/update_imtv/updateNewsForm" method="post">
                             <input type="hidden" name="id" id="newsId" value="<%= news.id %>">
                             <button class="btn btn-success" type="submit">Edit</button>
                         </form>
 
-                        <form action="deleteNewsForm" method="post">
+                        <form action="/update_imtv/deleteNewsForm" method="post">
                             <input type="hidden" name="id" id="newsId" value="<%= news.id %>">
                             <button class="btn btn-danger" type="submit">Delete</button>
                         </form>

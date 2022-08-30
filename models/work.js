@@ -4,7 +4,9 @@ const superagent = require("superagent");
 
 exports.getWork = async () => {
   try {
-    const res = await superagent.get("http://localhost:8080/getwork/");
+    const res = await superagent.get(
+      "https://imtv-api.herokuapp.com/imtv_api/getwork/"
+    );
     const text = JSON.parse(res.text);
     return text.workItems;
   } catch {
@@ -15,7 +17,9 @@ exports.getWork = async () => {
 exports.getWorkItem = async (id) => {
   try {
     let workItem = null;
-    const res = await superagent.get("http://localhost:8080/getworkitem/" + id);
+    const res = await superagent.get(
+      "https://imtv-api.herokuapp.com/imtv_api/getworkitem/" + id
+    );
     const text = JSON.parse(res.text);
     if (text.workItem) {
       workItem = {
@@ -139,7 +143,7 @@ exports.deleteWork = async (id) => {
   id ? (idObject.id = id) : (idObject.id = null);
   if (idObject.id) {
     const res = await superagent
-      .post("http://localhost:8080/deletework/")
+      .post("https://imtv-api.herokuapp.com/imtv_api/deletework/")
       .send(idObject)
       .set("accept", "json")
       .end();
@@ -162,5 +166,7 @@ exports.workDirection = async (idObject, fullObject, url) => {
 };
 
 exports.resetWorkOrder = async () => {
-  await superagent.get("http://localhost:8080/resetworkorder/");
+  await superagent.get(
+    "https://imtv-api.herokuapp.com/imtv_api/resetworkorder/"
+  );
 };

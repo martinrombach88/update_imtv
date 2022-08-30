@@ -5,7 +5,9 @@ const superagent = require("superagent");
 exports.getLogin = async () => {
   try {
     let login = null;
-    const res = await superagent.get("http://localhost:8080/getlogin/");
+    const res = await superagent.get(
+      "https://imtv-api.herokuapp.com/getlogin/"
+    );
     const text = JSON.parse(res.text);
 
     return text;

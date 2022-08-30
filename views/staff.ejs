@@ -3,8 +3,8 @@
 
   <div class="editor__TopBar">
     <h4>STAFF</h4>
-    <a class="btn btn-success" href="/staffForm">Add New</a>
-    <a class="btn btn-danger" href="/hub">Exit</a>
+    <a class="btn btn-success" href="/update_imtv/staffForm">Add New</a>
+    <a class="btn btn-danger" href="/update_imtv/hub">Exit</a>
   </div>
   <div class="list__Container">
     
@@ -51,12 +51,12 @@
                 </div>
                 <div class="list__ObjectUI"> 
                             <div class="list__ObjectUIButtons">  
-                                <form action="updateStaffForm" method="post" enctype="application/x-www-form-urlencoded">
+                                <form action="/update_imtv/updateStaffForm" method="post" enctype="application/x-www-form-urlencoded">
                                     <input type="hidden" name="id" id="staffId" value="<%= staff.id %>">
                                     <button class="btn btn-success" type="submit">Edit</button>
                                 </form>  
 
-                                <form action="deleteStaffForm" method="post" enctype="application/x-www-form-urlencoded">
+                                <form action="/update_imtv/deleteStaffForm" method="post" enctype="application/x-www-form-urlencoded">
                                     <input type="hidden" name="id" id="staffId" value="<%= staff.id %>">
                                     <button class="btn btn-danger" type="submit">Delete</button>
                                 </form>

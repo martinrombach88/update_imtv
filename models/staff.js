@@ -3,7 +3,9 @@ const superagent = require("superagent");
 
 exports.getStaff = async () => {
   try {
-    const res = await superagent.get("http://localhost:8080/getstaff/");
+    const res = await superagent.get(
+      "https://www.martinrombachdev.com/imtv_api/getstaff/"
+    );
     const text = JSON.parse(res.text);
     return text.staffItems;
   } catch {
@@ -15,7 +17,7 @@ exports.getStaffItem = async (id) => {
   try {
     let staffItem = null;
     const res = await superagent.get(
-      "http://localhost:8080/getstaffitem/" + id
+      "https://www.martinrombachdev.com/imtv_api/getstaffitem/" + id
     );
     const text = JSON.parse(res.text);
     if (text.staffItem) {
@@ -93,7 +95,7 @@ exports.deleteStaff = async (id) => {
   id ? (idObject.id = id) : (idObject.id = null);
   if (idObject.id) {
     const res = await superagent
-      .post("http://localhost:8080/deletestaff/")
+      .post("https://imtv-api.herokuapp.com/deletestaff/")
       .send(idObject)
       .set("accept", "json")
       .end();

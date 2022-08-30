@@ -2,9 +2,9 @@
 
   <div class="editor__TopBar">
     <h4>WORK</h4>
-    <a class="btn btn-info" href="/resetWorkOrder">Reset Order</a>
-    <a class="btn btn-success" href="/workForm">Add New</a>
-    <a class="btn btn-danger" href="/hub">Exit</a>
+    <a class="btn btn-info" href="/update_imtv/resetWorkOrder">Reset Order</a>
+    <a class="btn btn-success" href="/update_imtv/workForm">Add New</a>
+    <a class="btn btn-danger" href="/update_imtv/hub">Exit</a>
   </div>
   <div class="list__Container">
     
@@ -33,8 +33,8 @@
                         <li>ENG Writer: <%= work.writerENG %></li>
                         <li>ENG Starring: <%= work.starringENG %></li>
                         <br />
-                        <li><a href="<%= work.fullVid %>"><%= work.fullVid ? "Trailer Link" : null %></a></li>
-                        <li><a href="<%= work.clipVid %>"><%= work.clipVid ? "Carousel Trailer Link": null %></a></li>
+                        <li>Trailer Link: <a href="<%= work.fullVid %>"><%= work.fullVid ?  work.fullVid : null %></a> </li>
+                        <li>Carousel Trailer Link: <a href="<%= work.clipVid %>"><%= work.clipVid ? work.clipVid: null %></a></li>
                         <br />
                         <li><%= work.inProduction === "1" ? "IN PRODUCTION" : "Not set as In Production"%></li>
                     </ul> 
@@ -62,12 +62,12 @@
                     
                             <div class="list__ObjectUIButtons">  
                                 
-                                <form action="/updateWorkForm" method="post">
+                                <form action="/update_imtv/updateWorkForm" method="post">
                                 <input type="hidden" name="id" id="workId" value="<%= work.id %>">
                                 <button class="btn btn-success" type="submit">Edit</button>
                                 </form>  
 
-                                <form action="deleteWorkForm" method="post">
+                                <form action="/update_imtv/deleteWorkForm" method="post">
                                     <input type="hidden" name="id" id="workId" value="<%= work.id %>">
                                     <button class="btn btn-danger" type="submit">Delete</button>
                                 </form>

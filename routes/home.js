@@ -2,11 +2,11 @@ const express = require("express");
 const homeController = require("../controllers/home");
 const router = express.Router();
 
-router.get("/", homeController.getHome);
+router.get("/update_imtv/", homeController.getHome);
 
-router.get("/changeDelete", homeController.changeDelete);
-router.get("/changeEdit", homeController.changeEdit);
-router.get("/hub", homeController.hub);
-router.post("/login", homeController.login);
+router.get("/update_imtv/changeDelete", homeController.changeDelete);
+router.get("/update_imtv/changeEdit", homeController.changeEdit);
+router.get("/update_imtv/hub", homeController.hub);
+router.post("/update_imtv/login", homeController.login);
 
 module.exports = router;

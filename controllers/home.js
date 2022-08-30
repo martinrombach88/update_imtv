@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt");
 
 exports.getHome = (req, res) => {
   res.render("home", {
-    path: "/",
+    path: "/update_imtv",
     pageTitle: "Update IMTV",
   });
 };
@@ -21,30 +21,30 @@ exports.login = async (req, res) => {
   if (req.body.username === username) {
     const match = await bcrypt.compare(req.body.password, password);
     if (match) {
-      res.redirect("/hub");
+      res.redirect("/update_imtv/hub");
     }
   } else {
-    res.redirect("/");
+    res.redirect("/update_imtv/");
   }
 };
 
 exports.changeDelete = (req, res, next) => {
   res.render("change", {
-    path: "/change",
+    path: "/update_imtv/change",
     pageTitle: "Content Deleted",
   });
 };
 
 exports.changeEdit = (req, res, next) => {
   res.render("change", {
-    path: "/change",
+    path: "/update_imtv/change",
     pageTitle: "Content Edited",
   });
 };
 
 exports.hub = (req, res) => {
   res.render("hub", {
-    path: "/hub",
+    path: "/update_imtv/hub",
     pageTitle: "Update IMTV",
   });
 };

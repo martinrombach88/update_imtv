@@ -7,7 +7,7 @@
     </div>
 
     <div class="form__Container">
-        <form action="/postUpdateWorkForm" method="post" class="form">
+        <form action="/update_imtv/postUpdateWorkForm" method="post" class="form">
             <div class="mb-3 mt-3">
                 <p>Wide Image</p>
                 <img class="workImageWide" src="<%= object.image %>" alt="<%= object.titleKR %>">
@@ -22,14 +22,14 @@
                 <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">KR Title</span>
                 </div>
-                <input type="text" class="form-control" placeholder="Enter" id="titleKR"  aria-label="titleKR" aria-describedby="basic-addon1" name="titleKR" value = "<%= object.titleKR %>">
+                <input type="text" class="form-control"  id="titleKR"  aria-label="titleKR" aria-describedby="basic-addon1" name="titleKR" value = "<%= object.titleKR %>">
             </div>
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">Release Date</span>
                 </div>
-                <input type="text" class="form-control" placeholder="출시일 입력" id="releaseDate"  aria-label="releaseDate" aria-describedby="basic-addon1" name="releaseDate" value = "<%= object.releaseDate %>">
+                <input type="text" class="form-control"  id="releaseDate"  aria-label="releaseDate" aria-describedby="basic-addon1" name="releaseDate" value = "<%= object.releaseDate %>">
             </div>
 
             <div class="mb-3">
@@ -39,8 +39,6 @@
                   class="form-control"
                   id="exampleFormControlTextarea1"
                   rows="3"
-                  
-                  placeholder="설명을 입력"
                 ><%= object.descriptionKR %></textarea>
               </div>
 
@@ -48,7 +46,7 @@
                 <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">Channels</span>
                 </div>
-                <input type="text" class="form-control" placeholder="채널을 입력" id="channels"  aria-label="channels" aria-describedby="basic-addon1" name="channels" value = "<%= object.channels %>">
+                <input type="text" class="form-control"  id="channels"  aria-label="channels" aria-describedby="basic-addon1" name="channels" value = "<%= object.channels %>">
             </div>
 
             <div class="input-group mb-3">
@@ -87,8 +85,6 @@
                       class="form-control"
                       id="exampleFormControlTextarea1"
                       rows="3"
-                      
-                      placeholder="설명을 입력"
                     ><%= object.descriptionENG %></textarea>
                   </div>
 
@@ -118,14 +114,14 @@
                 <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">Main Video Link</span>
                 </div>
-                <input type="text" class="form-control" placeholder="링크를 입력" id="fullVid"  aria-label="fullVid" aria-describedby="basic-addon1" name="fullVid" value="<%= object.fullVid %>">
+                <input type="text" class="form-control"  id="fullVid"  aria-label="fullVid" aria-describedby="basic-addon1" name="fullVid" value="<%= object.fullVid %>">
             </div>
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">Carousel Video Link (Optional)</span>
                 </div>
-                <input type="text" class="form-control" placeholder="링크를 입력" id="clipVid"  aria-label="clipVid" aria-describedby="basic-addon1" name="clipVid" value="<%= object.clipVid %>">
+                <input type="text" class="form-control" id="clipVid"  aria-label="clipVid" aria-describedby="basic-addon1" name="clipVid" value="<%= object.clipVid %>">
             </div>
             <div class="input-group mb-3">
 
@@ -175,7 +171,7 @@
                     <input type="hidden" name="id"  value="<%= object.id %>">
                     <input type="hidden" name="orderID" value="<%= object.orderID %>">
                     <button type="submit" class="btn btn-success">Submit</button>
-                    <a class="btn btn-danger" href="/work">Cancel</a>
+                    <a class="btn btn-danger" href="/update_imtv/work">Cancel</a>
                 </div>
             </div>
         </form>
