@@ -36,6 +36,8 @@ exports.getWorkForm = (req, res) => {
 };
 
 exports.postWorkForm = async (req, res) => {
+  const list = await workModel.getWork();
+  const id = list.length + 1;
   upload(req, res, function (err) {
     if (err) {
       res.render(JSON.stringify(err));
@@ -43,8 +45,10 @@ exports.postWorkForm = async (req, res) => {
       workModel.postWork(
         req,
         res,
-        "https://imtv-api.herokuapp.com/postWork/",
-        "add"
+        "https://imtv-api.herokuapp.com/postwork",
+        // "http://localhost:8080/postwork",
+        "add",
+        id
       );
       res.redirect("/update_imtv/workListUpdate");
     }
@@ -75,7 +79,7 @@ exports.postUpdateWorkForm = async (req, res) => {
   workModel.postWork(
     req,
     res,
-    "https://imtv-api.herokuapp.com/updatework/",
+    "http://imtv-api.herokuapp.com/updatework/",
     "update"
   );
   res.redirect("/update_imtv/workListUpdate");
@@ -92,6 +96,7 @@ exports.workDirectionUp = async (req, res) => {
     req.body,
     response,
     "https://imtv-api.herokuapp.com/workdirectionup/"
+    // "http://localhost:8080/workdirectionup/"
   );
   res.redirect("/update_imtv/workListUpdate");
 };
@@ -102,6 +107,7 @@ exports.workDirectionDown = async (req, res) => {
     req.body,
     response,
     "https://imtv-api.herokuapp.com/workdirectiondown/"
+    // "http://localhost:8080/workdirectiondown/"
   );
   res.redirect("/update_imtv/workListUpdate");
 };
