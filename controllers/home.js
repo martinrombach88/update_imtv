@@ -14,7 +14,7 @@ exports.login = async (req, res) => {
   let password = response.login[0].password;
 
   //Use code below to set password.
-  // bcrypt.hash("hello", 10, function (err, hash) {
+  // bcrypt.hash("change", 10, function (err, hash) {
   //   console.log(hash);
   // });
 

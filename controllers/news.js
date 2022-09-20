@@ -3,14 +3,10 @@ const multer = require("multer");
 const ImgurStorage = require("multer-storage-imgur");
 
 const fileFilter = (req, file, cb) => {
-  if (
-    file.mimetype === "image/png" ||
-    file.mimetype === "image/jpg" ||
-    file.mimetype === "image/jpeg"
-  ) {
+  if (file.mimetype === "image/jpg" || file.mimetype === "image/jpeg") {
     cb(null, true);
   } else {
-    return cb(new Error("Only images files are allowed"));
+    return cb(new Error("Only jpg files are allowed"));
   }
 };
 
@@ -45,13 +41,20 @@ exports.getUpdateNewsForm = async (req, res) => {
 };
 
 exports.postUpdateNewsForm = async (req, res) => {
-  newsModel.sendNews(
-    req,
-    res,
-    "https://imtv-api.herokuapp.com/updatenews/",
-    "update"
-  );
-  res.redirect("/update_imtv/newsListUpdate");
+  upload(req, res, function (err) {
+    if (err) {
+      res.render(JSON.stringify(err));
+    } else {
+      newsModel.sendNews(
+        req,
+        res,
+        "https://imtv-api.herokuapp.com/updatenews/",
+        // "http://localhost:8080/updatenews",
+        "update"
+      );
+      res.redirect("/update_imtv/newsListUpdate");
+    }
+  });
 };
 
 exports.addNewsForm = async (req, res) => {
@@ -63,6 +66,7 @@ exports.addNewsForm = async (req, res) => {
         req,
         res,
         "https://imtv-api.herokuapp.com/addnews/",
+        // "http://localhost:8080/addnews",
         "add"
       );
       res.redirect("/update_imtv/newsListUpdate");

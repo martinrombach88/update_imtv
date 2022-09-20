@@ -129,7 +129,17 @@ exports.postWork = async (req, res, url, format, id) => {
     req.body.orderID
       ? (workObject.orderID = req.body.orderID)
       : (workObject.orderID = "");
+    req.files.imageTall
+      ? (workObject.imageTall = req.files.imageTall[0].link)
+      : (workObject.imageTall = req.body.oldImageTall);
+    req.files.image
+      ? (workObject.image = req.files.image[0].link)
+      : (workObject.image = req.body.oldImage);
   }
+
+  // if (workObject) {
+  //   console.log(workObject);
+  // }
   if (workObject) {
     const res = await superagent
       .post(url)

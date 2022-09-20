@@ -6,18 +6,35 @@
 </div>
  
 <div class="form__Container"> 
-  <form action="/update_imtv/postUpdateNewsForm" method="post" class="form__News">
+  <form action="/update_imtv/postUpdateNewsForm" method="post" class="form__News" enctype="multipart/form-data">
     <div class="mb-3 mt-3">
       <p>Wide Image</p>
       <img class="workImageWide" src="<%= object.imageLarge %>" alt="<%= object.titleKR %>">
+      <p class="m-1">Current URL: <%= object.imageLarge %> </p>
     </div>
+    <div class="mb-3 mt-3">
+      <label for="formFile" class="form-label">Upload New Wide Image File</label>
+      <input class="form-control" type="file" id="formFile" name="imageLarge">
+      <input type="hidden" name="oldImageLarge" value="<%= object.imageLarge %>">
+  <div>    
+
     <div class="mb-3 mt-3">
       <p>Small Image (optional)</p>
       <img class="workImageWide" src="<%= object.image ? object.image : '' %>" >
+      <p class="m-1">Current URL: <%= object.image %> </p>
+      <div class="mb-3 mt-3">
+        <label for="formFile" class="form-label">Upload New Small Image</label>
+        <input class="form-control" type="file" id="formFile" name="image">
+        <input type="hidden" name="oldImage" value="<%= object.image ? object.image : '' %>">
     <div>   
-      
+  </div> 
+  <br />
+  <div class="center__Column">
+    <h4>Title</h4>
+  </div>
 
     <div class="input-group mt-3 mb-3">
+      
       <input
         type="text"
         class="form-control"
@@ -42,7 +59,7 @@
       />
     </div>
     <br />
-    <div class="center__Column">
+    <div class="center__Column mb-2 mt-3">
       <h4>KR Blog</h4>
     </div>
 
@@ -98,7 +115,6 @@
       ><%= object.bodyKR6 %></textarea>
     </div>
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">단락 7</label>
       <textarea
         name="7"
         class="form-control"
@@ -107,14 +123,11 @@
       ><%= object.bodyKR7 %></textarea>
     </div>
 
-    <div class="center__Column">
-      <h4>영어 블로그</h4>
-      <p>블로그를 영어로 써주세요.</p>
-      <p>Use as many paragraphs as you need. Any empty paragraphs will be ignored.  </p>
+    <div class="center__Column mb-2 mt-3">
+      <h4>ENG Blog</h4>
     </div>
 
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">단락 1</label>
       <textarea
         name="8"
         class="form-control"
@@ -123,8 +136,9 @@
       > <%= object.bodyENG1 %></textarea>
     </div>
 
+
+
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">단락 2</label>
       <textarea
         name="9"
         class="form-control"
@@ -134,7 +148,6 @@
     </div>
 
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">단락 3</label>
       <textarea
         name="10"
         class="form-control"
@@ -144,7 +157,6 @@
     </div>
 
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">단락 4</label>
       <textarea
         name="11"
         class="form-control"
@@ -153,7 +165,6 @@
       > <%= object.bodyENG4 %></textarea>
     </div>
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">단락 5</label>
       <textarea
         name="12"
         class="form-control"
@@ -162,7 +173,6 @@
       > <%= object.bodyENG5 %></textarea>
     </div>
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">단락 6</label>
       <textarea
         name="13"
         class="form-control"
@@ -171,7 +181,6 @@
       > <%= object.bodyENG6 %></textarea>
     </div>
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">단락 7</label>
       <textarea
         name="14"
         class="form-control"

@@ -6,6 +6,7 @@ exports.getNews = async () => {
   try {
     let newsList = [];
     const res = await superagent.get("https://imtv-api.herokuapp.com/getnews/");
+    // const res = await superagent.get("http://localhost:8080/getnews");
     const text = JSON.parse(res.text);
     if (text.newsItems) {
       for (let item of text.newsItems) {
@@ -48,6 +49,7 @@ exports.getNewsItem = async (id) => {
     let newsItem = null;
     const res = await superagent.get(
       "https://imtv-api.herokuapp.com/getnewsitem/" + id
+      // "http://localhost:8080/getnewsitem/" + id
     );
     const text = JSON.parse(res.text);
     if (text.newsItem) {
@@ -89,12 +91,12 @@ exports.sendNews = async (req, res, url, format) => {
   let mm = String(today.getMonth() + 1).padStart(2, "0");
   let yyyy = today.getFullYear();
   let dateENG = dd + "/" + mm + "/" + +yyyy;
-  let dateKR = yyyy + " " + mm + "월 " + dd + "일";
+  let dateKR = yyyy + "년 " + mm + "월 " + dd + "일";
   let newsObject = {};
-  let newsBodyKR = [];
-  let newsBodyENG = [];
 
   if (format === "update") {
+    console.log(req.body);
+    console.log(req.files);
     newsObject.id = req.body.id;
     newsObject.titleKR = req.body.titleKR;
     newsObject.titleENG = req.body.titleENG;
@@ -106,7 +108,15 @@ exports.sendNews = async (req, res, url, format) => {
     req.body.inProduction
       ? (newsObject.inProduction = req.body.inProduction)
       : (newsObject.inProduction = "0");
+    req.files.imageLarge
+      ? (newsObject.imageLarge = req.files.imageLarge[0].link)
+      : (newsObject.imageLarge = req.body.oldImageLarge);
+    req.files.image
+      ? (newsObject.image = req.files.image[0].link)
+      : (newsObject.image = req.body.oldImage);
   } else if (format === "add") {
+    console.log(req.body);
+    console.log(req.files);
     newsObject.titleKR = req.body.titleKR;
     newsObject.titleENG = req.body.titleENG;
     newsObject.dateKR = dateKR;
@@ -126,6 +136,7 @@ exports.sendNews = async (req, res, url, format) => {
   }
 
   if (newsObject) {
+    console.log(newsObject);
     const res = await superagent
       .post(url)
       .send(newsObject)

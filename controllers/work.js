@@ -3,14 +3,10 @@ const multer = require("multer");
 const ImgurStorage = require("multer-storage-imgur");
 
 const fileFilter = (req, file, cb) => {
-  if (
-    file.mimetype === "image/png" ||
-    file.mimetype === "image/jpg" ||
-    file.mimetype === "image/jpeg"
-  ) {
+  if (file.mimetype === "image/jpg" || file.mimetype === "image/jpeg") {
     cb(null, true);
   } else {
-    return cb(new Error("Only images files are allowed"));
+    return cb(new Error("Only jpg files are allowed"));
   }
 };
 
@@ -76,13 +72,19 @@ exports.workListUpdate = async (req, res) => {
 };
 
 exports.postUpdateWorkForm = async (req, res) => {
-  workModel.postWork(
-    req,
-    res,
-    "http://imtv-api.herokuapp.com/updatework/",
-    "update"
-  );
-  res.redirect("/update_imtv/workListUpdate");
+  upload(req, res, function (err) {
+    if (err) {
+      res.render(JSON.stringify(err));
+    } else {
+      workModel.postWork(
+        req,
+        res,
+        "http://imtv-api.herokuapp.com/updatework/",
+        "update"
+      );
+      res.redirect("/update_imtv/workListUpdate");
+    }
+  });
 };
 
 exports.deleteWorkForm = async (req, res) => {

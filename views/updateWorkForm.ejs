@@ -7,16 +7,34 @@
     </div>
 
     <div class="form__Container">
-        <form action="/update_imtv/postUpdateWorkForm" method="post" class="form">
+        <form action="/update_imtv/postUpdateWorkForm" method="post" class="form" enctype="multipart/form-data">
             <div class="mb-3 mt-3">
                 <p>Wide Image</p>
                 <img class="workImageWide" src="<%= object.image %>" alt="<%= object.titleKR %>">
+
+                <p class="m-1">Current URL: <%= object.image %> </p>
             </div>
+            
+            
+            <div class="mb-3 mt-3">
+                <label for="formFile" class="form-label">Upload New Wide Image File</label>
+                <input class="form-control" type="file" id="formFile" name="image">
+                <input type="hidden" name="oldImage" value="<%= object.image %>">
+            <div>    
+
+                
+
             <div class="mb-3 mt-3">
                 <p>Tall Image</p>
                 <img class="workImageTall" src="<%= object.imageTall %>" alt="<%= object.titleKR %>">
+
+                <p class="m-1">Current URL: <%= object.imageTall %> </p> 
             <div>   
-                
+           <div class="mb-3 mt-3">
+                <label for="formFile" class="form-label">Upload New Tall Image File</label>
+                <input class="form-control" type="file" id="formFile" name="imageTall">
+                <input type="hidden" name="oldImageTall" value="<%= object.imageTall %>">
+            </div> 
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
