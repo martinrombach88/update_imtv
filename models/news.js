@@ -101,7 +101,7 @@ exports.sendNews = async (req, res, url, format, id) => {
     newsObject.dateKR = dateKR;
     newsObject.dateENG = dateENG;
     for (let i = 1; i <= 14; i++) {
-      i <= 7 ? (newsObject[i] = req.body[i]) : (newsObject[i] = req.body[i]);
+      newsObject[i] = req.body[i];
     }
     req.body.inProduction
       ? (newsObject.inProduction = req.body.inProduction)
@@ -119,7 +119,7 @@ exports.sendNews = async (req, res, url, format, id) => {
     newsObject.dateKR = dateKR;
     newsObject.dateENG = dateENG;
     for (let i = 1; i <= 14; i++) {
-      i <= 7 ? (newsObject[i] = req.body[i]) : (newsObject[i] = req.body[i]);
+      newsObject[i] = req.body[i];
     }
     req.files.imageLarge
       ? (newsObject.imageLarge = req.files.imageLarge[0].link)
