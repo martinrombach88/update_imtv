@@ -85,7 +85,7 @@ exports.getNewsItem = async (id) => {
   }
 };
 
-exports.sendNews = async (req, res, url, format) => {
+exports.sendNews = async (req, res, url, format, id) => {
   let today = new Date();
   let dd = String(today.getDate()).padStart(2, "0");
   let mm = String(today.getMonth() + 1).padStart(2, "0");
@@ -95,8 +95,6 @@ exports.sendNews = async (req, res, url, format) => {
   let newsObject = {};
 
   if (format === "update") {
-    console.log(req.body);
-    console.log(req.files);
     newsObject.id = req.body.id;
     newsObject.titleKR = req.body.titleKR;
     newsObject.titleENG = req.body.titleENG;
@@ -115,8 +113,7 @@ exports.sendNews = async (req, res, url, format) => {
       ? (newsObject.image = req.files.image[0].link)
       : (newsObject.image = req.body.oldImage);
   } else if (format === "add") {
-    console.log(req.body);
-    console.log(req.files);
+    newsObject.id = id;
     newsObject.titleKR = req.body.titleKR;
     newsObject.titleENG = req.body.titleENG;
     newsObject.dateKR = dateKR;
@@ -151,6 +148,7 @@ exports.deleteNews = async (id) => {
   if (idObject.id) {
     const res = await superagent
       .post("https://imtv-api.herokuapp.com/deletenews/")
+      // .post("http://localhost:8080/deletenews/")
       .send(idObject)
       .set("accept", "json")
       .end();

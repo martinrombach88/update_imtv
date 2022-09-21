@@ -58,6 +58,8 @@ exports.postUpdateNewsForm = async (req, res) => {
 };
 
 exports.addNewsForm = async (req, res) => {
+  const list = await newsModel.getNews();
+  const id = list.length + 1;
   upload(req, res, function (err) {
     if (err) {
       res.render(JSON.stringify(err));
@@ -67,7 +69,8 @@ exports.addNewsForm = async (req, res) => {
         res,
         "https://imtv-api.herokuapp.com/addnews/",
         // "http://localhost:8080/addnews",
-        "add"
+        "add",
+        id
       );
       res.redirect("/update_imtv/newsListUpdate");
     }
