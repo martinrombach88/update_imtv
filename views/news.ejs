@@ -29,32 +29,45 @@
                     </div>
                 </div>
 
-                <div class="list__ObjectText">
-                    <ul>
-                        <li>KR Title: <%= news.titleKR %></li>
-                        <li>ENG Title: <%= news.titleENG %></li>
-                        <li>KR Blog: </li>
-                        <li>
-                            <p><%= news.bodyKR1 %></p>
-                            <p><%= news.bodyKR2 %></p>
-                            <p><%= news.bodyKR3 %></p>
-                            <p><%= news.bodyKR4 %></p>
-                            <p><%= news.bodyKR5 %></p>
-                            <p><%= news.bodyKR6 %></p>
-                            <p><%= news.bodyKR7 %></p>
-                        </li>
-                        <li>KR Date: <%= news.dateKR %></li>
-                        <li>ENG Blog:</li>       
-                        <li>
-                            <p><%= news.bodyENG1 %></p>
-                            <p><%= news.bodyENG2 %></p>
-                            <p><%= news.bodyENG3 %></p>
-                            <p><%= news.bodyENG4 %></p>
-                            <p><%= news.bodyENG5 %></p>
-                            <p><%= news.bodyENG6 %></p>
-                            <p><%= news.bodyENG7 %></p>                 
-                        <li>ENG Date: <%= news.dateENG %></li>
-                    </ul> 
+                <div class="list__ObjectDetails">   
+                    <div>
+                        <ul>
+                            <li>KR Title: <%= news.titleKR %></li>
+                           
+                            <li>KR Blog: </li>
+                            <li><%= news.bodyKR1 %></li>
+                            <li><%= news.bodyKR2 %></li>
+                            <li><%= news.bodyKR3 %></li>
+                            <li><%= news.bodyKR4 %></li>
+                            <li><%= news.bodyKR5 %></li>
+                            <li><%= news.bodyKR6 %></li>
+                            <li><%= news.bodyKR7 %></li>
+                        </ul>
+                    </div className="list__ObjectDetailsTitle">
+                                    
+                        <p>KR Date: <%= news.dateKR %></p>
+                    
+                    <div>
+                        <ul> 
+                            <li>ENG Title: <%= news.titleENG %></li>
+                            <li>ENG Blog:</li>       
+                                <li><%= news.bodyENG1 %></li>
+                                <li><%= news.bodyENG2 %></li>
+                                <li><%= news.bodyENG3 %></li>
+                                <li><%= news.bodyENG4 %></li>
+                                <li><%= news.bodyENG5 %></li>
+                                <li><%= news.bodyENG6 %></li>
+                                <li><%= news.bodyENG7 %></li>                 
+                            
+                            
+                            
+                        </ul>
+                    </div>
+                    <div className="list__ObjectDetailsTitle">                     
+                        <p>ENG Date: <%= news.dateENG %></p>  
+                        <p><%= news.inProduction === '1' ? "IN PRODUCTION" : "Not set as In Production"%></p>
+                    </div>
+
                     
                 </div>
             </div>

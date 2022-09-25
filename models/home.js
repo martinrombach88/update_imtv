@@ -12,6 +12,6 @@ exports.getLogin = async () => {
 
     return text;
   } catch {
-    (err) => console.log(err);
+    (err) => res.redirect("/update_imtv/404");
   }
 };

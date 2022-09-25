@@ -9,7 +9,7 @@ exports.getWork = async () => {
     const text = JSON.parse(res.text);
     return text.workItems;
   } catch {
-    (err) => console.log(err);
+    (err) => res.redirect("/update_imtv/404");
   }
 };
 
@@ -53,7 +53,7 @@ exports.getWorkItem = async (id) => {
       workItem = null;
     }
   } catch {
-    (err) => console.log(err);
+    (err) => res.redirect("/update_imtv/404");
   }
 };
 
@@ -137,9 +137,6 @@ exports.postWork = async (req, res, url, format, id) => {
       : (workObject.image = req.body.oldImage);
   }
 
-  // if (workObject) {
-  //   console.log(workObject);
-  // }
   if (workObject) {
     const res = await superagent
       .post(url)

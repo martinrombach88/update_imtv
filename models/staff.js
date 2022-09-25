@@ -9,7 +9,7 @@ exports.getStaff = async () => {
     const text = JSON.parse(res.text);
     return text.staffItems;
   } catch {
-    (err) => console.log(err);
+    (err) => res.redirect("/update_imtv/404");
   }
 };
 
@@ -54,7 +54,7 @@ exports.getStaffItem = async (id) => {
       staffItem = null;
     }
   } catch {
-    (err) => console.log(err);
+    (err) => res.redirect("/update_imtv/404");
   }
 };
 

@@ -30,6 +30,7 @@ exports.getNews = async () => {
           dateKR: item.dateKR,
           image: item.image,
           imageLarge: item.imageLarge,
+          inProduction: item.inProduction,
           titleENG: item.titleENG,
           titleKR: item.titleKR,
         };
@@ -40,7 +41,7 @@ exports.getNews = async () => {
     }
     return newsList;
   } catch {
-    (err) => console.log(err);
+    (err) => res.redirect("/update_imtv/404");
   }
 };
 
@@ -75,13 +76,14 @@ exports.getNewsItem = async (id) => {
         imageLarge: text.newsItem[0].imageLarge,
         titleENG: text.newsItem[0].titleENG,
         titleKR: text.newsItem[0].titleKR,
+        inProduction: text.newsItem[0].inProduction,
       };
       return newsItem;
     } else {
       newsItem = null;
     }
   } catch {
-    (err) => console.log(err);
+    (err) => res.redirect("/update_imtv/404");
   }
 };
 
@@ -103,15 +105,15 @@ exports.sendNews = async (req, res, url, format, id) => {
     for (let i = 1; i <= 14; i++) {
       newsObject[i] = req.body[i];
     }
-    req.body.inProduction
-      ? (newsObject.inProduction = req.body.inProduction)
-      : (newsObject.inProduction = "0");
     req.files.imageLarge
       ? (newsObject.imageLarge = req.files.imageLarge[0].link)
       : (newsObject.imageLarge = req.body.oldImageLarge);
     req.files.image
       ? (newsObject.image = req.files.image[0].link)
       : (newsObject.image = req.body.oldImage);
+    req.body.inProduction
+      ? (newsObject.inProduction = req.body.inProduction)
+      : (newsObject.inProduction = "0");
   } else if (format === "add") {
     newsObject.id = id;
     newsObject.titleKR = req.body.titleKR;
@@ -133,7 +135,6 @@ exports.sendNews = async (req, res, url, format, id) => {
   }
 
   if (newsObject) {
-    console.log(newsObject);
     const res = await superagent
       .post(url)
       .send(newsObject)

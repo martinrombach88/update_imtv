@@ -186,10 +186,12 @@
         rows="3"
       ><%= object.bodyENG7 %></textarea>
     </div>
-    <div class="form-check ml-3" style="align-self:center">
+    <p>In Production: <%= object.inProduction === "1" ? "Set" : "Not Set"%></p>
+    <div class="form-check" style="align-self:center">
+      
       <input class="form-check-input" type="checkbox" value="1" id="flexCheckChecked" name="inProduction">
       <label class="form-check-label" for="inProduction">
-          In Production
+          Set In Production
       </label>
   </div>
     <input type="hidden" name="id" id="newsId" value="<%= object.id %>">

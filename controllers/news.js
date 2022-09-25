@@ -17,6 +17,7 @@ const upload = multer({
 
 exports.getNews = async (req, res) => {
   const response = await newsModel.getNews();
+
   res.render("news", {
     path: "/update_imtv/news",
     pageTitle: "News",
