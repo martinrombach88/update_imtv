@@ -34,11 +34,9 @@ exports.getWorkForm = (req, res) => {
 exports.postWorkForm = async (req, res) => {
   const list = await workModel.getWork();
   const id = list.length + 1;
-  let err = null;
   upload(req, res, function (err) {
     const error = "Storage Error - Please use a jpeg file.";
     if (err) {
-      console.log(err);
       return res.status(400).send({ error });
     } else {
       workModel.postWork(

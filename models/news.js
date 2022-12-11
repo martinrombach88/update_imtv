@@ -98,12 +98,12 @@ exports.sendNews = async (req, res, url, format, id) => {
 
   if (format === "update") {
     newsObject.id = req.body.id;
-    newsObject.titleKR = req.body.titleKR;
-    newsObject.titleENG = req.body.titleENG;
+    newsObject.titleKR = req.body.titleKR.replace(/[']+/g, "`");
+    newsObject.titleENG = req.body.titleENG.replace(/[']+/g, "`");
     newsObject.dateKR = dateKR;
     newsObject.dateENG = dateENG;
     for (let i = 1; i <= 14; i++) {
-      newsObject[i] = req.body[i];
+      newsObject[i] = req.body[i].replace(/[']+/g, "`");
     }
     req.files.imageLarge
       ? (newsObject.imageLarge = req.files.imageLarge[0].link)
@@ -116,12 +116,13 @@ exports.sendNews = async (req, res, url, format, id) => {
       : (newsObject.inProduction = "0");
   } else if (format === "add") {
     newsObject.id = id;
-    newsObject.titleKR = req.body.titleKR;
-    newsObject.titleENG = req.body.titleENG;
+    newsObject.titleKR = req.body.titleKR.replace(/[']+/g, "`");
+    newsObject.titleENG = req.body.titleENG.replace(/[']+/g, "`");
     newsObject.dateKR = dateKR;
     newsObject.dateENG = dateENG;
     for (let i = 1; i <= 14; i++) {
-      newsObject[i] = req.body[i];
+      newsObject[i] = req.body[i].replace(/[']+/g, "`");
+
     }
     req.files.imageLarge
       ? (newsObject.imageLarge = req.files.imageLarge[0].link)
@@ -133,7 +134,7 @@ exports.sendNews = async (req, res, url, format, id) => {
   } else {
     newsObject = null;
   }
-
+  console.log(newsObject)
   if (newsObject) {
     const res = await superagent
       .post(url)
