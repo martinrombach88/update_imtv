@@ -15,6 +15,7 @@ router.post("/update_imtv/deleteWorkForm", workController.deleteWorkForm);
 
 router.get("/update_imtv/resetWorkOrder", workController.resetWorkOrder);
 router.get("/update_imtv/workListUpdate", workController.workListUpdate);
+router.get("/update_imtv/workFileError", workController.workFileError);
 router.post("/update_imtv/workDirectionUp", workController.workDirectionUp);
 router.post("/update_imtv/workDirectionDown", workController.workDirectionDown);
 

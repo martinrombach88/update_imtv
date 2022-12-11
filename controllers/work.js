@@ -3,7 +3,7 @@ const multer = require("multer");
 const ImgurStorage = require("multer-storage-imgur");
 
 const fileFilter = (req, file, cb) => {
-  if (file.mimetype === "image/jpg" || file.mimetype === "image/jpeg") {
+  if (file.mimetype == "image/jpg" || file.mimetype == "image/jpeg") {
     cb(null, true);
   } else {
     return cb(new Error("Only jpg files are allowed"));
@@ -34,15 +34,18 @@ exports.getWorkForm = (req, res) => {
 exports.postWorkForm = async (req, res) => {
   const list = await workModel.getWork();
   const id = list.length + 1;
+  let err = null;
   upload(req, res, function (err) {
+    const error = "Storage Error - Please use a jpeg file.";
     if (err) {
-      res.render(JSON.stringify(err));
+      console.log(err);
+      return res.status(400).send({ error });
     } else {
       workModel.postWork(
         req,
         res,
-        "https://imtv-api.herokuapp.com/postwork",
-        // "http://localhost:8080/postwork",
+        // "https://imtv-api.herokuapp.com/postwork",
+        "http://localhost:8080/postwork",
         "add",
         id
       );
@@ -71,15 +74,25 @@ exports.workListUpdate = async (req, res) => {
   });
 };
 
+exports.workFileError = async (req, res) => {
+  res.render("workFileError", {
+    path: "/update_imtv/workFileError",
+    pageTitle: "File Error",
+  });
+};
+
 exports.postUpdateWorkForm = async (req, res) => {
   upload(req, res, function (err) {
+    const error = "Storage Error - Please use a jpeg file.";
     if (err) {
-      res.render(JSON.stringify(err));
+      console.log(err);
+      return res.status(400).send({ message: error });
     } else {
       workModel.postWork(
         req,
         res,
-        "http://imtv-api.herokuapp.com/updatework/",
+        "http://localhost:8080/updatework/",
+        // "http://imtv-api.herokuapp.com/updatework/",
         "update"
       );
       res.redirect("/update_imtv/workListUpdate");
@@ -97,8 +110,8 @@ exports.workDirectionUp = async (req, res) => {
   workModel.workDirection(
     req.body,
     response,
-    "https://imtv-api.herokuapp.com/workdirectionup/"
-    // "http://localhost:8080/workdirectionup/"
+    // "https://imtv-api.herokuapp.com/workdirectionup/"
+    "http://localhost:8080/workdirectionup/"
   );
   res.redirect("/update_imtv/workListUpdate");
 };
@@ -108,8 +121,8 @@ exports.workDirectionDown = async (req, res) => {
   workModel.workDirection(
     req.body,
     response,
-    "https://imtv-api.herokuapp.com/workdirectiondown/"
-    // "http://localhost:8080/workdirectiondown/"
+    // "https://imtv-api.herokuapp.com/workdirectiondown/"
+    "http://localhost:8080/workdirectiondown/"
   );
   res.redirect("/update_imtv/workListUpdate");
 };

@@ -22,7 +22,8 @@ exports.postStaff = async (req, res) => {
   staffModel.postStaff(
     req,
     res,
-    "https://imtv-api.herokuapp.com/poststaff/",
+    "http://localhost:8080/updatenews",
+    // "https://imtv-api.herokuapp.com/poststaff/",
     "post"
   );
   res.redirect("/update_imtv/staffListUpdate");
@@ -42,7 +43,8 @@ exports.postUpdateStaffForm = async (req, res) => {
   staffModel.postStaff(
     req,
     res,
-    "https://imtv-api.herokuapp.com/updatestaff/",
+    "http://localhost:8080/updatenews",
+    // "https://imtv-api.herokuapp.com/updatestaff/",
     "update"
   );
   res.redirect("/update_imtv/staffListUpdate");

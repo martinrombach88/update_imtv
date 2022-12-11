@@ -5,8 +5,8 @@ const superagent = require("superagent");
 exports.getNews = async () => {
   try {
     let newsList = [];
-    const res = await superagent.get("https://imtv-api.herokuapp.com/getnews/");
-    // const res = await superagent.get("http://localhost:8080/getnews");
+    // const res = await superagent.get("https://imtv-api.herokuapp.com/getnews/");
+    const res = await superagent.get("http://localhost:8080/getnews");
     const text = JSON.parse(res.text);
     if (text.newsItems) {
       for (let item of text.newsItems) {
@@ -49,8 +49,8 @@ exports.getNewsItem = async (id) => {
   try {
     let newsItem = null;
     const res = await superagent.get(
-      "https://imtv-api.herokuapp.com/getnewsitem/" + id
-      // "http://localhost:8080/getnewsitem/" + id
+      // "https://imtv-api.herokuapp.com/getnewsitem/" + id
+      "http://localhost:8080/getnewsitem/" + id
     );
     const text = JSON.parse(res.text);
     if (text.newsItem) {
@@ -148,8 +148,8 @@ exports.deleteNews = async (id) => {
   id ? (idObject.id = id) : (idObject.id = null);
   if (idObject.id) {
     const res = await superagent
-      .post("https://imtv-api.herokuapp.com/deletenews/")
-      // .post("http://localhost:8080/deletenews/")
+      // .post("https://imtv-api.herokuapp.com/deletenews/")
+      .post("http://localhost:8080/deletenews/")
       .send(idObject)
       .set("accept", "json")
       .end();

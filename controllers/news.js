@@ -43,14 +43,16 @@ exports.getUpdateNewsForm = async (req, res) => {
 
 exports.postUpdateNewsForm = async (req, res) => {
   upload(req, res, function (err) {
+    const error = "Storage Error - Please use a jpeg file.";
     if (err) {
-      res.render(JSON.stringify(err));
+      console.log(err);
+      return res.status(400).send({ error });
     } else {
       newsModel.sendNews(
         req,
         res,
-        "https://imtv-api.herokuapp.com/updatenews/",
-        // "http://localhost:8080/updatenews",
+        // "https://imtv-api.herokuapp.com/updatenews/",
+        "http://localhost:8080/updatenews",
         "update"
       );
       res.redirect("/update_imtv/newsListUpdate");
@@ -62,14 +64,16 @@ exports.addNewsForm = async (req, res) => {
   const list = await newsModel.getNews();
   const id = list.length + 1;
   upload(req, res, function (err) {
+    const error = "Storage Error - Please use a jpeg file.";
     if (err) {
-      res.render(JSON.stringify(err));
+      console.log(err);
+      return res.status(400).send({ error });
     } else {
       newsModel.sendNews(
         req,
         res,
-        "https://imtv-api.herokuapp.com/addnews/",
-        // "http://localhost:8080/addnews",
+        // "https://imtv-api.herokuapp.com/addnews/",
+        "http://localhost:8080/addnews",
         "add",
         id
       );

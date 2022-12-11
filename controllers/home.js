@@ -13,11 +13,6 @@ exports.login = async (req, res) => {
   let username = response.login[0].username;
   let password = response.login[0].password;
 
-  //Use code below to set password.
-  // bcrypt.hash("change", 10, function (err, hash) {
-  //   console.log(hash);
-  // });
-
   if (req.body.username === username) {
     const match = await bcrypt.compare(req.body.password, password);
     if (match) {

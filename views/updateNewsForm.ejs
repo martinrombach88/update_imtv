@@ -13,7 +13,7 @@
       <p class="m-1">Current URL: <%= object.imageLarge %> </p>
     </div>
     <div class="mb-3 mt-3">
-      <label for="formFile" class="form-label">Upload New Wide Image File</label>
+      <label for="formFile" class="form-label">Upload New Wide Image File - JPEG Files Only</label>
       <input class="form-control" type="file" id="formFile" name="imageLarge">
       <input type="hidden" name="oldImageLarge" value="<%= object.imageLarge %>">
   <div>    
@@ -23,7 +23,7 @@
       <img class="workImageWide" src="<%= object.image ? object.image : '' %>" >
       <p class="m-1">Current URL: <%= object.image %> </p>
       <div class="mb-3 mt-3">
-        <label for="formFile" class="form-label">Upload New Small Image</label>
+        <label for="formFile" class="form-label">Upload New Small Image - JPEG Files Only</label>
         <input class="form-control" type="file" id="formFile" name="image">
         <input type="hidden" name="oldImage" value="<%= object.image ? object.image : '' %>">
     <div>   
