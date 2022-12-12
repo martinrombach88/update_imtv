@@ -98,27 +98,27 @@ exports.postWork = async (req, res, url, format, id) => {
   } else if (format === "update") {
     workObject.id = req.body.id;
     workObject.titleKR = req.body.titleKR.replace(/[']+/g, "`");
-    workObject.descriptionKR = req.body.descriptionKR.titleKR.replace(/[']+/g, "`");
-    workObject.channels = req.body.channels.titleKR.replace(/[']+/g, "`");
-    workObject.releaseDate = req.body.releaseDate.titleKR.replace(/[']+/g, "`");
-    workObject.producerKR = req.body.producerKR.titleKR.replace(/[']+/g, "`");
-    workObject.writerKR = req.body.writerKR.titleKR.replace(/[']+/g, "`");
-    workObject.starringKR = req.body.starringKR.titleKR.replace(/[']+/g, "`");
-    workObject.titleENG = req.body.titleENG.titleKR.replace(/[']+/g, "`");
-    workObject.descriptionENG = req.body.descriptionENG.titleKR.replace(/[']+/g, "`");
-    workObject.producerENG = req.body.producerENG.titleKR.replace(/[']+/g, "`");
-    workObject.writerENG = req.body.writerENG.titleKR.replace(/[']+/g, "`");
-    workObject.starringENG = req.body.starringENG.titleKR.replace(/[']+/g, "`");
-    workObject.fullVid = req.body.fullVid.titleKR.replace(/[']+/g, "`");
-    workObject.clipVid = req.body.clipVid.titleKR.replace(/[']+/g, "`");
+    workObject.descriptionKR = req.body.descriptionKR.replace(/[']+/g, "`");
+    workObject.channels = req.body.channels.replace(/[']+/g, "`");
+    workObject.releaseDate = req.body.releaseDate.replace(/[']+/g, "`");
+    workObject.producerKR = req.body.producerKR.replace(/[']+/g, "`");
+    workObject.writerKR = req.body.writerKR.replace(/[']+/g, "`");
+    workObject.starringKR = req.body.starringKR.replace(/[']+/g, "`");
+    workObject.titleENG = req.body.titleENG.replace(/[']+/g, "`");
+    workObject.descriptionENG = req.body.descriptionENG.replace(/[']+/g, "`");
+    workObject.producerENG = req.body.producerENG.replace(/[']+/g, "`");
+    workObject.writerENG = req.body.writerENG.replace(/[']+/g, "`");
+    workObject.starringENG = req.body.starringENG.replace(/[']+/g, "`");
+    workObject.fullVid = req.body.fullVid.replace(/[']+/g, "`");
+    workObject.clipVid = req.body.clipVid.replace(/[']+/g, "`");
     req.body.inProduction === "1"
       ? (workObject.inProduction = "1")
       : (workObject.inProduction = "0");
     req.body.subTitleKR
-      ? (workObject.subTitleKR = req.body.subTitleKR.titleKR.replace(/[']+/g, "`"))
+      ? (workObject.subTitleKR = req.body.subTitleKR.replace(/[']+/g, "`"))
       : (workObject.subTitleKR = "");
     req.body.subTitleENG
-      ? (workObject.subTitleENG = req.body.subTitleENG.titleKR.replace(/[']+/g, "`"))
+      ? (workObject.subTitleENG = req.body.subTitleENG.replace(/[']+/g, "`"))
       : (workObject.subTitleENG = "");
     req.body.color
       ? (workObject.color = req.body.color)

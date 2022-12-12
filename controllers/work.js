@@ -83,7 +83,6 @@ exports.postUpdateWorkForm = async (req, res) => {
   upload(req, res, function (err) {
     const error = "Storage Error - Please use a jpeg file.";
     if (err) {
-      console.log(err);
       return res.status(400).send({ message: error });
     } else {
       workModel.postWork(

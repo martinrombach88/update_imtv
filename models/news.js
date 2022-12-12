@@ -134,7 +134,7 @@ exports.sendNews = async (req, res, url, format, id) => {
   } else {
     newsObject = null;
   }
-  console.log(newsObject)
+
   if (newsObject) {
     const res = await superagent
       .post(url)
